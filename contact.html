@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Christian Agyapong</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .page-header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        .contact-section {
+            padding: 80px 0;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        .contact-info-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        .contact-method:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(10px);
+        }
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        .contact-method:hover .contact-icon {
+            background: white;
+            color: var(--primary-color);
+        }
+        .contact-details h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .contact-details p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .contact-method:hover .contact-details p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .enhanced-contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-light);
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .form-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .form-header p {
+            color: var(--text-secondary);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1.25rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--bg-primary);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-submit {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1.25rem 3rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-medium);
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+        }
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .availability-section {
+            background: var(--bg-secondary);
+            padding: 60px 0;
+        }
+        .availability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .availability-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .availability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        .availability-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        .availability-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .availability-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .status-available {
+            background: #10B981;
+            color: white;
+        }
+        .status-busy {
+            background: #F59E0B;
+            color: white;
+        }
+        .map-section {
+            padding: 60px 0;
+        }
+        .map-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .social-contact {
+            padding: 60px 0;
+            background: var(--bg-secondary);
+        }
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .social-contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        .social-contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+            color: var(--text-primary);
+        }
+        .social-contact-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+        .social-contact-card:hover .social-contact-icon {
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Christian Agyapong</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p>Let's Build Something Amazing Together</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-info-card">
+                    <h2 style="margin-bottom: 2rem; color: var(--primary-color);">Contact Information</h2>
+                    <div class="contact-methods">
+                        <a href="mailto:christianagyapong2023@email.com" class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p>christianagyapong2023@email.com</p>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:+233557618362" class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Phone</h3>
+                                <p>+233 557618362</p>
+                            </div>
+                        </a>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Location</h3>
+                                <p>Accra-Newtown, Ghana</p>
+                            </div>
+                        </div>
+                        
+                        <a href="https://linkedin.com/in/christian-agyapong" class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>LinkedIn</h3>
+                                <p>linkedin.com/in/christian-agyapong</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://github.com/christian-agyapong" class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>GitHub</h3>
+                                <p>github.com/christian-agyapong</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="enhanced-contact-form">
+                    <div class="form-header">
+                        <h3>Send Me a Message</h3>
+                        <p>I'd love to hear from you. Send me a message and I'll respond as soon as possible.</p>
+                    </div>
+                    
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company/Organization</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Project Type *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a project type</option>
+                                <option value="web-development">Web Development</option>
+                                <option value="mobile-app">Mobile App Development</option>
+                                <option value="fullstack">Full Stack Development</option>
+                                <option value="consulting">Technical Consulting</option>
+                                <option value="collaboration">Collaboration Opportunity</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Project Budget Range</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select budget range</option>
+                                <option value="under-5k">Under $5,000</option>
+                                <option value="5k-10k">$5,000 - $10,000</option>
+                                <option value="10k-25k">$10,000 - $25,000</option>
+                                <option value="25k-50k">$25,000 - $50,000</option>
+                                <option value="over-50k">Over $50,000</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timeline">Project Timeline</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">Select timeline</option>
+                                <option value="asap">ASAP</option>
+                                <option value="1-month">Within 1 month</option>
+                                <option value="1-3-months">1-3 months</option>
+                                <option value="3-6-months">3-6 months</option>
+                                <option value="6-months-plus">6+ months</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details *</label>
+                            <textarea id="message" name="message" placeholder="Please describe your project, requirements, and any specific technologies you'd like to use..." required></textarea>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Availability Section -->
+    <section class="availability-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Availability & Response Times</h2>
+                <p class="section-subtitle">When you can expect to hear from me</p>
+            </div>
+            
+            <div class="availability-grid">
+                <div class="availability-card">
+                    <div class="availability-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Response Time</h3>
+                    <p>I typically respond to emails and messages within 24 hours during business days.</p>
+                    <span class="status-badge status-available">Active</span>
+                </div>
+                
+                <div class="availability-card">
+                    <div class="availability-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Project Availability</h3>
+                    <p>Currently accepting new projects with start dates in Q2 2025.</p>
+                    <span class="status-badge status-available">Available</span>
+                </div>
+                
+                <div class="availability-card">
+                    <div class="availability-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Video Calls</h3>
+                    <p>Available for video consultations Monday to Friday, 9 AM - 6 PM GMT.</p>
+                    <span class="status-badge status-available">Open</span>
+                </div>
+                
+                <div class="availability-card">
+                    <div class="availability-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Consulting</h3>
+                    <p>Offering technical consulting and code reviews for existing projects.</p>
+                    <span class="status-badge status-available">Available</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Location</h2>
+                <p class="section-subtitle">Based in Accra, Ghana - Available for remote work worldwide</p>
+            </div>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div style="text-align: center;">
+                        <i class="fas fa-map-marker-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3>Accra, Ghana</h3>
+                        <p style="opacity: 0.8;">Available for remote collaboration globally</p>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem; color: var(--text-secondary);">
+                    While I'm based in Accra, I work with clients from around the world. 
+                    I'm experienced in remote collaboration and can adapt to different time zones for project meetings and communication.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Contact -->
+    <section class="social-contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Connect With Me</h2>
+                <p class="section-subtitle">Follow my work and stay updated</p>
+            </div>
+            
+            <div class="social-grid">
+                <a href="https://github.com/christian-agyapong" class="social-contact-card">
+                    <div class="social-contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>View my code repositories and open source contributions</p>
+                </a>
+                
+                <a href="https://linkedin.com/in/christian-agyapong" class="social-contact-card">
+                    <div class="social-contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Connect professionally and see my latest updates</p>
+                </a>
+                
+                <a href="https://twitter.com/christian_agyapong" class="social-contact-card">
+                    <div class="social-contact-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <h3>Twitter</h3>
+                    <p>Follow my thoughts on tech and industry insights</p>
+                </a>
+                
+                <a href="https://dev.to/christian-agyapong" class="social-contact-card">
+                    <div class="social-contact-icon">
+                        <i class="fab fa-dev"></i>
+                    </div>
+                    <h3>Dev.to</h3>
+                    <p>Read my technical articles and tutorials</p>
+                </a>
+                
+                <a href="https://medium.com/@christian-agyapong" class="social-contact-card">
+                    <div class="social-contact-icon">
+                        <i class="fab fa-medium"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>In-depth articles about web development</p>
+                </a>
+                
+                <a href="https://stackoverflow.com/users/christian-agyapong" class="social-contact-card">
+                    <div class="social-contact-icon">
+                        <i class="fab fa-stack-overflow"></i>
+                    </div>
+                    <h3>Stack Overflow</h3>
+                    <p>Community contributions and Q&A</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Christian Agyapong. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Enhanced form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Validation
+            if (!data.firstName || !data.lastName || !data.email || !data.subject || !data.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitButton = this.querySelector('.submit-btn');
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>Sending...';
+            submitButton.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                alert(`Thank you ${data.firstName}! Your message has been sent successfully. I'll get back to you within 24 hours.`);
+                this.reset();
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }, 2000);
+        });
+        
+        // Form field animations
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            field.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            field.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

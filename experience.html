@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Christian Agyapong</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .page-header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        .experience-section {
+            padding: 80px 0;
+        }
+        .experience-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .tab-button {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+        .tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .detailed-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        .detailed-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-primary);
+        }
+        .detailed-timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            padding-left: 3rem;
+        }
+        .detailed-timeline-marker {
+            position: absolute;
+            left: -12px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: var(--shadow-light);
+        }
+        .experience-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .experience-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .company-name {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+        .duration {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .responsibilities {
+            margin: 1.5rem 0;
+        }
+        .responsibilities ul {
+            list-style: none;
+            padding: 0;
+        }
+        .responsibilities li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        .responsibilities li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+        .certifications {
+            background: var(--bg-secondary);
+            padding: 60px 0;
+        }
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .cert-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        .cert-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+        @media (max-width: 768px) {
+            .experience-tabs {
+                flex-direction: column;
+            }
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Christian Agyapong</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="experience.html" class="nav-link active">Experience</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Professional Experience</h1>
+            <p>My Journey Through Technology & Innovation</p>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience-section">
+        <div class="container">
+            <!-- Experience Tabs -->
+            <div class="experience-tabs">
+                <button class="tab-button active" onclick="showTab('work')">Work Experience</button>
+                <button class="tab-button" onclick="showTab('education')">Education</button>
+                <button class="tab-button" onclick="showTab('freelance')">Freelance Projects</button>
+            </div>
+
+            <!-- Work Experience Tab -->
+            <div id="work" class="tab-content active">
+                <div class="detailed-timeline">
+                    <div class="detailed-timeline-item">
+                        <div class="detailed-timeline-marker"></div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <div class="company-logo">TC</div>
+                                    <div class="experience-details">
+                                        <h3>Senior Full Stack Developer</h3>
+                                        <div class="company-name">Tech Solutions Inc.</div>
+                                    </div>
+                                </div>
+                                <div class="duration">Jan 2023 - Present</div>
+                            </div>
+                            <div class="responsibilities">
+                                <h4>Key Responsibilities:</h4>
+                                <ul>
+                                    <li>Lead development of scalable web applications using React, Node.js, and cloud technologies</li>
+                                    <li>Mentor junior developers and conduct code reviews to maintain high code quality</li>
+                                    <li>Architect and implement microservices using Docker and Kubernetes</li>
+                                    <li>Collaborate with product managers and designers to translate requirements into technical solutions</li>
+                                    <li>Optimize application performance resulting in 40% faster load times</li>
+                                    <li>Implement CI/CD pipelines using Jenkins and GitLab</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">React native</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Django</span>
+                                <span class="skill-tag">Machine Learning, AI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-timeline-item">
+                        <div class="detailed-timeline-marker"></div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <div class="company-logo">DA</div>
+                                    <div class="experience-details">
+                                        <h3>Full Stack Developer</h3>
+                                        <div class="company-name">Digital Agency Ltd.</div>
+                                    </div>
+                                </div>
+                                <div class="duration">Jun 2021 - Dec 2022</div>
+                            </div>
+                            <div class="responsibilities">
+                                <h4>Key Responsibilities:</h4>
+                                <ul>
+                                    <li>Developed and maintained multiple client projects using modern web technologies</li>
+                                    <li>Created responsive web applications with pixel-perfect design implementations</li>
+                                    <li>Built RESTful APIs and integrated third-party services</li>
+                                    <li>Worked closely with design teams to ensure seamless user experiences</li>
+                                    <li>Managed databases and optimized queries for better performance</li>
+                                    <li>Participated in agile development processes and sprint planning</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Django</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">Vue.js</span>
+                                <span class="skill-tag">Git</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-timeline-item">
+                        <div class="detailed-timeline-marker"></div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <div class="company-logo">JS</div>
+                                    <div class="experience-details">
+                                        <h3>Junior Web Developer</h3>
+                                        <div class="company-name">StartUp Innovations</div>
+                                    </div>
+                                </div>
+                                <div class="duration">Jan 2020 - May 2021</div>
+                            </div>
+                            <div class="responsibilities">
+                                <h4>Key Responsibilities:</h4>
+                                <ul>
+                                    <li>Assisted in developing web applications using HTML, CSS, and JavaScript</li>
+                                    <li>Fixed bugs and implemented minor features under senior developer guidance</li>
+                                    <li>Learned version control with Git and collaborative development practices</li>
+                                    <li>Participated in daily standups and team meetings</li>
+                                    <li>Created technical documentation for project features</li>
+                                    <li>Contributed to testing and quality assurance processes</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Bootstrap</span>
+                                <span class="skill-tag">jQuery</span>
+                                <span class="skill-tag">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Tab -->
+            <div id="education" class="tab-content">
+                <div class="detailed-timeline">
+                    <div class="detailed-timeline-item">
+                        <div class="detailed-timeline-marker"></div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <div class="company-logo">UG</div>
+                                    <div class="experience-details">
+                                        <h3>Bachelor of Science in Computer Science</h3>
+                                        <div class="company-name">University of Ghana</div>
+                                    </div>
+                                </div>
+                                <div class="duration">2017 - 2021</div>
+                            </div>
+                            <div class="responsibilities">
+                                <h4>Academic Highlights:</h4>
+                                <ul>
+                                    <li>Graduated with First Class Honors (GPA: 3.8/4.0)</li>
+                                    <li>Specialized in Software Engineering and Database Systems</li>
+                                    <li>Led the Computer Science Students Association for two years</li>
+                                    <li>Participated in multiple hackathons and coding competitions</li>
+                                    <li>Completed final year project on "AI-Powered Task Management System"</li>
+                                    <li>Published research paper on "Machine Learning Applications in Education"</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">Data Structures</span>
+                                <span class="skill-tag">Algorithms</span>
+                                <span class="skill-tag">Software Engineering</span>
+                                <span class="skill-tag">Database Design</span>
+                                <span class="skill-tag">Machine Learning</span>
+                                <span class="skill-tag">Computer Networks</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-timeline-item">
+                        <div class="detailed-timeline-marker"></div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <div class="company-logo">FC</div>
+                                    <div class="experience-details">
+                                        <h3>Full Stack Web Development Bootcamp</h3>
+                                        <div class="company-name">FreeCodeCamp</div>
+                                    </div>
+                                </div>
+                                <div class="duration">2019</div>
+                            </div>
+                            <div class="responsibilities">
+                                <h4>Curriculum Covered:</h4>
+                                <ul>
+                                    <li>Responsive Web Design with HTML5 and CSS3</li>
+                                    <li>JavaScript Algorithms and Data Structures</li>
+                                    <li>Frontend Libraries including React and Redux</li>
+                                    <li>Data Visualization with D3.js</li>
+                                    <li>APIs and Microservices</li>
+                                    <li>Quality Assurance and Testing with Chai</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">HTML5</span>
+                                <span class="skill-tag">CSS3</span>
+                                <span class="skill-tag">JavaScript ES6</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">D3.js</span>
+                                <span class="skill-tag">Testing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-timeline-item">
+                        <div class="detailed-timeline-marker"></div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <div class="company-logo">W3</div>
+                                    <div class="experience-details">
+                                        <h3>Certified Python Developer</h3>
+                                        <div class="company-name">W3Schools</div>
+                                    </div>
+                                </div>
+                                <div class="duration">June 2025</div>
+                            </div>
+                            <div class="responsibilities">
+                                <h4>Certification Highlights:</h4>
+                                <ul>
+                                    <li>Passed W3Schools Python certification exam with honors</li>
+                                    <li>Demonstrated fundamental knowledge of Django using Python</li>
+                                    <li>Comprehensive understanding of Python programming concepts</li>
+                                    <li>Object-oriented programming and data structures</li>
+                                    <li>Web development with Python frameworks</li>
+                                    <li>Database integration and API development</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Django</span>
+                                <span class="skill-tag">OOP</span>
+                                <span class="skill-tag">Data Structures</span>
+                                <span class="skill-tag">Web APIs</span>
+                                <span class="skill-tag">Database Integration</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-timeline-item">
+                        <div class="detailed-timeline-marker"></div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <div class="company-logo">DA</div>
+                                    <div class="experience-details">
+                                        <h3>Graphic Design Specialist Training</h3>
+                                        <div class="company-name">Dewpoint Academy</div>
+                                    </div>
+                                </div>
+                                <div class="duration">September 2024</div>
+                            </div>
+                            <div class="responsibilities">
+                                <h4>Training Completion:</h4>
+                                <ul>
+                                    <li>Successfully completed training in Graphic Design specialists</li>
+                                    <li>Certificate of Appreciation for outstanding performance</li>
+                                    <li>Adobe Creative Suite proficiency (Photoshop, Illustrator, InDesign)</li>
+                                    <li>UI/UX design principles and best practices</li>
+                                    <li>Brand identity and visual communication design</li>
+                                    <li>Digital marketing and social media graphics</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">Photoshop</span>
+                                <span class="skill-tag">Illustrator</span>
+                                <span class="skill-tag">UI/UX Design</span>
+                                <span class="skill-tag">Brand Design</span>
+                                <span class="skill-tag">Digital Marketing</span>
+                                <span class="skill-tag">InDesign</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Freelance Tab -->
+            <div id="freelance" class="tab-content">
+                <div class="detailed-timeline">
+                    <div class="detailed-timeline-item">
+                        <div class="detailed-timeline-marker"></div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <div class="company-logo">EC</div>
+                                    <div class="experience-details">
+                                        <h3>E-Commerce Platform Development</h3>
+                                        <div class="company-name">Local Retail Business</div>
+                                    </div>
+                                </div>
+                                <div class="duration">3 Months</div>
+                            </div>
+                            <div class="responsibilities">
+                                <h4>Project Details:</h4>
+                                <ul>
+                                    <li>Built a complete e-commerce solution with shopping cart and payment integration</li>
+                                    <li>Implemented user authentication and admin dashboard</li>
+                                    <li>Integrated Stripe payment gateway for secure transactions</li>
+                                    <li>Created responsive design for mobile and desktop users</li>
+                                    <li>Set up inventory management system</li>
+                                    <li>Deployed application on AWS with automated backups</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">Stripe API</span>
+                                <span class="skill-tag">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-timeline-item">
+                        <div class="detailed-timeline-marker"></div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <div class="company-logo">LM</div>
+                                    <div class="experience-details">
+                                        <h3>Learning Management System</h3>
+                                        <div class="company-name">Educational Institution</div>
+                                    </div>
+                                </div>
+                                <div class="duration">4 Months</div>
+                            </div>
+                            <div class="responsibilities">
+                                <h4>Project Details:</h4>
+                                <ul>
+                                    <li>Developed a comprehensive LMS for online course delivery</li>
+                                    <li>Implemented video streaming and progress tracking features</li>
+                                    <li>Created quiz and assignment submission systems</li>
+                                    <li>Built real-time messaging between students and instructors</li>
+                                    <li>Integrated analytics dashboard for course performance</li>
+                                    <li>Ensured WCAG accessibility compliance</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">Vue.js</span>
+                                <span class="skill-tag">Laravel</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">Socket.io</span>
+                                <span class="skill-tag">FFmpeg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Certifications & Achievements</h2>
+                <p class="section-subtitle">Professional development and recognition</p>
+            </div>
+            
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h3>AWS Certified Developer</h3>
+                    <p>Amazon Web Services - Associate Level</p>
+                    <small>Issued: 2023</small>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>React Developer Certification</h3>
+                    <p>Meta Frontend Developer Professional Certificate</p>
+                    <small>Issued: 2022</small>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>MongoDB Certified Developer</h3>
+                    <p>MongoDB University</p>
+                    <small>Issued: 2022</small>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Google Cloud Professional</h3>
+                    <p>Cloud Developer Certification</p>
+                    <small>Issued: 2023</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Christian Agyapong. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

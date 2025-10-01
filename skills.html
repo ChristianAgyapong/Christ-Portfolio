@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Christian Agyapong</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .page-header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        .skills-section {
+            padding: 80px 0;
+        }
+        .skills-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+        .skill-tab-button {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+        .skill-tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        .skill-tab-content {
+            display: none;
+        }
+        .skill-tab-content.active {
+            display: block;
+        }
+        .detailed-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .skill-category-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        .skill-category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .skill-progress-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .skill-progress-item {
+            position: relative;
+        }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .skill-level {
+            font-size: 0.875rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        .skill-progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .skill-progress-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+            width: 0;
+        }
+        .skill-experience {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+        }
+        .tool-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        .tool-item:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+        .tool-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .certifications-showcase {
+            background: var(--bg-secondary);
+            padding: 60px 0;
+        }
+        .cert-showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .cert-showcase-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+        .cert-showcase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        .cert-badge {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+        .cert-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .cert-issuer {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .cert-date {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        .learning-path {
+            padding: 60px 0;
+        }
+        .timeline-learning {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline-learning::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-primary);
+        }
+        .timeline-learning-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        .timeline-learning-marker {
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: var(--shadow-light);
+        }
+        .learning-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+        }
+        .learning-year {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        .learning-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .learning-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .skills-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            .detailed-skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .tools-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Christian Agyapong</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="skills.html" class="nav-link active">Skills</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Skills & Expertise</h1>
+            <p>Technologies I Work With</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="container">
+            <!-- Skills Tabs -->
+            <div class="skills-tabs">
+                <button class="skill-tab-button active" onclick="showSkillTab('technical')">Technical Skills</button>
+                <button class="skill-tab-button" onclick="showSkillTab('tools')">Tools & Platforms</button>
+                <button class="skill-tab-button" onclick="showSkillTab('soft')">Soft Skills</button>
+                <button class="skill-tab-button" onclick="showSkillTab('learning')">Currently Learning</button>
+            </div>
+
+            <!-- Technical Skills Tab -->
+            <div id="technical" class="skill-tab-content active">
+                <div class="detailed-skills-grid">
+                    <!-- Frontend Development -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="category-title">Frontend Development</div>
+                        </div>
+                        <div class="skill-progress-list">
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fab fa-react" style="color: #61DAFB;"></i>
+                                        React.js
+                                    </div>
+                                    <div class="skill-level">Expert</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="95%"></div>
+                                </div>
+                                <div class="skill-experience">3+ years experience</div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fab fa-js-square" style="color: #F7DF1E;"></i>
+                                        JavaScript (ES6+)
+                                    </div>
+                                    <div class="skill-level">Expert</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="92%"></div>
+                                </div>
+                                <div class="skill-experience">4+ years experience</div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fab fa-vue" style="color: #4FC08D;"></i>
+                                        Vue.js
+                                    </div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="85%"></div>
+                                </div>
+                                <div class="skill-experience">2+ years experience</div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fab fa-css3-alt" style="color: #1572B6;"></i>
+                                        CSS3 & SASS
+                                    </div>
+                                    <div class="skill-level">Expert</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="90%"></div>
+                                </div>
+                                <div class="skill-experience">4+ years experience</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend Development -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="category-title">Backend Development</div>
+                        </div>
+                        <div class="skill-progress-list">
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fab fa-node-js" style="color: #339933;"></i>
+                                        Node.js
+                                    </div>
+                                    <div class="skill-level">Expert</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="90%"></div>
+                                </div>
+                                <div class="skill-experience">3+ years experience</div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fab fa-python" style="color: #3776AB;"></i>
+                                        Python
+                                    </div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="88%"></div>
+                                </div>
+                                <div class="skill-experience">3+ years experience</div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fas fa-gem" style="color: #CC342D;"></i>
+                                        Ruby on Rails
+                                    </div>
+                                    <div class="skill-level">Intermediate</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="75%"></div>
+                                </div>
+                                <div class="skill-experience">2+ years experience</div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fas fa-code" style="color: #007ACC;"></i>
+                                        TypeScript
+                                    </div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="82%"></div>
+                                </div>
+                                <div class="skill-experience">2+ years experience</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database & Cloud -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="category-title">Database & Cloud</div>
+                        </div>
+                        <div class="skill-progress-list">
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fas fa-leaf" style="color: #47A248;"></i>
+                                        MongoDB
+                                    </div>
+                                    <div class="skill-level">Expert</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="90%"></div>
+                                </div>
+                                <div class="skill-experience">3+ years experience</div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fas fa-elephant" style="color: #336791;"></i>
+                                        PostgreSQL
+                                    </div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="85%"></div>
+                                </div>
+                                <div class="skill-experience">2+ years experience</div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fab fa-aws" style="color: #FF9900;"></i>
+                                        AWS
+                                    </div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="80%"></div>
+                                </div>
+                                <div class="skill-experience">2+ years experience</div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fab fa-docker" style="color: #2496ED;"></i>
+                                        Docker
+                                    </div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="78%"></div>
+                                </div>
+                                <div class="skill-experience">2+ years experience</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Development -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="category-title">Mobile Development</div>
+                        </div>
+                        <div class="skill-progress-list">
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fab fa-react" style="color: #61DAFB;"></i>
+                                        React Native
+                                    </div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="83%"></div>
+                                </div>
+                                <div class="skill-experience">2+ years experience</div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fab fa-google-play" style="color: #34A853;"></i>
+                                        Flutter
+                                    </div>
+                                    <div class="skill-level">Intermediate</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="70%"></div>
+                                </div>
+                                <div class="skill-experience">1+ year experience</div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">
+                                        <i class="fab fa-apple" style="color: #000000;"></i>
+                                        iOS Development
+                                    </div>
+                                    <div class="skill-level">Beginner</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="60%"></div>
+                                </div>
+                                <div class="skill-experience">6+ months experience</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Platforms Tab -->
+            <div id="tools" class="skill-tab-content">
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fab fa-git-alt" style="color: #F05032;"></i></div>
+                        <div class="tool-name">Git</div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fab fa-github"></i></div>
+                        <div class="tool-name">GitHub</div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fas fa-code" style="color: #007ACC;"></i></div>
+                        <div class="tool-name">VS Code</div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fab fa-figma" style="color: #F24E1E;"></i></div>
+                        <div class="tool-name">Figma</div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fas fa-fire" style="color: #FFA000;"></i></div>
+                        <div class="tool-name">Firebase</div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fab fa-npm" style="color: #CB3837;"></i></div>
+                        <div class="tool-name">NPM</div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fas fa-cube" style="color: #8DD6F9;"></i></div>
+                        <div class="tool-name">Webpack</div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fas fa-rocket" style="color: #FF6B6B;"></i></div>
+                        <div class="tool-name">Netlify</div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fab fa-jenkins" style="color: #D33833;"></i></div>
+                        <div class="tool-name">Jenkins</div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fab fa-jira" style="color: #0052CC;"></i></div>
+                        <div class="tool-name">Jira</div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fab fa-slack" style="color: #4A154B;"></i></div>
+                        <div class="tool-name">Slack</div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-icon"><i class="fas fa-terminal" style="color: #000000;"></i></div>
+                        <div class="tool-name">Terminal</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft Skills Tab -->
+            <div id="soft" class="skill-tab-content">
+                <div class="detailed-skills-grid">
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="category-title">Leadership & Teamwork</div>
+                        </div>
+                        <div class="skill-progress-list">
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">Team Leadership</div>
+                                    <div class="skill-level">Expert</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">Collaboration</div>
+                                    <div class="skill-level">Expert</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="95%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">Mentoring</div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="category-title">Communication</div>
+                        </div>
+                        <div class="skill-progress-list">
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">Written Communication</div>
+                                    <div class="skill-level">Expert</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="92%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">Presentation Skills</div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="88%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">Client Relations</div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="category-title">Problem Solving</div>
+                        </div>
+                        <div class="skill-progress-list">
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">Critical Thinking</div>
+                                    <div class="skill-level">Expert</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="93%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">Creative Solutions</div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="88%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item">
+                                <div class="skill-info">
+                                    <div class="skill-name">Debugging</div>
+                                    <div class="skill-level">Expert</div>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress-fill" data-width="90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Currently Learning Tab -->
+            <div id="learning" class="skill-tab-content">
+                <div class="timeline-learning">
+                    <div class="timeline-learning-item">
+                        <div class="timeline-learning-marker"></div>
+                        <div class="learning-item">
+                            <div class="learning-year">2025</div>
+                            <div class="learning-title">Machine Learning & AI</div>
+                            <div class="learning-description">
+                                Diving deep into machine learning algorithms, neural networks, and AI applications in web development.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-learning-item">
+                        <div class="timeline-learning-marker"></div>
+                        <div class="learning-item">
+                            <div class="learning-year">2025</div>
+                            <div class="learning-title">Web3 & Blockchain</div>
+                            <div class="learning-description">
+                                Exploring blockchain technology, smart contracts, and decentralized application development.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-learning-item">
+                        <div class="timeline-learning-marker"></div>
+                        <div class="learning-item">
+                            <div class="learning-year">2024</div>
+                            <div class="learning-title">Kubernetes & DevOps</div>
+                            <div class="learning-description">
+                                Advanced container orchestration and DevOps practices for scalable application deployment.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-learning-item">
+                        <div class="timeline-learning-marker"></div>
+                        <div class="learning-item">
+                            <div class="learning-year">2024</div>
+                            <div class="learning-title">GraphQL & Apollo</div>
+                            <div class="learning-description">
+                                Modern API development with GraphQL and state management with Apollo Client.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Showcase -->
+    <section class="certifications-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Certifications</h2>
+                <p class="section-subtitle">Industry-recognized credentials</p>
+            </div>
+            
+            <div class="cert-showcase-grid">
+                <div class="cert-showcase-card">
+                    <div class="cert-badge">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="cert-title">Certified Python Developer</div>
+                    <div class="cert-issuer">W3Schools</div>
+                    <div class="cert-date">With Honors - June 16, 2025</div>
+                </div>
+                
+                <div class="cert-showcase-card">
+                    <div class="cert-badge">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="cert-title">Graphic Design Specialist</div>
+                    <div class="cert-issuer">Dewpoint Academy</div>
+                    <div class="cert-date">September 13, 2024</div>
+                </div>
+                
+                <div class="cert-showcase-card">
+                    <div class="cert-badge">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <div class="cert-title">Frontend Development</div>
+                    <div class="cert-issuer">FreeCodeCamp</div>
+                    <div class="cert-date">Professional Certificate - 2024</div>
+                </div>
+                
+                <div class="cert-showcase-card">
+                    <div class="cert-badge">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="cert-title">Full Stack Development</div>
+                    <div class="cert-issuer">Self-Taught & Projects</div>
+                    <div class="cert-date">Ongoing Learning - 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Gallery -->
+    <section style="padding: 60px 0; background: var(--bg-primary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Certificate Gallery</h2>
+                <p class="section-subtitle">View my actual certificates and achievements</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem;">
+                <div style="background: white; padding: 1rem; border-radius: 16px; box-shadow: var(--shadow-light); transition: var(--transition);" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='var(--shadow-heavy)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-light)'">
+                    <img src="python-certificate.jpg" alt="W3Schools Python Certificate" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 0.5rem;">Python Developer Certification</h3>
+                    <p style="text-align: center; color: var(--text-secondary);">W3Schools - June 16, 2025 (With Honors)</p>
+                </div>
+                
+                <div style="background: white; padding: 1rem; border-radius: 16px; box-shadow: var(--shadow-light); transition: var(--transition);" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='var(--shadow-heavy)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-light)'">
+                    <img src="graphic-design-certificate.jpg" alt="Dewpoint Academy Graphic Design Certificate" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 0.5rem;">Graphic Design Specialist</h3>
+                    <p style="text-align: center; color: var(--text-secondary);">Dewpoint Academy - September 13, 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Christian Agyapong. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function showSkillTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.skill-tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.skill-tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Animate progress bars if in technical skills tab
+            if (tabName === 'technical') {
+                animateProgressBars();
+            }
+        }
+        
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.skill-progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 200);
+            });
+        }
+        
+        // Initialize progress bar animations on load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(animateProgressBars, 500);
+        });
+    </script>
+</body>
+</html>

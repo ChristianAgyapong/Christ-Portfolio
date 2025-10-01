@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Christian Agyapong</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .page-header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        .about-detail {
+            padding: 80px 0;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        .personal-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+        }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .achievement-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+        .achievement-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        .personality-traits {
+            background: var(--bg-secondary);
+            padding: 60px 0;
+        }
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .trait-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+        }
+        .trait-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Christian Agyapong</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About Christian Agyapong</h1>
+            <p>Passionate Developer & Problem Solver</p>
+        </div>
+    </section>
+
+    <!-- About Details -->
+    <section class="about-detail">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-story">
+                    <h2>My Story</h2>
+                    <p>
+                        Hello! I'm Christian Agyapong, a passionate full-stack developer with a deep love for creating 
+                        innovative digital solutions. My journey in technology began several years ago when I discovered 
+                        the power of coding to transform ideas into reality.
+                    </p>
+                    <p>
+                        I believe in the philosophy of continuous learning and improvement. Every project I work on 
+                        is an opportunity to push boundaries, learn new technologies, and create something meaningful. 
+                        My approach combines technical expertise with creative problem-solving to deliver exceptional 
+                        user experiences.
+                    </p>
+                    <p>
+                        When I'm not coding, you'll find me exploring new technologies, contributing to open-source 
+                        projects, reading tech blogs, or mentoring aspiring developers. I'm always excited about 
+                        the next challenge and the opportunity to make a positive impact through technology.
+                    </p>
+                    <p>
+                        My goal is to build applications that not only solve real-world problems but also inspire 
+                        and empower users. I'm passionate about clean code, scalable architecture, and creating 
+                        products that people love to use.
+                    </p>
+                </div>
+                
+                <div class="personal-info">
+                    <h3>Personal Information</h3>
+                    <div class="info-item">
+                        <span class="info-label">Full Name:</span>
+                        <span>Christian Agyapong</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Age:</span>
+                        <span>22 Years</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Location:</span>
+                        <span>Accra-Newtown, Ghana</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span>christianagyapong2023@email.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Phone:</span>
+                        <span>+233 557618362</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Languages:</span>
+                        <span>English, Twi</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Interests:</span>
+                        <span>Technology, Innovation, Problem Solving, Continuous Learning</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Availability:</span>
+                        <span>Open to opportunities</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="achievements">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>50+ Projects</h3>
+                    <p>Successfully completed projects across various technologies and industries</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Happy Clients</h3>
+                    <p>Maintained 100% client satisfaction rate with quality deliverables</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Open Source</h3>
+                    <p>Active contributor to open-source projects and developer community</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Professional Certifications</h3>
+                    <p>Certified Python Developer (W3Schools) and Graphic Design Specialist (Dewpoint Academy)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personality Traits -->
+    <section class="personality-traits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Drives Me</h2>
+                <p class="section-subtitle">Core values and personality traits</p>
+            </div>
+            
+            <div class="traits-grid">
+                <div class="trait-card">
+                    <div class="trait-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>Always seeking creative solutions to complex problems</p>
+                </div>
+                
+                <div class="trait-card">
+                    <div class="trait-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Passion</h3>
+                    <p>Deeply passionate about technology and its potential</p>
+                </div>
+                
+                <div class="trait-card">
+                    <div class="trait-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Collaboration</h3>
+                    <p>Strong believer in teamwork and knowledge sharing</p>
+                </div>
+                
+                <div class="trait-card">
+                    <div class="trait-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>Committed to delivering high-quality solutions</p>
+                </div>
+                
+                <div class="trait-card">
+                    <div class="trait-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Growth Mindset</h3>
+                    <p>Constantly learning and adapting to new challenges</p>
+                </div>
+                
+                <div class="trait-card">
+                    <div class="trait-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Work-Life Balance</h3>
+                    <p>Maintaining healthy balance between work and personal life</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Christian Agyapong. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

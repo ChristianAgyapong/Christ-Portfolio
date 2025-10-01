@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Christian Agyapong</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .page-header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        .projects-section {
+            padding: 80px 0;
+        }
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .detailed-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        .detailed-project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            position: relative;
+        }
+        .detailed-project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-heavy);
+        }
+        .project-featured {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        .detailed-project-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        .detailed-project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .detailed-project-card:hover .detailed-project-image img {
+            transform: scale(1.1);
+        }
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(102, 126, 234, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .detailed-project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .project-link {
+            width: 60px;
+            height: 60px;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        .project-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        .detailed-project-content {
+            padding: 2rem;
+        }
+        .project-category {
+            color: var(--primary-color);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .project-features {
+            margin-bottom: 1.5rem;
+        }
+        .project-features h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+        .project-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .project-features li {
+            padding: 0.25rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .project-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .tech-tag {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .project-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .project-stat {
+            text-align: center;
+        }
+        .project-stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .project-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        .github-stats {
+            background: var(--bg-secondary);
+            padding: 60px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .detailed-projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .project-filters {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Christian Agyapong</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="projects.html" class="nav-link active">Projects</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>My Projects</h1>
+            <p>Showcasing Innovation Through Code</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="container">
+            <!-- Project Filters -->
+            <div class="project-filters">
+                <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+                <button class="filter-btn" onclick="filterProjects('web')">Web Development</button>
+                <button class="filter-btn" onclick="filterProjects('python')">Python Projects</button>
+                <button class="filter-btn" onclick="filterProjects('design')">Graphic Design</button>
+                <button class="filter-btn" onclick="filterProjects('frontend')">Frontend</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="detailed-projects-grid">
+                <!-- Personal Portfolio Website -->
+                <div class="detailed-project-card" data-category="web frontend">
+                    <div class="project-featured">Featured</div>
+                    <div class="detailed-project-image">
+                        <img src="https://via.placeholder.com/500x250/667eea/ffffff?text=Portfolio+Website" alt="Personal Portfolio">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detailed-project-content">
+                        <div class="project-category">Web Development</div>
+                        <h3 class="project-title">Personal Portfolio Website</h3>
+                        <p class="project-description">
+                            A modern, responsive portfolio website showcasing my skills, projects, and professional journey. 
+                            Built with clean HTML5, CSS3, and JavaScript with smooth animations and interactive elements. 
+                            and advanced admin features. Built for scalability and performance.
+                        </p>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>User authentication and authorization</li>
+                                <li>Shopping cart and wishlist functionality</li>
+                                <li>Stripe payment integration</li>
+                                <li>Real-time inventory management</li>
+                                <li>Admin dashboard with analytics</li>
+                                <li>Responsive design for all devices</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
+                            <span class="tech-tag">JWT</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <div class="project-stat-value">15k+</div>
+                                <div class="project-stat-label">Lines of Code</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">6</div>
+                                <div class="project-stat-label">Months</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">500+</div>
+                                <div class="project-stat-label">Users</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task Management App -->
+                <div class="detailed-project-card" data-category="web fullstack">
+                    <div class="detailed-project-image">
+                        <img src="https://via.placeholder.com/500x250/764ba2/ffffff?text=Task+Manager" alt="Task Management App">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detailed-project-content">
+                        <div class="project-category">Collaboration Tool</div>
+                        <h3 class="project-title">Team Task Management System</h3>
+                        <p class="project-description">
+                            A collaborative task management application with real-time updates, team chat, 
+                            and advanced project tracking capabilities.
+                        </p>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Real-time collaboration</li>
+                                <li>Kanban board interface</li>
+                                <li>Team chat and notifications</li>
+                                <li>File sharing and attachments</li>
+                                <li>Time tracking and reports</li>
+                                <li>Mobile-responsive design</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <div class="project-stat-value">12k+</div>
+                                <div class="project-stat-label">Lines of Code</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">4</div>
+                                <div class="project-stat-label">Months</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">200+</div>
+                                <div class="project-stat-label">Teams</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Chat Application -->
+                <div class="detailed-project-card" data-category="ai fullstack">
+                    <div class="detailed-project-image">
+                        <img src="https://via.placeholder.com/500x250/f093fb/ffffff?text=AI+Chat+Bot" alt="AI Chat Application">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detailed-project-content">
+                        <div class="project-category">Artificial Intelligence</div>
+                        <h3 class="project-title">Intelligent Chat Assistant</h3>
+                        <p class="project-description">
+                            An AI-powered chat application with natural language processing, 
+                            context awareness, and multi-language support.
+                        </p>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Natural language understanding</li>
+                                <li>Context-aware responses</li>
+                                <li>Multi-language support</li>
+                                <li>Voice input and output</li>
+                                <li>Sentiment analysis</li>
+                                <li>Custom training capabilities</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">OpenAI API</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <div class="project-stat-value">8k+</div>
+                                <div class="project-stat-label">Lines of Code</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">3</div>
+                                <div class="project-stat-label">Months</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">95%</div>
+                                <div class="project-stat-label">Accuracy</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Food Delivery App -->
+                <div class="detailed-project-card" data-category="mobile">
+                    <div class="detailed-project-image">
+                        <img src="https://via.placeholder.com/500x250/4facfe/ffffff?text=Food+Delivery+App" alt="Food Delivery App">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="App Store"><i class="fab fa-apple"></i></a>
+                                <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detailed-project-content">
+                        <div class="project-category">Mobile Development</div>
+                        <h3 class="project-title">QuickEats Delivery App</h3>
+                        <p class="project-description">
+                            A cross-platform mobile application for food delivery with real-time tracking, 
+                            multiple payment options, and restaurant management features.
+                        </p>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>GPS-based restaurant discovery</li>
+                                <li>Real-time order tracking</li>
+                                <li>Multiple payment methods</li>
+                                <li>Push notifications</li>
+                                <li>Rating and review system</li>
+                                <li>Restaurant dashboard</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Google Maps</span>
+                            <span class="tech-tag">Stripe</span>
+                            <span class="tech-tag">Redux</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <div class="project-stat-value">10k+</div>
+                                <div class="project-stat-label">Downloads</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">5</div>
+                                <div class="project-stat-label">Months</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">4.8</div>
+                                <div class="project-stat-label">App Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Website -->
+                <div class="detailed-project-card" data-category="web">
+                    <div class="detailed-project-image">
+                        <img src="https://via.placeholder.com/500x250/00f2fe/ffffff?text=Portfolio+Website" alt="Portfolio Website">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detailed-project-content">
+                        <div class="project-category">Web Development</div>
+                        <h3 class="project-title">Interactive Portfolio Website</h3>
+                        <p class="project-description">
+                            A modern, responsive portfolio website with smooth animations, 
+                            interactive elements, and optimized performance.
+                        </p>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Responsive design</li>
+                                <li>Smooth scroll animations</li>
+                                <li>Contact form integration</li>
+                                <li>SEO optimized</li>
+                                <li>Fast loading performance</li>
+                                <li>Modern UI/UX design</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">GSAP</span>
+                            <span class="tech-tag">Webpack</span>
+                            <span class="tech-tag">Netlify</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <div class="project-stat-value">3k+</div>
+                                <div class="project-stat-label">Lines of Code</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">2</div>
+                                <div class="project-stat-label">Weeks</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">98</div>
+                                <div class="project-stat-label">Performance Score</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Management System -->
+                <div class="detailed-project-card" data-category="fullstack web">
+                    <div class="detailed-project-image">
+                        <img src="https://via.placeholder.com/500x250/ff6b6b/ffffff?text=Learning+Management" alt="Learning Management System">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detailed-project-content">
+                        <div class="project-category">Education Technology</div>
+                        <h3 class="project-title">EduLearn Management Platform</h3>
+                        <p class="project-description">
+                            A comprehensive learning management system for educational institutions 
+                            with course management, assessments, and progress tracking.
+                        </p>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Course creation and management</li>
+                                <li>Video streaming platform</li>
+                                <li>Interactive quizzes and assignments</li>
+                                <li>Progress tracking and analytics</li>
+                                <li>Discussion forums</li>
+                                <li>Certificate generation</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">FFmpeg</span>
+                            <span class="tech-tag">Chart.js</span>
+                            <span class="tech-tag">AWS S3</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <div class="project-stat-value">20k+</div>
+                                <div class="project-stat-label">Lines of Code</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">8</div>
+                                <div class="project-stat-label">Months</div>
+                            </div>
+                            <div class="project-stat">
+                                <div class="project-stat-value">1000+</div>
+                                <div class="project-stat-label">Students</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Stats -->
+    <section class="github-stats">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">GitHub Statistics</h2>
+                <p class="section-subtitle">My open source contributions</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>150+</h3>
+                    <p>Repositories</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>2.5k+</h3>
+                    <p>GitHub Stars</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>800+</h3>
+                    <p>Commits This Year</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>50+</h3>
+                    <p>Followers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Christian Agyapong. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.detailed-project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Remove active class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category.includes(category)) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+        
+        // Initialize card animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.detailed-project-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
