@@ -159,44 +159,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Form submission
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Simple form validation
-        if (!data.name || !data.email || !data.message) {
-            alert('Please fill in all required fields.');
-            return;
-        }
-        
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.email)) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-        
-        // Simulate form submission
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitButton.textContent;
-        submitButton.textContent = 'Sending...';
-        submitButton.disabled = true;
-        
-        // Simulate API call
-        setTimeout(() => {
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            contactForm.reset();
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-        }, 2000);
-    });
-}
+// Old form submission handler removed - now using EmailJS below
 
 // Smooth reveal animations
 function revealElements() {
@@ -323,3 +286,212 @@ navStyle.textContent = `
     }
 `;
 document.head.appendChild(navStyle);
+
+// Image Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const closeBtn = document.getElementsByClassName('close')[0];
+    const demoLinks = document.querySelectorAll('.demo-link');
+
+    // Open modal when demo link is clicked
+    demoLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const imageSrc = this.getAttribute('data-image');
+            const title = this.getAttribute('data-title');
+            const description = this.getAttribute('data-description');
+            
+            modalImage.src = imageSrc;
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        });
+    });
+
+    // Close modal when X is clicked
+    closeBtn.addEventListener('click', function() {
+        closeModal();
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
+
+    function closeModal() {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
+});
+
+// Contact Form Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formStatus = document.getElementById('form-status');
+    
+    // Check if EmailJS is available and configured
+    const isEmailJSConfigured = typeof emailjs !== 'undefined' && 
+                                 emailjs !== null;
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const formValues = {
+                from_name: formData.get('from_name'),
+                from_email: formData.get('from_email'),
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
+            
+            // Basic validation
+            if (!formValues.from_name || !formValues.from_email || !formValues.message) {
+                showFormStatus('error', 'Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formValues.from_email)) {
+                showFormStatus('error', 'Please enter a valid email address.');
+                return;
+            }
+            
+            // Show loading state
+            contactForm.classList.add('loading');
+            formStatus.style.display = 'none';
+            
+            if (isEmailJSConfigured) {
+                // Try to send with EmailJS
+                sendWithEmailJS(formValues);
+            } else {
+                // Fallback: Show message with contact info
+                showFallbackMessage(formValues);
+            }
+        });
+    }
+    
+    function sendWithEmailJS(formValues) {
+        // Initialize EmailJS if not done
+        if (!emailjs._userID) {
+            emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+        }
+        
+        const templateParams = {
+            from_name: formValues.from_name,
+            from_email: formValues.from_email,
+            subject: formValues.subject,
+            message: formValues.message,
+            to_email: 'christianagyapong2023@email.com'
+        };
+        
+        // Send email using EmailJS
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                showFormStatus('success', 'Message sent successfully! I\'ll get back to you soon.');
+                contactForm.reset();
+            }, function(error) {
+                console.log('FAILED...', error);
+                // Show fallback message instead of error
+                showFallbackMessage(formValues);
+            })
+            .finally(function() {
+                contactForm.classList.remove('loading');
+            });
+    }
+    
+    function showFallbackMessage(formValues) {
+        const message = `
+            <strong>Thanks for your message!</strong><br><br>
+            Since EmailJS isn't configured yet, here's your message:<br><br>
+            <strong>Name:</strong> ${formValues.from_name}<br>
+            <strong>Email:</strong> ${formValues.from_email}<br>
+            <strong>Subject:</strong> ${formValues.subject}<br>
+            <strong>Message:</strong> ${formValues.message}<br><br>
+            Please email me directly at: <strong>christianagyapong2023@email.com</strong>
+        `;
+        
+        showFormStatus('success', '');
+        formStatus.innerHTML = message;
+        contactForm.reset();
+        contactForm.classList.remove('loading');
+    }
+    
+    function showFormStatus(type, message) {
+        formStatus.className = `form-status ${type}`;
+        formStatus.textContent = message;
+        formStatus.style.display = 'block';
+        
+        if (type === 'success') {
+            setTimeout(() => {
+                formStatus.style.display = 'none';
+            }, 5000);
+        }
+    }
+    
+    // Add form styles dynamically
+    const formStyles = document.createElement('style');
+    formStyles.textContent = `
+        .form-status {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .form-status.success {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            display: block;
+        }
+        
+        .form-status.error {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            display: block;
+        }
+        
+        .btn-loading {
+            display: none;
+        }
+        
+        .contact-form.loading .btn-text {
+            display: none;
+        }
+        
+        .contact-form.loading .btn-loading {
+            display: inline-block;
+        }
+        
+        .contact-form.loading .btn {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+    `;
+    document.head.appendChild(formStyles);
+});
