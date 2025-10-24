@@ -3,27 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christian Agyapong - Personal Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Christian Agyapong - Web3 Developer Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
+    <!-- Web3 Cursor Effect -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html">Christian Agyapong</a>
+                <a href="index.html">
+                    <span class="logo-bracket">[</span>
+                    Christian
+                    <span class="logo-dot">.</span>
+                    <span class="logo-domain">dev</span>
+                    <span class="logo-bracket">]</span>
+                </a>
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="experience.html" class="nav-link">Experience</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="skills.html" class="nav-link">Skills</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="about.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>About</span>
+                </a>
+                <a href="experience.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="projects.html" class="nav-link">
+                    <i class="fas fa-code"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="skills.html" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
             </div>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
@@ -35,13 +63,29 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <!-- Floating Web3 Elements -->
+        <div class="floating-elements">
+            <div class="floating-cube cube-1"></div>
+            <div class="floating-cube cube-2"></div>
+            <div class="floating-cube cube-3"></div>
+            <div class="floating-sphere sphere-1"></div>
+            <div class="floating-sphere sphere-2"></div>
+        </div>
+        
         <div class="hero-container">
             <div class="hero-content">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">AVAILABLE FOR PROJECTS</span>
+                </div>
                 <h1 class="hero-title">
-                    Hi, I'm <span class="highlight">Christian Agyapong</span>
+                    <span class="title-line">Hi, I'm</span>
+                    <span class="highlight glitch" data-text="Christian Agyapong">Christian Agyapong</span>
                 </h1>
                 <p class="hero-subtitle">
+                    <span class="bracket">&lt;</span>
                     <span class="typing-text">Full Stack Developer</span>
+                    <span class="bracket">/&gt;</span>
                 </p>
                 <p class="hero-description">
                     Passionate full-stack developer and graphic designer creating innovative digital solutions. 
@@ -49,14 +93,28 @@
                     delivering exceptional user experiences that solve real-world problems.
                 </p>
                 <div class="hero-buttons">
-                    <a href="projects.html" class="btn btn-primary">View My Work</a>
-                    <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+                    <a href="projects.html" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        <span class="btn-text">View My Work</span>
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        <i class="fas fa-terminal"></i>
+                        <span class="btn-text">Get In Touch</span>
+                    </a>
                 </div>
                 <div class="social-links">
-                    <a href="https://github.com/ChristianAgyapong" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/ChristianAgyapong" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/christian-agyapong" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com/christian_dev" class="social-link" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="mailto:christianagyapong2023@email.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
             <div class="hero-image">
@@ -65,60 +123,285 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Web3 Scroll Indicator -->
         <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
+            <span>SCROLL</span>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section - Web3 Enhanced -->
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Get to know me better</p>
+                <h2 class="section-title">About_Me.exe</h2>
+                <p class="section-subtitle">
+                    <span class="terminal-prompt">$</span> cat developer_profile.json
+                </p>
             </div>
+            
+            <!-- Web3 Data Visualization -->
+            <div class="data-matrix">
+                <div class="matrix-line" data-delay="0"></div>
+                <div class="matrix-line" data-delay="1"></div>
+                <div class="matrix-line" data-delay="2"></div>
+            </div>
+            
             <div class="about-content">
+                <!-- Left: Developer Profile -->
                 <div class="about-text">
-                    <p>
-                        I'm a passionate full-stack developer and certified graphic designer with a strong foundation in modern web technologies 
-                        and a keen eye for user experience design. My journey in technology started with a curiosity about how 
-                        digital solutions can transform ideas into reality, and I've been continuously learning and evolving ever since.
-                    </p>
-                    <p>
-                        With my W3Schools Python certification (achieved with honors) and Dewpoint Academy graphic design training, 
-                        I bring a unique blend of technical expertise and creative vision to every project. I believe in writing 
-                        clean, efficient code and creating solutions that not only work seamlessly but also provide exceptional 
-                        user experiences.
-                    </p>
-                    <p>
-                        When I'm not coding or designing, you can find me exploring new technologies, contributing to open-source 
-                        projects, sharing knowledge with the developer community, or working on personal projects that challenge 
-                        my skills. I'm always excited about the next opportunity to learn something new and make a positive 
-                        impact through technology.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h3>50+</h3>
-                            <p>Projects Completed</p>
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control close"></span>
+                                <span class="control minimize"></span>
+                                <span class="control maximize"></span>
+                            </div>
+                            <span class="terminal-title">developer_profile.json</span>
                         </div>
-                        <div class="stat">
-                            <h3>3+</h3>
-                            <p>Years Experience</p>
+                        <div class="terminal-content">
+                            <div class="code-block">
+                                <span class="code-line">
+                                    <span class="key">"fullName":</span> 
+                                    <span class="value">"Christian Agyapong"</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"age":</span> 
+                                    <span class="value number">25</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"location":</span> 
+                                    <span class="value">"Accra, Ghana"</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"email":</span> 
+                                    <span class="value">"christianagyapong2023@email.com"</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"phone":</span> 
+                                    <span class="value">"+233 XX XXX XXXX"</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"role":</span> 
+                                    <span class="value">"Full Stack Developer"</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"languages":</span> [
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"English (Native)"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Twi (Native)"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"JavaScript (Fluent)"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Python (Expert)"</span>
+                                </span>
+                                <span class="code-line">],</span>
+                                <span class="code-line">
+                                    <span class="key">"interests":</span> [
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Web3 Technology"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"UI/UX Design"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Machine Learning"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Blockchain Development"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Open Source Projects"</span>
+                                </span>
+                                <span class="code-line">],</span>
+                                <span class="code-line">
+                                    <span class="key">"specializations":</span> [
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Web Development"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"UI/UX Design"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Python Development"</span>
+                                </span>
+                                <span class="code-line">],</span>
+                                <span class="code-line">
+                                    <span class="key">"certifications":</span> [
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"W3Schools Python (Honors)"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Dewpoint Academy Design"</span>
+                                </span>
+                                <span class="code-line">],</span>
+                                <span class="code-line">
+                                    <span class="key">"philosophy":</span> 
+                                    <span class="value">"Transform ideas into digital reality"</span>
+                                </span>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <h3>100%</h3>
-                            <p>Client Satisfaction</p>
+                    </div>
+                    
+                    <!-- Interactive Contact Card -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <div class="status-indicator">
+                                <span class="status-dot"></span>
+                                <span>ONLINE</span>
+                            </div>
+                            <h3>Quick Contact</h3>
+                        </div>
+                        <div class="contact-grid">
+                            <div class="contact-field" data-field="location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="field-info">
+                                    <span class="field-label">Location</span>
+                                    <span class="field-value">Accra, Ghana</span>
+                                </div>
+                            </div>
+                            <div class="contact-field" data-field="email">
+                                <i class="fas fa-envelope"></i>
+                                <div class="field-info">
+                                    <span class="field-label">Email</span>
+                                    <span class="field-value">christianagyapong2023@email.com</span>
+                                </div>
+                            </div>
+                            <div class="contact-field" data-field="availability">
+                                <i class="fas fa-clock"></i>
+                                <div class="field-info">
+                                    <span class="field-label">Available</span>
+                                    <span class="field-value">Mon-Fri, 9AM-6PM GMT</span>
+                                </div>
+                            </div>
+                            <div class="contact-field" data-field="response">
+                                <i class="fas fa-reply"></i>
+                                <div class="field-info">
+                                    <span class="field-label">Response Time</span>
+                                    <span class="field-value">Within 24 hours</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Meters -->
+                    <div class="skill-meters">
+                        <h3 class="skill-title">
+                            <i class="fas fa-chart-bar"></i>
+                            Performance Metrics
+                        </h3>
+                        <div class="skill-meter">
+                            <div class="skill-info">
+                                <span>Frontend Development</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-info">
+                                <span>Backend Development</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-info">
+                                <span>UI/UX Design</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-info">
+                                <span>Problem Solving</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" data-width="92"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <div class="about-card">
-                        <div class="card-inner">
-                            <img src="christian-photo.jpg" alt="About Me">
-                            <div class="image-overlay">
-                                <h4>Christian Agyapong</h4>
-                                <p>Full Stack Developer & Designer</p>
+                
+                <!-- Right: 3D Stats Dashboard -->
+                <div class="about-dashboard">
+                    <!-- Holographic Profile -->
+                    <div class="holo-profile">
+                        <div class="holo-container">
+                            <div class="holo-image">
+                                <img src="christian-photo.jpg" alt="Christian Agyapong">
+                                <div class="holo-overlay"></div>
+                                <div class="scan-line"></div>
                             </div>
+                            <div class="holo-info">
+                                <h4>
+                                    <span class="status-online"></span>
+                                    ONLINE
+                                </h4>
+                                <p>Ready for new challenges</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card" data-stat="projects">
+                            <div class="stat-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 data-target="50">0</h3>
+                                <p>Projects<br>Completed</p>
+                            </div>
+                            <div class="stat-glow"></div>
+                        </div>
+                        
+                        <div class="stat-card" data-stat="experience">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 data-target="3">0</h3>
+                                <p>Years<br>Experience</p>
+                            </div>
+                            <div class="stat-glow"></div>
+                        </div>
+                        
+                        <div class="stat-card" data-stat="satisfaction">
+                            <div class="stat-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 data-target="100">0</h3>
+                                <p>Client<br>Satisfaction</p>
+                            </div>
+                            <div class="stat-glow"></div>
+                        </div>
+                        
+                        <div class="stat-card" data-stat="technologies">
+                            <div class="stat-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 data-target="15">0</h3>
+                                <p>Technologies<br>Mastered</p>
+                            </div>
+                            <div class="stat-glow"></div>
                         </div>
                     </div>
                 </div>
@@ -513,6 +796,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,907 @@
+/* ==========================================
+   EXPERIENCE PAGE CUSTOM STYLES
+   Web3 Theme Implementation
+   ========================================== */
+
+/* Tab Content Visibility */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Experience Section */
+.experience-section {
+    padding: 80px 0;
+    background: var(--bg-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Experience 3D Cube */
+.experience-cube {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: cubeRotate 20s infinite linear;
+    margin: 2rem auto;
+}
+
+.cube-face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: var(--bg-glass);
+    border: var(--glass-border);
+    backdrop-filter: var(--glass-backdrop);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-orbitron);
+    color: var(--neon-blue);
+    font-size: 0.9rem;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.cube-face i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--neon-green);
+}
+
+.cube-face span {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cube-face.front { transform: rotateY(0deg) translateZ(100px); }
+.cube-face.back { transform: rotateY(180deg) translateZ(100px); }
+.cube-face.right { transform: rotateY(90deg) translateZ(100px); }
+.cube-face.left { transform: rotateY(-90deg) translateZ(100px); }
+.cube-face.top { transform: rotateX(90deg) translateZ(100px); }
+.cube-face.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+@keyframes cubeRotate {
+    0% { transform: rotateX(0deg) rotateY(0deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* Cyber Tabs */
+.cyber-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 4rem 0;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+}
+
+.cyber-tab {
+    position: relative;
+    background: var(--bg-glass);
+    border: var(--glass-border);
+    backdrop-filter: var(--glass-backdrop);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-orbitron);
+    font-weight: 600;
+    color: var(--text-light);
+    overflow: hidden;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.cyber-tab:hover {
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+}
+
+.cyber-tab.active {
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(147, 51, 234, 0.1));
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+}
+
+.cyber-tab.active .tab-glow {
+    opacity: 1;
+}
+
+.tab-icon {
+    font-size: 1.5rem;
+    color: var(--neon-green);
+    transition: all 0.3s ease;
+}
+
+.cyber-tab:hover .tab-icon,
+.cyber-tab.active .tab-icon {
+    color: var(--neon-blue);
+    transform: scale(1.1);
+}
+
+.tab-text {
+    font-size: 1rem;
+}
+
+.tab-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+/* Cyber Timeline */
+.cyber-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.cyber-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, 
+        var(--neon-blue) 0%, 
+        var(--neon-purple) 50%, 
+        var(--neon-green) 100%);
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--neon-blue), 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 120px;
+    animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.timeline-marker {
+    position: absolute;
+    left: 35px;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+    background: var(--bg-dark);
+    border: 3px solid var(--neon-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neon-blue);
+    font-size: 0.9rem;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-marker {
+    transform: scale(1.2);
+    background: var(--neon-blue);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--neon-blue);
+}
+
+.marker-glow {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.4), transparent);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+    z-index: -1;
+}
+
+/* Experience Cards Cyber */
+.experience-card-cyber {
+    background: var(--bg-glass);
+    border: var(--glass-border);
+    backdrop-filter: var(--glass-backdrop);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Make entire card clickable */
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+}
+
+.card-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.experience-card-cyber:hover {
+    transform: translateY(-10px);
+    border-color: var(--neon-blue);
+    box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3), 
+                0 0 30px rgba(0, 212, 255, 0.2);
+}
+
+.experience-card-cyber::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--neon-blue) 0%, 
+        var(--neon-purple) 50%, 
+        var(--neon-green) 100%);
+}
+
+.experience-card-cyber::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(0, 212, 255, 0.05) 0%, 
+        transparent 50%, 
+        rgba(147, 51, 234, 0.05) 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.experience-card-cyber:hover::after {
+    opacity: 1;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.company-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.company-logo-cyber {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: var(--font-orbitron);
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.experience-card-cyber:hover .company-logo-cyber {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+}
+
+.role-details {
+    flex: 1;
+    min-width: 200px;
+}
+
+.role-details h3.role-title {
+    font-family: var(--font-orbitron);
+    color: var(--neon-blue);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.company-name {
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.duration-badge {
+    background: var(--bg-glass);
+    border: 1px solid var(--neon-green);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: var(--neon-green);
+    font-family: var(--font-orbitron);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.experience-card-cyber:hover .duration-badge {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.card-body .responsibilities h4 {
+    color: var(--neon-blue);
+    font-family: var(--font-orbitron);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.responsibilities {
+    margin-bottom: 1.5rem;
+}
+
+.responsibilities ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.responsibilities li {
+    padding: 0.5rem 0;
+    color: var(--text-light);
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.responsibilities li:hover {
+    padding-left: 0.5rem;
+    color: var(--neon-blue);
+}
+
+.bullet-point {
+    color: var(--neon-green);
+    font-weight: bold;
+    margin-top: 0.3rem;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.tech-tag {
+    background: linear-gradient(135deg, 
+        rgba(0, 212, 255, 0.1), 
+        rgba(147, 51, 234, 0.1));
+    border: 1px solid var(--neon-blue);
+    color: var(--neon-blue);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-family: var(--font-orbitron);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.tech-tag:hover {
+    background: var(--neon-blue);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Portfolio Link Button */
+.portfolio-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: var(--font-orbitron);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.portfolio-link:hover::before {
+    left: 100%;
+}
+
+.portfolio-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+    color: white;
+    text-decoration: none;
+    border-color: var(--neon-blue);
+}
+
+.portfolio-link i {
+    transition: transform 0.3s ease;
+}
+
+.portfolio-link:hover i {
+    transform: translateX(3px);
+}
+
+/* Click to view overlay */
+.view-portfolio-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid var(--neon-blue);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    color: var(--neon-blue);
+    font-family: var(--font-orbitron);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.experience-card-cyber:hover .view-portfolio-overlay {
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+/* Floating portfolio button for all cards */
+.floating-portfolio-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+.experience-card:hover .floating-portfolio-btn,
+.experience-card-cyber:hover .floating-portfolio-btn {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.floating-portfolio-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+}
+
+/* Portfolio Navigation Button in Hero */
+.portfolio-nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    color: white;
+    padding: 1rem;
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--neon-blue);
+    min-height: 80px;
+    justify-content: center;
+}
+
+.portfolio-nav-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 212, 255, 0.4);
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+}
+
+.portfolio-nav-btn i {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.portfolio-nav-btn span {
+    font-size: 0.9rem;
+    font-family: var(--font-orbitron);
+    font-weight: 600;
+}
+
+/* Make cube faces clickable */
+.cube-face {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cube-face:hover {
+    background: rgba(0, 212, 255, 0.1);
+    transform: scale(1.05);
+}
+
+/* Fixed Portfolio FAB */
+.portfolio-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    border: 2px solid var(--neon-blue);
+}
+
+.portfolio-fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(0, 212, 255, 0.6);
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+}
+
+.portfolio-fab::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-green));
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-fab:hover::before {
+    opacity: 1;
+}
+
+/* FAB pulse animation */
+@keyframes fabPulse {
+    0% {
+        box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 8px 25px rgba(0, 212, 255, 0.7), 0 0 30px rgba(0, 212, 255, 0.3);
+    }
+    100% {
+        box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+    }
+}
+
+.portfolio-fab {
+    animation: fabPulse 2s ease-in-out infinite;
+}
+
+.portfolio-fab:hover {
+    animation: none;
+}
+
+/* Cyber Certifications */
+.certifications {
+    background: var(--bg-dark);
+    padding: 80px 0;
+    position: relative;
+}
+
+.cert-grid-cyber {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.cert-card-cyber {
+    position: relative;
+    background: var(--bg-glass);
+    border: var(--glass-border);
+    backdrop-filter: var(--glass-backdrop);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.cert-card-cyber:hover {
+    transform: translateY(-10px);
+    border-color: var(--neon-green);
+    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.3);
+}
+
+.cert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.cert-icon-cyber {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+    transition: all 0.3s ease;
+}
+
+.cert-card-cyber:hover .cert-icon-cyber {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
+}
+
+.cert-badge {
+    background: var(--neon-green);
+    color: var(--bg-dark);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-family: var(--font-orbitron);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.cert-content h3 {
+    color: var(--neon-blue);
+    font-family: var(--font-orbitron);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.cert-content p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.cert-date {
+    color: var(--neon-green);
+    font-family: var(--font-orbitron);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.cert-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        transparent, 
+        rgba(34, 197, 94, 0.1), 
+        transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cert-card-cyber:hover .cert-glow {
+    opacity: 1;
+}
+
+/* Responsive Design for Experience */
+@media (max-width: 968px) {
+    .cyber-timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        padding-left: 80px;
+    }
+    
+    .timeline-marker {
+        left: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .experience-section {
+        padding: 60px 0;
+    }
+    
+    .cyber-tabs {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .cyber-tab {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .cyber-timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        padding-left: 60px;
+    }
+    
+    .timeline-marker {
+        left: 5px;
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .company-info {
+        width: 100%;
+    }
+    
+    .duration-badge {
+        align-self: flex-start;
+    }
+    
+    .experience-cube {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .cube-face {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .cube-face.front { transform: rotateY(0deg) translateZ(75px); }
+    .cube-face.back { transform: rotateY(180deg) translateZ(75px); }
+    .cube-face.right { transform: rotateY(90deg) translateZ(75px); }
+    .cube-face.left { transform: rotateY(-90deg) translateZ(75px); }
+    .cube-face.top { transform: rotateX(90deg) translateZ(75px); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(75px); }
+    
+    .role-details h3.role-title {
+        font-size: 1.1rem;
+    }
+    
+    .cert-grid-cyber {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .experience-cube {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .cube-face {
+        width: 120px;
+        height: 120px;
+        font-size: 0.75rem;
+    }
+    
+    .cube-face i {
+        font-size: 1.5rem;
+    }
+    
+    .cube-face.front { transform: rotateY(0deg) translateZ(60px); }
+    .cube-face.back { transform: rotateY(180deg) translateZ(60px); }
+    .cube-face.right { transform: rotateY(90deg) translateZ(60px); }
+    .cube-face.left { transform: rotateY(-90deg) translateZ(60px); }
+    .cube-face.top { transform: rotateX(90deg) translateZ(60px); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(60px); }
+    
+    .company-logo-cyber {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+
+
+

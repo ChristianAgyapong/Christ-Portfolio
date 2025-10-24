@@ -4,128 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Christian Agyapong</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .page-header {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 120px 0 60px;
-            text-align: center;
-        }
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        .page-header p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-        }
-        .about-detail {
-            padding: 80px 0;
-        }
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-        .personal-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-light);
-        }
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .info-item:last-child {
-            border-bottom: none;
-        }
-        .info-label {
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        .achievements {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        .achievement-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-light);
-            text-align: center;
-            transition: var(--transition);
-        }
-        .achievement-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-heavy);
-        }
-        .achievement-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.5rem;
-        }
-        .personality-traits {
-            background: var(--bg-secondary);
-            padding: 60px 0;
-        }
-        .traits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-        .trait-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-light);
-            text-align: center;
-        }
-        .trait-icon {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .page-header h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
 </head>
 <body>
+    <!-- Web3 Cursor Effect -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html">Christian Agyapong</a>
+                <a href="index.html">
+                    <span class="logo-bracket">[</span>
+                    Christian
+                    <span class="logo-dot">.</span>
+                    <span class="logo-domain">dev</span>
+                    <span class="logo-bracket">]</span>
+                </a>
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link active">About</a>
-                <a href="experience.html" class="nav-link">Experience</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="skills.html" class="nav-link">Skills</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="about.html" class="nav-link active">
+                    <i class="fas fa-user"></i>
+                    <span>About</span>
+                </a>
+                <a href="experience.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="projects.html" class="nav-link">
+                    <i class="fas fa-code"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="skills.html" class="nav-link">
+                    <i class="fas fa-tools"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
             </div>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
@@ -135,15 +60,283 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
+    <!-- Web3 About Hero -->
+    <section class="about-hero" id="about">
         <div class="container">
-            <h1>About Christian Agyapong</h1>
-            <p>Passionate Developer & Problem Solver</p>
+            <div class="section-header">
+                <h2 class="section-title">About Christian Agyapong</h2>
+                <p class="section-subtitle">Full Stack Developer & Digital Innovator</p>
+            </div>
+            
+            <!-- Web3 Data Visualization -->
+            <div class="data-matrix">
+                <div class="matrix-line" data-delay="0"></div>
+                <div class="matrix-line" data-delay="1"></div>
+                <div class="matrix-line" data-delay="2"></div>
+            </div>
+            
+            <div class="about-content">
+                <!-- Left: Developer Profile -->
+                <div class="about-text">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control close"></span>
+                                <span class="control minimize"></span>
+                                <span class="control maximize"></span>
+                            </div>
+                            <span class="terminal-title">developer_profile.json</span>
+                        </div>
+                        <div class="terminal-content">
+                            <div class="code-block">
+                                <span class="code-line">
+                                    <span class="key">"fullName":</span> 
+                                    <span class="value">"Christian Agyapong"</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"age":</span> 
+                                    <span class="value number">25</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"location":</span> 
+                                    <span class="value">"Accra, Ghana"</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"email":</span> 
+                                    <span class="value">"christianagyapong2023@email.com"</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"phone":</span> 
+                                    <span class="value">"+233 XX XXX XXXX"</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"role":</span> 
+                                    <span class="value">"Full Stack Developer"</span>,
+                                </span>
+                                <span class="code-line">
+                                    <span class="key">"languages":</span> [
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"English (Native)"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Twi (Native)"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"JavaScript (Fluent)"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Python (Expert)"</span>
+                                </span>
+                                <span class="code-line">],</span>
+                                <span class="code-line">
+                                    <span class="key">"interests":</span> [
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Web3 Technology"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"UI/UX Design"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Machine Learning"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Blockchain Development"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Open Source Projects"</span>
+                                </span>
+                                <span class="code-line">],</span>
+                                <span class="code-line">
+                                    <span class="key">"specializations":</span> [
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Web Development"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"UI/UX Design"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Python Development"</span>
+                                </span>
+                                <span class="code-line">],</span>
+                                <span class="code-line">
+                                    <span class="key">"certifications":</span> [
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"W3Schools Python (Honors)"</span>,
+                                </span>
+                                <span class="code-line indent">
+                                    <span class="value">"Dewpoint Academy Design"</span>
+                                </span>
+                                <span class="code-line">],</span>
+                                <span class="code-line">
+                                    <span class="key">"philosophy":</span> 
+                                    <span class="value">"Transform ideas into digital reality"</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Interactive Contact Card -->
+                    <div class="contact-card">
+                        <div class="card-header">
+                            <div class="status-indicator">
+                                <span class="status-dot"></span>
+                                <span>ONLINE</span>
+                            </div>
+                            <h3>Quick Contact</h3>
+                        </div>
+                        <div class="contact-grid">
+                            <div class="contact-field" data-field="location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="field-info">
+                                    <span class="field-label">Location</span>
+                                    <span class="field-value">Accra, Ghana</span>
+                                </div>
+                            </div>
+                            <div class="contact-field" data-field="email">
+                                <i class="fas fa-envelope"></i>
+                                <div class="field-info">
+                                    <span class="field-label">Email</span>
+                                    <span class="field-value">christianagyapong2023@email.com</span>
+                                </div>
+                            </div>
+                            <div class="contact-field" data-field="availability">
+                                <i class="fas fa-clock"></i>
+                                <div class="field-info">
+                                    <span class="field-label">Available</span>
+                                    <span class="field-value">Mon-Fri, 9AM-6PM GMT</span>
+                                </div>
+                            </div>
+                            <div class="contact-field" data-field="response">
+                                <i class="fas fa-reply"></i>
+                                <div class="field-info">
+                                    <span class="field-label">Response Time</span>
+                                    <span class="field-value">Within 24 hours</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Meters -->
+                    <div class="skill-meters">
+                        <h3 class="skill-title">
+                            <i class="fas fa-chart-bar"></i>
+                            Performance Metrics
+                        </h3>
+                        <div class="skill-meter">
+                            <div class="skill-info">
+                                <span>Frontend Development</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-info">
+                                <span>Backend Development</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-info">
+                                <span>UI/UX Design</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-info">
+                                <span>Problem Solving</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" data-width="92"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: 3D Stats Dashboard -->
+                <div class="about-dashboard">
+                    <!-- Holographic Profile -->
+                    <div class="holo-profile">
+                        <div class="holo-container">
+                            <div class="holo-image">
+                                <img src="christian-photo.jpg" alt="Christian Agyapong">
+                                <div class="holo-overlay"></div>
+                                <div class="scan-line"></div>
+                            </div>
+                            <div class="holo-info">
+                                <h4>
+                                    <span class="status-online"></span>
+                                    ONLINE
+                                </h4>
+                                <p>Ready for new challenges</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card" data-stat="projects">
+                            <div class="stat-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 data-target="50">0</h3>
+                                <p>Projects<br>Completed</p>
+                            </div>
+                            <div class="stat-glow"></div>
+                        </div>
+                        
+                        <div class="stat-card" data-stat="experience">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 data-target="3">0</h3>
+                                <p>Years<br>Experience</p>
+                            </div>
+                            <div class="stat-glow"></div>
+                        </div>
+                        
+                        <div class="stat-card" data-stat="satisfaction">
+                            <div class="stat-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 data-target="100">0</h3>
+                                <p>Client<br>Satisfaction</p>
+                            </div>
+                            <div class="stat-glow"></div>
+                        </div>
+                        
+                        <div class="stat-card" data-stat="technologies">
+                            <div class="stat-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 data-target="15">0</h3>
+                                <p>Technologies<br>Mastered</p>
+                            </div>
+                            <div class="stat-glow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- About Details -->
+    <!-- Extended About Story Section -->
     <section class="about-detail">
         <div class="container">
             <div class="about-grid">
@@ -172,75 +365,39 @@
                     </p>
                 </div>
                 
-                <div class="personal-info">
-                    <h3>Personal Information</h3>
-                    <div class="info-item">
-                        <span class="info-label">Full Name:</span>
-                        <span>Christian Agyapong</span>
+                <!-- Web3 Achievements -->
+                <div class="achievements">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>50+ Projects</h3>
+                        <p>Successfully completed projects across various technologies and industries</p>
                     </div>
-                    <div class="info-item">
-                        <span class="info-label">Age:</span>
-                        <span>22 Years</span>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Happy Clients</h3>
+                        <p>Maintained 100% client satisfaction rate with quality deliverables</p>
                     </div>
-                    <div class="info-item">
-                        <span class="info-label">Location:</span>
-                        <span>Accra-Newtown, Ghana</span>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Open Source</h3>
+                        <p>Active contributor to open-source projects and developer community</p>
                     </div>
-                    <div class="info-item">
-                        <span class="info-label">Email:</span>
-                        <span>christianagyapong2023@email.com</span>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Professional Certifications</h3>
+                        <p>Certified Python Developer (W3Schools) and Graphic Design Specialist (Dewpoint Academy)</p>
                     </div>
-                    <div class="info-item">
-                        <span class="info-label">Phone:</span>
-                        <span>+233 557618362</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Languages:</span>
-                        <span>English, Twi</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Interests:</span>
-                        <span>Technology, Innovation, Problem Solving, Continuous Learning</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Availability:</span>
-                        <span>Open to opportunities</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Achievements -->
-            <div class="achievements">
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>50+ Projects</h3>
-                    <p>Successfully completed projects across various technologies and industries</p>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Happy Clients</h3>
-                    <p>Maintained 100% client satisfaction rate with quality deliverables</p>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Open Source</h3>
-                    <p>Active contributor to open-source projects and developer community</p>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Professional Certifications</h3>
-                    <p>Certified Python Developer (W3Schools) and Graphic Design Specialist (Dewpoint Academy)</p>
                 </div>
             </div>
         </div>
@@ -310,17 +467,30 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>
+                    Christian Agyapong
+                    <span class="logo-bracket">/&gt;</span>
+                </div>
                 <p>&copy; 2025 Christian Agyapong. All rights reserved.</p>
                 <div class="footer-social">
-                    <a href="https://github.com/ChristianAgyapong" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/ChristianAgyapong" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

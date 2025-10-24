@@ -7,6 +7,36 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
+// Web3 Cursor Effect
+const cursorDot = document.getElementById('cursor-dot');
+const cursorOutline = document.getElementById('cursor-outline');
+
+document.addEventListener('mousemove', (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+    
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+    
+    cursorOutline.style.left = `${posX}px`;
+    cursorOutline.style.top = `${posY}px`;
+});
+
+// Cursor hover effects
+document.querySelectorAll('a, button, .btn').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cursorDot.style.transform = 'scale(2)';
+        cursorOutline.style.transform = 'scale(2)';
+        cursorOutline.style.borderColor = 'var(--neon-pink)';
+    });
+    
+    el.addEventListener('mouseleave', () => {
+        cursorDot.style.transform = 'scale(1)';
+        cursorOutline.style.transform = 'scale(1)';
+        cursorOutline.style.borderColor = 'var(--primary-color)';
+    });
+});
+
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
     hamburger.classList.remove('active');
@@ -27,15 +57,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar background change on scroll
+// Navbar Web3 effect on scroll - keeps glass morphism
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        // Enhanced glass effect when scrolled
+        navbar.style.background = 'rgba(30, 41, 59, 0.9)';
+        navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.37), 0 0 20px rgba(0, 212, 255, 0.2)';
+        navbar.style.borderBottom = '1px solid rgba(0, 212, 255, 0.3)';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = 'none';
+        // Original glass effect at top
+        navbar.style.background = 'rgba(30, 41, 59, 0.7)';
+        navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.37)';
+        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
     }
 });
 
@@ -97,57 +131,107 @@ document.querySelectorAll('.timeline-item, .project-card, .skill-category, .cont
     observer.observe(el);
 });
 
-// Counter animation for stats
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat h3');
-    const speed = 200;
-
-    counters.forEach(counter => {
-        const updateCount = () => {
-            const target = parseInt(counter.getAttribute('data-target') || counter.innerText.replace(/\D/g, ''));
-            const count = parseInt(counter.innerText.replace(/\D/g, ''));
-            const inc = target / speed;
-
-            if (count < target) {
-                counter.innerText = Math.ceil(count + inc);
-                setTimeout(updateCount, 1);
-            } else {
-                const originalText = counter.innerText;
-                if (originalText.includes('+')) {
-                    counter.innerText = target + '+';
-                } else if (originalText.includes('%')) {
-                    counter.innerText = target + '%';
+// Web3 About Section Interactions
+document.addEventListener('DOMContentLoaded', function() {
+    // Animated Counter for Stats
+    function animateCounters() {
+        const counters = document.querySelectorAll('[data-target]');
+        
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const increment = target / 100;
+            let current = 0;
+            
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    counter.textContent = Math.ceil(current);
+                    setTimeout(updateCounter, 20);
                 } else {
-                    counter.innerText = target;
+                    counter.textContent = target + (target === 100 ? '%' : target === 50 ? '+' : '+');
                 }
-            }
-        };
+            };
+            
+            updateCounter();
+        });
+    }
+    
+    // Animate Skill Meters
+    function animateSkillMeters() {
+        const meters = document.querySelectorAll('.meter-fill');
         
-        // Set data-target attribute if not set
-        if (!counter.getAttribute('data-target')) {
-            const value = counter.innerText.replace(/\D/g, '');
-            counter.setAttribute('data-target', value);
-            counter.innerText = '0';
-        }
+        meters.forEach(meter => {
+            const width = meter.getAttribute('data-width');
+            setTimeout(() => {
+                meter.style.width = width + '%';
+            }, 500);
+        });
+    }
+    
+    // Terminal Typing Effect
+    function typeTerminalContent() {
+        const codeLines = document.querySelectorAll('.code-line');
         
-        updateCount();
+        codeLines.forEach((line, index) => {
+            line.style.opacity = '0';
+            setTimeout(() => {
+                line.style.opacity = '1';
+                line.style.animation = 'typeIn 0.5s ease-out';
+            }, index * 200);
+        });
+    }
+    
+    // Intersection Observer for About Section
+    const aboutSection = document.querySelector('.about');
+    if (aboutSection) {
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Trigger all animations
+                    setTimeout(animateCounters, 500);
+                    setTimeout(animateSkillMeters, 1000);
+                    setTimeout(typeTerminalContent, 300);
+                    
+                    // Trigger stat card animations
+                    const statCards = document.querySelectorAll('.stat-card');
+                    statCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.style.animation = 'slideInUp 0.6s ease-out forwards';
+                        }, index * 150);
+                    });
+                    
+                    // Trigger holographic profile animation
+                    const holoProfile = document.querySelector('.holo-profile');
+                    if (holoProfile) {
+                        setTimeout(() => {
+                            holoProfile.style.animation = 'holoActivate 1s ease-out forwards';
+                        }, 800);
+                    }
+                    
+                    aboutObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        aboutObserver.observe(aboutSection);
+    }
+    
+    // Interactive Stat Cards
+    const statCards = document.querySelectorAll('.stat-card');
+    statCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            const icon = card.querySelector('.stat-icon i');
+            icon.style.transform = 'scale(1.2) rotateY(180deg)';
+            icon.style.filter = 'drop-shadow(0 0 20px var(--primary-color))';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            const icon = card.querySelector('.stat-icon i');
+            icon.style.transform = 'scale(1) rotateY(0deg)';
+            icon.style.filter = 'none';
+        });
     });
-}
-
-// Trigger counter animation when about section is visible
-const aboutSection = document.querySelector('.about');
-const aboutObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounters();
-            aboutObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-
-if (aboutSection) {
-    aboutObserver.observe(aboutSection);
-}
+});
 
 // Parallax effect for hero section
 window.addEventListener('scroll', () => {
@@ -494,4 +578,95 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     `;
     document.head.appendChild(formStyles);
+});
+
+// Web3 Scroll Indicator Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            document.querySelector('#about')?.scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Hide scroll indicator when scrolling
+    window.addEventListener('scroll', () => {
+        if (scrollIndicator) {
+            const scrolled = window.pageYOffset;
+            if (scrolled > 100) {
+                scrollIndicator.style.opacity = '0';
+            } else {
+                scrollIndicator.style.opacity = '1';
+            }
+        }
+    });
+});
+
+// Web3 About Section Interactions
+document.addEventListener('DOMContentLoaded', function() {
+    // Animated typing effect for terminal
+    const codeLines = document.querySelectorAll('.code-line');
+    codeLines.forEach((line, index) => {
+        line.style.setProperty('--line-index', index);
+    });
+    
+    // Contact field interactions
+    const contactFields = document.querySelectorAll('.contact-field');
+    contactFields.forEach(field => {
+        field.addEventListener('click', function() {
+            const fieldType = this.getAttribute('data-field');
+            const fieldValue = this.querySelector('.field-value').textContent;
+            
+            if (fieldType === 'email') {
+                // Copy email to clipboard
+                navigator.clipboard.writeText(fieldValue).then(() => {
+                    this.classList.add('copied');
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    console.log('Failed to copy email: ', err);
+                });
+            }
+        });
+        
+        // Add hover sound effect (optional)
+        field.addEventListener('mouseenter', function() {
+            // Subtle hover effect enhancement
+            this.style.boxShadow = '0 0 20px rgba(0, 212, 255, 0.3)';
+        });
+        
+        field.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '';
+        });
+    });
+    
+    // Terminal scan line animation enhancement
+    const terminalContent = document.querySelector('.terminal-content');
+    if (terminalContent) {
+        // Add subtle glitch effect occasionally
+        setInterval(() => {
+            if (Math.random() < 0.08) { // 8% chance
+                terminalContent.style.filter = 'blur(0.5px)';
+                setTimeout(() => {
+                    terminalContent.style.filter = 'none';
+                }, 80);
+            }
+        }, 4000);
+    }
+    
+    // Status indicator pulsing enhancement
+    const statusDots = document.querySelectorAll('.status-dot');
+    statusDots.forEach(dot => {
+        setInterval(() => {
+            dot.style.transform = 'scale(1.3)';
+            dot.style.boxShadow = '0 0 15px var(--neon-green)';
+            setTimeout(() => {
+                dot.style.transform = 'scale(1)';
+                dot.style.boxShadow = '0 0 10px var(--neon-green)';
+            }, 300);
+        }, 2500);
+    });
 });

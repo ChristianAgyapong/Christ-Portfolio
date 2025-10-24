@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Christian Agyapong</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/projects-custom.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .page-header {
@@ -257,19 +259,47 @@
     </style>
 </head>
 <body>
+    <!-- Web3 Cursor Effect -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html">Christian Agyapong</a>
+                <a href="index.html">
+                    <span class="logo-bracket">[</span>
+                    Christian
+                    <span class="logo-dot">.</span>
+                    <span class="logo-domain">dev</span>
+                    <span class="logo-bracket">]</span>
+                </a>
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="experience.html" class="nav-link">Experience</a>
-                <a href="projects.html" class="nav-link active">Projects</a>
-                <a href="skills.html" class="nav-link">Skills</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="about.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>About</span>
+                </a>
+                <a href="experience.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="projects.html" class="nav-link active">
+                    <i class="fas fa-code"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="skills.html" class="nav-link">
+                    <i class="fas fa-tools"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
             </div>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
@@ -279,68 +309,281 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
+    <!-- Web3 Projects Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="cyber-grid"></div>
+            <div class="floating-particles"></div>
+        </div>
         <div class="container">
-            <h1>My Projects</h1>
-            <p>Showcasing Innovation Through Code</p>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-code"></i>
+                        <span>Portfolio Showcase</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="gradient-text">Projects</span>
+                        <span class="text-glow">& Innovations</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Exploring the digital realm through code, creativity, and cutting-edge technology. 
+                        Each project represents a journey of problem-solving and innovation.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="25">0</div>
+                            <div class="stat-label">Projects Built</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="15">0</div>
+                            <div class="stat-label">Technologies</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="50000">0</div>
+                            <div class="stat-label">Lines of Code</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="projects-cube">
+                        <div class="cube-face front">
+                            <i class="fas fa-globe"></i>
+                            <span>Web Apps</span>
+                        </div>
+                        <div class="cube-face back">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobile</span>
+                        </div>
+                        <div class="cube-face right">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="cube-face left">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>Design</span>
+                        </div>
+                        <div class="cube-face top">
+                            <i class="fas fa-database"></i>
+                            <span>Backend</span>
+                        </div>
+                        <div class="cube-face bottom">
+                            <i class="fas fa-user-interface"></i>
+                            <span>Frontend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects-section">
+    <!-- Web3 Projects Section -->
+    <section class="projects-section" id="projects">
         <div class="container">
-            <!-- Project Filters -->
-            <div class="project-filters">
-                <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
-                <button class="filter-btn" onclick="filterProjects('web')">Web Development</button>
-                <button class="filter-btn" onclick="filterProjects('python')">Python Projects</button>
-                <button class="filter-btn" onclick="filterProjects('design')">Graphic Design</button>
-                <button class="filter-btn" onclick="filterProjects('frontend')">Frontend</button>
+            <div class="section-header">
+                <h2 class="section-title">Project Portfolio</h2>
+                <p class="section-subtitle">Navigate through my digital creations</p>
+            </div>
+            
+            <!-- Web3 Project Filters -->
+            <div class="cyber-tabs">
+                <button class="cyber-tab active" onclick="filterProjects('all')" data-filter="all">
+                    <div class="tab-icon">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <span class="tab-text">All Projects</span>
+                    <div class="tab-glow"></div>
+                </button>
+                <button class="cyber-tab" onclick="filterProjects('web')" data-filter="web">
+                    <div class="tab-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <span class="tab-text">Web Development</span>
+                    <div class="tab-glow"></div>
+                </button>
+                <button class="cyber-tab" onclick="filterProjects('python')" data-filter="python">
+                    <div class="tab-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <span class="tab-text">Python Projects</span>
+                    <div class="tab-glow"></div>
+                </button>
+                <button class="cyber-tab" onclick="filterProjects('design')" data-filter="design">
+                    <div class="tab-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <span class="tab-text">Design</span>
+                    <div class="tab-glow"></div>
+                </button>
+                <button class="cyber-tab" onclick="filterProjects('frontend')" data-filter="frontend">
+                    <div class="tab-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <span class="tab-text">Frontend</span>
+                    <div class="tab-glow"></div>
+                </button>
             </div>
 
-            <!-- Projects Grid -->
-            <div class="detailed-projects-grid">
+            <!-- Cyber Projects Grid -->
+            <div class="cyber-projects-grid">
                 <!-- Personal Portfolio Website -->
-                <div class="detailed-project-card" data-category="web frontend">
-                    <div class="project-featured">Featured</div>
-                    <div class="detailed-project-image">
+                <div class="cyber-project-card" data-category="web frontend">
+                    <div class="card-glow"></div>
+                    <div class="project-featured">
+                        <i class="fas fa-star"></i>
+                        <span>Featured</span>
+                    </div>
+                    <div class="project-image">
                         <img src="portfolio .jpg" alt="Personal Portfolio Website">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link demo-link" title="Live Demo"
-                                   data-image="portfolio .jpg" 
-                                   data-title="Personal Portfolio Website" 
-                                   data-description="A modern, responsive portfolio website showcasing skills, projects, and professional journey with interactive animations and clean design.">
+                                <a href="#" class="project-link demo-link" title="Live Demo">
                                    <i class="fas fa-external-link-alt"></i>
+                                   <span>Live Demo</span>
                                 </a>
-                                <a href="https://github.com/ChristianAgyapong" class="project-link" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/ChristianAgyapong" class="project-link github-link" title="GitHub" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    <span>Source Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="detailed-project-content">
-                        <div class="project-category">Web Development</div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">
+                                <i class="fas fa-globe"></i>
+                                <span>Web Development</span>
+                            </div>
+                            <div class="project-status active">
+                                <i class="fas fa-circle"></i>
+                                <span>Active</span>
+                            </div>
+                        </div>
                         <h3 class="project-title">Personal Portfolio Website</h3>
                         <p class="project-description">
-                            A modern, responsive portfolio website showcasing my skills, projects, and professional journey. 
+                            A modern, responsive portfolio website showcasing professional skills and projects. 
                             Built with clean HTML5, CSS3, and JavaScript featuring smooth animations, interactive elements, 
-                            multi-page navigation, and comprehensive project documentation system.
+                            and comprehensive project documentation system.
                         </p>
-                        <div class="project-features">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                <li>Responsive design across all devices</li>
-                                <li>Interactive animations and smooth scrolling</li>
-                                <li>Multi-page navigation system</li>
-                                <li>Real photo and certificate integration</li>
-                                <li>Contact form with validation</li>
-                                <li>Professional project showcase</li>
-                            </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive</span>
+                            <span class="tech-tag">Animations</span>
                         </div>
-                                <li>Admin dashboard with analytics</li>
-                                <li>Responsive design for all devices</li>
-                            </ul>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">5k+</div>
+                                <div class="stat-label">Lines</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">3</div>
+                                <div class="stat-label">Months</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">100%</div>
+                                <div class="stat-label">Complete</div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- CTA Academic Management System -->
+                <div class="cyber-project-card" data-category="python web">
+                    <div class="card-glow"></div>
+                    <div class="project-image">
+                        <img src="academinc.jpg" alt="CTA Academic Management System">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link demo-link" title="Live Demo">
+                                   <i class="fas fa-external-link-alt"></i>
+                                   <span>Live Demo</span>
+                                </a>
+                                <a href="#" class="project-link github-link" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                    <span>Source Code</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">
+                                <i class="fab fa-python"></i>
+                                <span>Educational Technology</span>
+                            </div>
+                            <div class="project-status completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Completed</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">CTA Academic Management System</h3>
+                        <p class="project-description">
+                            A comprehensive academic management platform featuring student portal access, 
+                            staff administration, course management, and secure authentication for educational institutions.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">8k+</div>
+                                <div class="stat-label">Lines</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">4</div>
+                                <div class="stat-label">Months</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">95%</div>
+                                <div class="stat-label">Complete</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-Commerce Platform -->
+                <div class="cyber-project-card" data-category="web frontend">
+                    <div class="card-glow"></div>
+                    <div class="project-image">
+                        <img src="ecommerce-preview.jpg" alt="E-Commerce Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link demo-link" title="Live Demo">
+                                   <i class="fas fa-external-link-alt"></i>
+                                   <span>Live Demo</span>
+                                </a>
+                                <a href="#" class="project-link github-link" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                    <span>Source Code</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>E-Commerce</span>
+                            </div>
+                            <div class="project-status development">
+                                <i class="fas fa-code"></i>
+                                <span>In Development</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Modern E-Commerce Platform</h3>
+                        <p class="project-description">
+                            Full-stack e-commerce solution with advanced features including payment integration,
+                            inventory management, user authentication, and responsive design for optimal shopping experience.
+                        </p>
                         <div class="project-tech">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
@@ -350,127 +593,260 @@
                             <span class="tech-tag">AWS</span>
                         </div>
                         <div class="project-stats">
-                            <div class="project-stat">
-                                <div class="project-stat-value">15k+</div>
-                                <div class="project-stat-label">Lines of Code</div>
+                            <div class="stat-item">
+                                <div class="stat-value">15k+</div>
+                                <div class="stat-label">Lines</div>
                             </div>
-                            <div class="project-stat">
-                                <div class="project-stat-value">6</div>
-                                <div class="project-stat-label">Months</div>
+                            <div class="stat-item">
+                                <div class="stat-value">6</div>
+                                <div class="stat-label">Months</div>
                             </div>
-                            <div class="project-stat">
-                                <div class="project-stat-value">500+</div>
-                                <div class="project-stat-label">Users</div>
+                            <div class="stat-item">
+                                <div class="stat-value">80%</div>
+                                <div class="stat-label">Complete</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Task Management App -->
-                <!-- CTA Academic Management System -->
-                <div class="detailed-project-card" data-category="python web">
-                    <div class="detailed-project-image">
-                        <img src="academinc.jpg" alt="CTA Academic Management System">
+                <div class="cyber-project-card" data-category="web frontend">
+                    <div class="card-glow"></div>
+                    <div class="project-image">
+                        <img src="task-manager-preview.jpg" alt="Task Management App">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" class="project-link demo-link" title="Live Demo">
+                                   <i class="fas fa-external-link-alt"></i>
+                                   <span>Live Demo</span>
+                                </a>
+                                <a href="#" class="project-link github-link" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                    <span>Source Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="detailed-project-content">
-                        <div class="project-category">Educational Technology</div>
-                        <h3 class="project-title">CTA Academic Management System</h3>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">
+                                <i class="fas fa-tasks"></i>
+                                <span>Productivity</span>
+                            </div>
+                            <div class="project-status completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Completed</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Advanced Task Management System</h3>
                         <p class="project-description">
-                            A comprehensive academic management platform (Chrix Tech Academic System) featuring 
-                            student portal access, staff administration, course management, and secure authentication 
-                            for educational institutions.
+                            Collaborative task management application with real-time updates, team collaboration features,
+                            deadline tracking, and comprehensive project analytics for enhanced productivity.
                         </p>
-                        <div class="project-features">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                <li>Student and Staff portals</li>
-                                <li>Course enrollment and management</li>
-                                <li>Grade tracking and reports</li>
-                                <li>Secure authentication system</li>
-                                <li>Academic progress monitoring</li>
-                                <li>Responsive dashboard interface</li>
-                            </ul>
-                        </div>
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Django</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Bootstrap</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
+                            <span class="tech-tag">Vue.js</span>
                             <span class="tech-tag">Express.js</span>
                             <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Socket.io</span>
                             <span class="tech-tag">Redis</span>
                             <span class="tech-tag">Docker</span>
                         </div>
                         <div class="project-stats">
-                            <div class="project-stat">
-                                <div class="project-stat-value">12k+</div>
-                                <div class="project-stat-label">Lines of Code</div>
+                            <div class="stat-item">
+                                <div class="stat-value">12k+</div>
+                                <div class="stat-label">Lines</div>
                             </div>
-                            <div class="project-stat">
-                                <div class="project-stat-value">4</div>
-                                <div class="project-stat-label">Months</div>
+                            <div class="stat-item">
+                                <div class="stat-value">4</div>
+                                <div class="stat-label">Months</div>
                             </div>
-                            <div class="project-stat">
-                                <div class="project-stat-value">200+</div>
-                                <div class="project-stat-label">Teams</div>
+                            <div class="stat-item">
+                                <div class="stat-value">100%</div>
+                                <div class="stat-label">Complete</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- ChrixTech Chronicle Movie Platform -->
-                <div class="detailed-project-card" data-category="web frontend">
-                    <div class="detailed-project-image">
+                <div class="cyber-project-card" data-category="web frontend">
+                    <div class="card-glow"></div>
+                    <div class="project-image">
                         <img src="movies.jpg" alt="ChrixTech Chronicle Movie Platform">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" class="project-link demo-link" title="Live Demo">
+                                   <i class="fas fa-external-link-alt"></i>
+                                   <span>Live Demo</span>
+                                </a>
+                                <a href="#" class="project-link github-link" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                    <span>Source Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="detailed-project-content">
-                        <div class="project-category">Entertainment Platform</div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">
+                                <i class="fas fa-film"></i>
+                                <span>Entertainment Platform</span>
+                            </div>
+                            <div class="project-status completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Completed</span>
+                            </div>
+                        </div>
                         <h3 class="project-title">ChrixTech Chronicle Movie Platform</h3>
                         <p class="project-description">
-                            A modern movie streaming and discovery platform featuring a comprehensive movie catalog, 
-                            trending content, favorites system, and an elegant dark-themed user interface with 
-                            advanced search and filtering capabilities.
+                            A modern movie streaming and discovery platform featuring comprehensive movie catalog, 
+                            trending content, favorites system, and elegant dark-themed interface with advanced search capabilities.
                         </p>
-                        <div class="project-features">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                <li>Movie discovery and trending content</li>
-                                <li>Favorites and watchlist system</li>
-                                <li>Advanced search and filtering</li>
-                                <li>Responsive dark theme design</li>
-                                <li>Movie ratings and statistics</li>
-                                <li>Genre-based categorization</li>
-                            </ul>
-                        </div>
                         <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">API Integration</span>
                             <span class="tech-tag">CSS3</span>
                             <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Movie API</span>
-                            <span class="tech-tag">Responsive Design</span>
+                            <span class="tech-tag">Responsive</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">7k+</div>
+                                <div class="stat-label">Lines</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">3</div>
+                                <div class="stat-label">Months</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">100%</div>
+                                <div class="stat-label">Complete</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                                <li>Sentiment analysis</li>
-                                <li>Custom training capabilities</li>
-                            </ul>
+
+                <!-- Python Data Analysis Project -->
+                <div class="cyber-project-card" data-category="python">
+                    <div class="card-glow"></div>
+                    <div class="project-image">
+                        <img src="data-analysis-preview.jpg" alt="Python Data Analysis">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link demo-link" title="Live Demo">
+                                   <i class="fas fa-external-link-alt"></i>
+                                   <span>View Report</span>
+                                </a>
+                                <a href="#" class="project-link github-link" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                    <span>Source Code</span>
+                                </a>
+                            </div>
                         </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Data Science</span>
+                            </div>
+                            <div class="project-status completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Completed</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Advanced Data Analysis Suite</h3>
+                        <p class="project-description">
+                            Comprehensive data analysis project using Python libraries to process, visualize, and extract 
+                            insights from large datasets with machine learning algorithms and statistical modeling.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">NumPy</span>
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Jupyter</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">4k+</div>
+                                <div class="stat-label">Lines</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">2</div>
+                                <div class="stat-label">Months</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">100%</div>
+                                <div class="stat-label">Complete</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphic Design Projects -->
+                <div class="cyber-project-card" data-category="design">
+                    <div class="card-glow"></div>
+                    <div class="project-image">
+                        <img src="design-portfolio-preview.jpg" alt="Graphic Design Portfolio">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link demo-link" title="View Portfolio">
+                                   <i class="fas fa-external-link-alt"></i>
+                                   <span>View Gallery</span>
+                                </a>
+                                <a href="#" class="project-link github-link" title="Behance">
+                                    <i class="fab fa-behance"></i>
+                                    <span>Behance</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-category">
+                                <i class="fas fa-palette"></i>
+                                <span>Creative Design</span>
+                            </div>
+                            <div class="project-status active">
+                                <i class="fas fa-circle"></i>
+                                <span>Ongoing</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Creative Design Portfolio</h3>
+                        <p class="project-description">
+                            A collection of creative graphic design works including brand identity, logo design, 
+                            UI/UX mockups, and digital illustrations showcasing artistic and technical design skills.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Adobe Photoshop</span>
+                            <span class="tech-tag">Illustrator</span>
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">UI/UX</span>
+                            <span class="tech-tag">Branding</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">50+</div>
+                                <div class="stat-label">Designs</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">12</div>
+                                <div class="stat-label">Months</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">90%</div>
+                                <div class="stat-label">Complete</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">TensorFlow</span>
@@ -720,62 +1096,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script>
-        function filterProjects(category) {
-            const cards = document.querySelectorAll('.detailed-project-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            // Remove active class from all buttons
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-            
-            // Filter cards
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category.includes(category)) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 100);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(30px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
-        }
-        
-        // Initialize card animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.detailed-project-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-        });
-    </script>
-
-    <!-- Image Modal for Project Demos -->
-    <div id="imageModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <img id="modalImage" src="" alt="">
-            <div class="modal-caption">
-                <h3 id="modalTitle"></h3>
-                <p id="modalDescription"></p>
-            </div>
-        </div>
-    </div>
+    <script src="js/script.js"></script>
+    <script src="js/projects-script.js"></script>
 </body>
 </html>
