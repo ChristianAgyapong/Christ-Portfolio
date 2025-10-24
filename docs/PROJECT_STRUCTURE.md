@@ -40,7 +40,7 @@ Profile/
 │   ├── christian-photo.jpg    # Profile photo
 │   ├── academinc.jpg          # Project screenshot
 │   ├── movies.jpg             # Project screenshot
-│   ├── portfolio .jpg         # Project screenshot
+│   ├── portfolio.jpg          # Project screenshot
 │   ├── python-certificate.jpg # Certificate image
 │   └── graphic-design-certificate.jpg # Certificate image
 │
