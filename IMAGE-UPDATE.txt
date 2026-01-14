@@ -1,0 +1,21 @@
+# Image Update Instructions
+
+## Professional Photo Replacement
+
+I've updated all references in your portfolio to use `christian-professional.jpg` instead of `christian-photo.jpg`.
+
+### Action Required:
+Please save the professional suit image (the second image you provided) as:
+`images/christian-professional.jpg`
+
+### Files Updated:
+- ✅ index.html (hero section)
+- ✅ index.html (about section)
+- ✅ about.html (profile image)
+
+### How to Save the Image:
+1. Right-click on the professional suit photo (second image)
+2. Save as `christian-professional.jpg`
+3. Place it in the `images/` folder
+
+The portfolio will now show your professional image in all sections!

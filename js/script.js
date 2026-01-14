@@ -75,7 +75,7 @@ window.addEventListener('scroll', () => {
 
 // Typing animation
 const typingText = document.querySelector('.typing-text');
-const roles = ['Full Stack Developer', 'UI/UX Designer', 'Problem Solver', 'Tech Enthusiast'];
+const roles = ['Full Stack Developer', 'ML Engineer', 'AI Specialist', 'UI/UX Designer', 'Problem Solver'];
 let roleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;

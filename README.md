@@ -46,7 +46,7 @@ A modern, cyberpunk-themed portfolio website showcasing my skills, projects, and
 
 
 
-### 🔥 Interactive Components- HTML5
+###  Interactive Components- HTML5
 
 - **Hero Section**: Animated stats counter with 3D visual elements- CSS3 (Flexbox, Grid, Animations)
 
@@ -60,7 +60,7 @@ A modern, cyberpunk-themed portfolio website showcasing my skills, projects, and
 
 ## Customization
 
-## 📂 Project Structure
+## Project Structure
 
 To customize this website for your personal use:
 
@@ -126,7 +126,7 @@ Profile/1. **Personal Information**:
 
 ## File Structure
 
-## 🚀 Quick Start
+##  Quick Start
 
 ```
 
@@ -201,7 +201,7 @@ Profile/1. **Personal Information**:
 4. Click "Deploy"
 5. Your site will be live in seconds
 
-## 🎯 Technologies Used
+## Technologies Used
 
 ### Frontend
 - **HTML5** - Semantic markup
@@ -216,7 +216,7 @@ Profile/1. **Personal Information**:
 - **CSS Custom Properties** - Theme consistency
 - **LocalStorage** - User preferences (if applicable)
 
-## 🎨 Customization
+## Customization
 
 ### Colors
 Edit the CSS custom properties in `css/styles.css`:
@@ -246,35 +246,35 @@ font-family: 'Inter', sans-serif;
 font-family: 'Orbitron', sans-serif;
 ```
 
-## 📊 Performance
+##  Performance
 
-- ✅ Optimized images
-- ✅ Minified CSS/JS (for production)
-- ✅ Lazy loading for images
-- ✅ Efficient animations using CSS transforms
-- ✅ Minimal external dependencies
+-  Optimized images
+- Minified CSS/JS (for production)
+- Lazy loading for images
+- Efficient animations using CSS transforms
+- Minimal external dependencies
 
-## 🔧 Browser Support
+## Browser Support
 
-- ✅ Chrome (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Edge (latest)
-- ✅ Mobile browsers
+-  Chrome (latest)
+- irefox (latest)
+-  Safari (latest)
+- Edge (latest)
+- obile browsers
 
-## 📝 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🤝 Contact
+##  Contact
 
 **Christian Agyapong**
-- 📧 Email: christianagyapong2023@email.com
-- 💼 LinkedIn: [linkedin.com/in/christian-agyapong](https://linkedin.com/in/christian-agyapong)
-- 🐙 GitHub: [github.com/ChristianAgyapong](https://github.com/ChristianAgyapong)
-- 📍 Location: Accra-Newtown, Ghana
+-  Email: christianagyapong2023@email.com
+-  LinkedIn: [linkedin.com/in/christian-agyapong](https://linkedin.com/in/christian-agyapong)
+-  GitHub: [github.com/ChristianAgyapong](https://github.com/ChristianAgyapong)
+-  Location: Accra-Newtown, Ghana
 
-## 🌟 Features Roadmap
+##  Features Roadmap
 
 - [ ] Dark/Light theme toggle
 - [ ] Blog section
@@ -283,7 +283,7 @@ This project is open source and available under the [MIT License](LICENSE).
 - [ ] Multi-language support
 - [ ] Accessibility improvements (WCAG 2.1)
 
-## 📸 Screenshots
+##  Screenshots
 
 ### Homepage
 ![Homepage Screenshot](screenshots/homepage.png)
@@ -299,6 +299,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-⭐ **If you like this portfolio, please give it a star!**
+ **If you like this portfolio, please give it a star!**
 
 Made with ❤️ by Christian Agyapong
