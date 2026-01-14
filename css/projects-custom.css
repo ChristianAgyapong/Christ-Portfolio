@@ -466,7 +466,7 @@
 
 .project-status.development {
     background: rgba(251, 191, 36, 0.2);
-    color: var(--primary-color);
+    color: #fbbf24;
 }
 
 .project-title {
