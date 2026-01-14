@@ -457,7 +457,7 @@
 
 .skill-level.intermediate {
     background: rgba(251, 191, 36, 0.2);
-    color: #fbbf24;
+    color: var(--primary-color);
     border: 1px solid #fbbf24;
 }
 
