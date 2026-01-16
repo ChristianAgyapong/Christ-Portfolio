@@ -119,9 +119,10 @@
 
 .hero-subtitle {
     font-size: 1.25rem;
-    color: var(--text-secondary);
+    color: #e2e8f0;
     line-height: 1.6;
     margin-bottom: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-stats {
@@ -145,8 +146,9 @@
 
 .stat-label {
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: #e2e8f0;
     font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Skills Cube */
@@ -249,7 +251,8 @@
 
 .section-subtitle {
     font-size: 1.2rem;
-    color: var(--text-secondary);
+    color: #e2e8f0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Cyber Tabs */
@@ -263,9 +266,9 @@
 
 .cyber-tab {
     position: relative;
-    background: transparent;
-    border: 2px solid var(--border-cyber);
-    color: var(--text-secondary);
+    background: rgba(15, 23, 42, 0.7);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    color: #cbd5e1;
     padding: 1rem 2rem;
     border-radius: 0;
     clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
@@ -391,7 +394,8 @@
     font-family: var(--font-orbitron);
     font-weight: 600;
     font-size: 1.5rem;
-    color: var(--text-primary);
+    color: #f8fafc;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* Skills List */
@@ -427,8 +431,9 @@
     align-items: center;
     gap: 0.5rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: #f8fafc;
     font-size: 1.1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 .skill-name i {
@@ -512,11 +517,11 @@
     justify-content: space-between;
     align-items: center;
     font-size: 0.85rem;
-    color: var(--text-secondary);
+    color: #cbd5e1;
 }
 
 .skill-experience {
-    color: var(--text-secondary);
+    color: #cbd5e1;
 }
 
 .skill-percentage {

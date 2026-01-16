@@ -106,10 +106,10 @@
                     <a href="https://github.com/ChristianAgyapong" class="social-link" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://linkedin.com/in/christian-agyapong" class="social-link" target="_blank">
+                    <a href="https://www.linkedin.com/in/christian-agyapong-4a6b7139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="social-link" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://twitter.com/christian_dev" class="social-link" target="_blank">
+                    <a href="https://x.com/ChrixGraphix" class="social-link" target="_blank">
                         <i class="fab fa-twitter"></i>
                     </a>
                     <a href="mailto:christianagyapong2023@email.com" class="social-link">
@@ -166,10 +166,7 @@
                                     <span class="key">"fullName":</span> 
                                     <span class="value">"Christian Agyapong"</span>,
                                 </span>
-                                <span class="code-line">
-                                    <span class="key">"age":</span> 
-                                    <span class="value number">25</span>,
-                                </span>
+                               
                                 <span class="code-line">
                                     <span class="key">"location":</span> 
                                     <span class="value">"Accra, Ghana"</span>,
@@ -298,59 +295,6 @@
                                     <span class="field-label">Response Time</span>
                                     <span class="field-value">Within 24 hours</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Skill Meters -->
-                    <div class="skill-meters">
-                        <h3 class="skill-title">
-                            <i class="fas fa-chart-bar"></i>
-                            Performance Metrics
-                        </h3>
-                        <div class="skill-meter">
-                            <div class="skill-info">
-                                <span>Frontend Development</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="meter-bar">
-                                <div class="meter-fill" data-width="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-meter">
-                            <div class="skill-info">
-                                <span>Backend Development</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="meter-bar">
-                                <div class="meter-fill" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-meter">
-                            <div class="skill-info">
-                                <span>UI/UX Design</span>
-                                <span>88%</span>
-                            </div>
-                            <div class="meter-bar">
-                                <div class="meter-fill" data-width="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-meter">
-                            <div class="skill-info">
-                                <span>AI/Machine Learning</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="meter-bar">
-                                <div class="meter-fill" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-meter">
-                            <div class="skill-info">
-                                <span>Problem Solving</span>
-                                <span>92%</span>
-                            </div>
-                            <div class="meter-bar">
-                                <div class="meter-fill" data-width="92"></div>
                             </div>
                         </div>
                     </div>
@@ -503,7 +447,7 @@
             </div>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image">
+                    <div class="project-image" style="cursor: pointer;" onclick="openImagePreview('images/portfolio.jpg', 'Personal Portfolio Website')">
                         <img src="images/portfolio.jpg" alt="Personal Portfolio Website">
                         <div class="project-overlay">
                             <div class="project-links">
@@ -513,7 +457,7 @@
                                    data-description="A modern, responsive portfolio website showcasing skills, projects, and professional journey with interactive animations and clean design.">
                                    <i class="fas fa-external-link-alt"></i>
                                 </span>
-                                <a href="https://github.com/ChristianAgyapong" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/ChristianAgyapong" class="project-link" target="_blank" onclick="event.stopPropagation();"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -530,7 +474,7 @@
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-image">
+                    <div class="project-image" style="cursor: pointer;" onclick="openImagePreview('images/academinc.jpg', 'CTA Academic Management System')">
                         <img src="images/academinc.jpg" alt="CTA Academic Management System">
                         <div class="project-overlay">
                             <div class="project-links">
@@ -540,7 +484,7 @@
                                    data-description="A comprehensive academic management system featuring student portal, course management, staff administration, and secure authentication system.">
                                    <i class="fas fa-external-link-alt"></i>
                                 </span>
-                                <a href="https://github.com/ChristianAgyapong" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/ChristianAgyapong" class="project-link" target="_blank" onclick="event.stopPropagation();"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -556,17 +500,14 @@
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-image">
+                    <div class="project-image" style="cursor: pointer;" onclick="openImagePreview('images/movies.jpg', 'ChrixTech Chronicle Movie Platform')">
                         <img src="images/movies.jpg" alt="ChrixTech Chronicle Movie Platform">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <span class="project-link demo-link disabled" style="cursor: default; opacity: 0.5; pointer-events: none;"
-                                   data-image="images/movies.jpg" 
-                                   data-title="ChrixTech Chronicle Movie Platform" 
-                                   data-description="A modern movie streaming and discovery platform featuring trending movies, favorites system, search functionality, and sleek dark-themed interface.">
+                                <a href="https://christianagyapong.github.io/ChrixTech-MoviesSite/" class="project-link" target="_blank" onclick="event.stopPropagation();">
                                    <i class="fas fa-external-link-alt"></i>
-                                </span>
-                                <a href="https://github.com/ChristianAgyapong" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                                </a>
+                                <a href="https://github.com/ChristianAgyapong" class="project-link" target="_blank" onclick="event.stopPropagation();"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -786,9 +727,9 @@
                 <p>&copy; 2025 Christian Agyapong. All rights reserved.</p>
                 <div class="footer-social">
                     <a href="https://github.com/ChristianAgyapong" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                    <span class="social-link disabled" style="cursor: default; opacity: 0.5; pointer-events: none;"><i class="fab fa-linkedin"></i></span>
-                    <span class="social-link disabled" style="cursor: default; opacity: 0.5; pointer-events: none;"><i class="fab fa-twitter"></i></span>
-                    <span class="social-link disabled" style="cursor: default; opacity: 0.5; pointer-events: none;"><i class="fas fa-envelope"></i></span>
+                    <a href="https://www.linkedin.com/in/christian-agyapong-4a6b7139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/ChrixGraphix" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="mailto:christianagyapong2023@email.com" class="social-link"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>

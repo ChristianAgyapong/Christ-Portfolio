@@ -371,6 +371,23 @@ navStyle.textContent = `
 `;
 document.head.appendChild(navStyle);
 
+// Function to open image preview
+function openImagePreview(imageSrc, title) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    
+    modalImage.src = imageSrc;
+    modalTitle.textContent = title;
+    modalDescription.textContent = 'Click anywhere outside to close';
+    
+    modal.style.display = 'flex';
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+}
+
 // Image Modal Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('imageModal');
@@ -478,6 +495,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function sendWithEmailJS(formValues) {
+        // Store message locally first
+        storeMessageLocally(formValues);
+        
         // Initialize EmailJS if not done
         if (!emailjs._userID) {
             emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
@@ -508,20 +528,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function showFallbackMessage(formValues) {
+        // Store message locally
+        storeMessageLocally(formValues);
+        
         const message = `
             <strong>Thanks for your message!</strong><br><br>
-            Since EmailJS isn't configured yet, here's your message:<br><br>
+            Your message has been saved locally. I'll review it soon.<br><br>
             <strong>Name:</strong> ${formValues.from_name}<br>
             <strong>Email:</strong> ${formValues.from_email}<br>
             <strong>Subject:</strong> ${formValues.subject}<br>
             <strong>Message:</strong> ${formValues.message}<br><br>
-            Please email me directly at: <strong>christianagyapong2023@email.com</strong>
+            You can also email me directly at: <strong>christianagyapong2023@email.com</strong>
         `;
         
         showFormStatus('success', '');
         formStatus.innerHTML = message;
         contactForm.reset();
         contactForm.classList.remove('loading');
+    }
+    
+    function storeMessageLocally(formValues) {
+        // Get existing messages from localStorage
+        let messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+        
+        // Add new message with timestamp
+        const newMessage = {
+            id: Date.now(),
+            timestamp: new Date().toISOString(),
+            name: formValues.from_name,
+            email: formValues.from_email,
+            subject: formValues.subject,
+            message: formValues.message,
+            read: false
+        };
+        
+        messages.unshift(newMessage); // Add to beginning
+        
+        // Store back to localStorage
+        localStorage.setItem('contactMessages', JSON.stringify(messages));
+        
+        console.log('Message stored locally:', newMessage);
     }
     
     function showFormStatus(type, message) {

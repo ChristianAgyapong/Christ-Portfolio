@@ -957,6 +957,7 @@ section::before {
     background: transparent;
     position: relative;
     overflow: hidden;
+    padding: 100px 0;
 }
 
 .about::before {
@@ -1176,10 +1177,11 @@ section::before {
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 5rem;
     align-items: start;
     position: relative;
     z-index: 1;
+    margin-top: 3rem;
 }
 
 /* Terminal Window */
@@ -1242,9 +1244,11 @@ section::before {
 }
 
 .terminal-content {
-    padding: 1.5rem;
+    padding: 2rem;
     font-family: 'Courier New', monospace;
-    line-height: 1.8;
+    line-height: 2;
+    max-height: 450px;
+    overflow-y: auto;
 }
 
 .code-block {
@@ -1348,7 +1352,7 @@ section::before {
     border-radius: 16px;
     padding: 2rem;
     box-shadow: var(--shadow-cyber);
-    margin: 2rem 0;
+    margin: 3rem 0;
     transition: var(--transition-glow);
     position: relative;
     overflow: hidden;
@@ -1402,14 +1406,14 @@ section::before {
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .contact-field {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1.25rem;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1547,7 +1551,7 @@ section::before {
 .about-dashboard {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 /* Holographic Profile */
@@ -1556,10 +1560,11 @@ section::before {
     backdrop-filter: var(--glass-backdrop);
     border: var(--glass-border);
     border-radius: 20px;
-    padding: 2rem;
+    padding: 2.5rem;
     box-shadow: var(--shadow-cyber);
     position: relative;
     overflow: hidden;
+    margin-bottom: 2.5rem;
 }
 
 .holo-container {
@@ -1645,7 +1650,7 @@ section::before {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .stat-card {
@@ -1653,7 +1658,7 @@ section::before {
     backdrop-filter: var(--glass-backdrop);
     border: var(--glass-border);
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 2rem;
     box-shadow: var(--shadow-cyber);
     transition: var(--transition-glow);
     position: relative;
@@ -4133,5 +4138,431 @@ section::before {
     
     .card {
         page-break-inside: avoid;
+    }
+}
+
+/* About Story Card Styles */
+.story-card {
+    background: var(--bg-card);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--shadow-glass);
+}
+
+.story-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: var(--gradient-primary);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.story-card:hover::before {
+    opacity: 1;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-cyber), var(--shadow-neon);
+}
+
+.story-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.story-card .card-header i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-shadow: var(--neon-glow);
+}
+
+.story-card .card-header h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+.story-card .card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.story-card .card-content p {
+    color: var(--text-secondary);
+    line-height: 2;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+.story-card .card-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Add glow effect on paragraphs */
+.story-card .card-content p::first-letter {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-shadow: var(--neon-glow);
+}
+
+/* Responsive adjustments for story card */
+@media (max-width: 768px) {
+    .story-card {
+        padding: 1.5rem;
+    }
+    
+    .story-card .card-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .story-card .card-header i {
+        font-size: 1.5rem;
+    }
+    
+    .story-card .card-content p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+}
+
+/* Achievement Cards Styles */
+.achievements {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.achievement-card {
+    background: var(--bg-card);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--shadow-glass);
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: var(--gradient-cyber);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.achievement-card:hover::before {
+    opacity: 1;
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-cyber), var(--shadow-neon);
+}
+
+.achievement-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.achievement-card:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.achievement-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: var(--shadow-neon);
+    transition: all 0.3s ease;
+}
+
+.achievement-card:hover .achievement-icon {
+    transform: rotateY(360deg) scale(1.1);
+    box-shadow: var(--neon-glow-strong);
+}
+
+.achievement-icon i {
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.achievement-card h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.achievement-card p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive adjustments for achievements */
+@media (max-width: 768px) {
+    .achievements {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .achievement-card {
+        padding: 1.5rem;
+    }
+    
+    .achievement-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+    
+    .achievement-icon i {
+        font-size: 2rem;
+    }
+    
+    .achievement-card h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Personality Traits Section */
+.personality-traits {
+    padding: 5rem 0;
+    background: var(--bg-primary);
+}
+
+.traits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.trait-card {
+    background: var(--bg-card);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--shadow-glass);
+}
+
+.trait-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: var(--gradient-accent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.trait-card:hover::before {
+    opacity: 1;
+}
+
+.trait-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-neon), 0 20px 40px rgba(0, 212, 255, 0.2);
+}
+
+.trait-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.trait-card:hover::after {
+    opacity: 1;
+}
+
+.trait-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 1.5rem;
+    background: var(--gradient-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: var(--shadow-neon);
+    transition: all 0.4s ease;
+}
+
+.trait-card:hover .trait-icon {
+    transform: scale(1.15) rotate(10deg);
+    box-shadow: var(--neon-glow-strong);
+}
+
+.trait-icon i {
+    font-size: 2.8rem;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    transition: transform 0.3s ease;
+}
+
+.trait-card:hover .trait-icon i {
+    transform: scale(1.1);
+}
+
+.trait-card h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    background: var(--gradient-accent);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+}
+
+.trait-card p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Add special hover effect for each trait card */
+.trait-card:nth-child(1):hover .trait-icon {
+    background: var(--gradient-primary);
+}
+
+.trait-card:nth-child(2):hover .trait-icon {
+    background: var(--gradient-secondary);
+}
+
+.trait-card:nth-child(3):hover .trait-icon {
+    background: var(--gradient-cyber);
+}
+
+.trait-card:nth-child(4):hover .trait-icon {
+    background: linear-gradient(135deg, #ffd700 0%, #ff8500 100%);
+}
+
+.trait-card:nth-child(5):hover .trait-icon {
+    background: linear-gradient(135deg, #ff006e 0%, #00d4ff 100%);
+}
+
+.trait-card:nth-child(6):hover .trait-icon {
+    background: linear-gradient(135deg, #10b981 0%, #8b5cf6 100%);
+}
+
+/* Responsive adjustments for traits */
+@media (max-width: 768px) {
+    .personality-traits {
+        padding: 3rem 0;
+    }
+    
+    .traits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .trait-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .trait-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1rem;
+    }
+    
+    .trait-icon i {
+        font-size: 2.2rem;
+    }
+    
+    .trait-card h3 {
+        font-size: 1.4rem;
+    }
+    
+    .trait-card p {
+        font-size: 1rem;
     }
 }

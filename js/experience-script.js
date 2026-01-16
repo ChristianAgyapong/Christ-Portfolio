@@ -112,20 +112,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Add click to navigate functionality
-        card.addEventListener('click', function(e) {
-            // Check if the click was on a portfolio link button
-            if (e.target.closest('.portfolio-link')) {
-                return; // Let the link handle the navigation
-            }
-            
-            // Navigate to main page when clicking anywhere else on the card
-            window.location.href = 'index.html';
-        });
-        
-        // Add visual feedback for clickable cards
-        card.style.cursor = 'pointer';
-        card.setAttribute('title', 'Click to view full portfolio');
+        // Disable card click navigation - only credentials link works
+        // Remove cursor pointer for non-DISAL cards
+        card.style.cursor = 'default';
+        card.removeAttribute('title');
     });
     
     // Certification cards animation
