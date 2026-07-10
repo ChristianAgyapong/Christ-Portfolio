@@ -11,18 +11,38 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/christian-new-profile.png">
     <meta name="twitter:card" content="summary_large_image">
+    <!-- Preconnect to external domains for faster resource loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- Critical CSS: design tokens available before any stylesheet loads -->
+    <style>
+        :root {
+            --primary-color:#CC6741;--secondary-color:#A3522F;--accent-color:#C4956A;
+            --text-primary:#2C1810;--text-secondary:#3A241A;--text-light:#8C6B5A;
+            --bg-primary:#FDFAF6;--bg-secondary:#F5EDE0;--bg-card:#FAF3E8;
+            --gradient-primary:linear-gradient(135deg,#CC6741 0%,#A3522F 100%);
+            --font-main:'Plus Jakarta Sans','Inter',sans-serif;
+        }
+        body { font-family: var(--font-main,-apple-system,BlinkMacSystemFont,sans-serif); background: var(--bg-primary); color: var(--text-primary); }
+    </style>
+    <!-- Core blocking stylesheets (minimal set) -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/claude-theme.css">
-    <link rel="stylesheet" href="css/ai-assistant.css">
-    <link rel="stylesheet" href="css/mobile-optimizations.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Non-blocking: mobile styles only needed after layout -->
+    <link rel="stylesheet" href="css/mobile-optimizations.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/mobile-optimizations.css"></noscript>
+    <!-- Non-blocking: AI widget CSS loaded by JS when widget initialises -->
+    <!-- Non-blocking: Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <!-- Non-blocking: Font Awesome icons (deferred — not needed for first paint) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <!-- EmailJS SDK — deferred, only needed on form submit -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!-- Vercel Analytics -->
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
+    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>

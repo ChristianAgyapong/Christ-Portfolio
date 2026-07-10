@@ -5,6 +5,19 @@
 (function () {
     'use strict';
 
+    // Self-inject ai-assistant.css non-blocking — keeps it out of every page <head>
+    (function injectCSS() {
+        var id = 'ai-assistant-css';
+        if (document.getElementById(id)) return;
+        var link = document.createElement('link');
+        link.id = id;
+        link.rel = 'stylesheet';
+        link.href = (document.currentScript && document.currentScript.src
+            ? document.currentScript.src.replace(/js\/[^/]+$/, '')
+            : '') + 'css/ai-assistant.css';
+        document.head.appendChild(link);
+    })();
+
     const AI_CHAT_URL = 'https://ai-chrix.onrender.com/';
 
     let isOpen = false;
