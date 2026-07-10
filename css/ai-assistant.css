@@ -1,6 +1,6 @@
 /* AI Assistant — floating button + vertical compact chat overlay */
 
-/* ── Floating action button (pill) ─────────────────────────── */
+/* ── Floating action button (square card) ──────────────── */
 .ai-fab {
     position: fixed;
     bottom: 1.5rem;
@@ -12,57 +12,80 @@
 .ai-fab.hidden {
     opacity: 0;
     pointer-events: none;
-    transform: translateY(10px) scale(0.9);
+    transform: translateY(10px) scale(0.85);
 }
 
 .ai-fab-button {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.55rem;
-    padding: 0 1.2rem 0 0.95rem;
-    height: 48px;
-    border-radius: 999px;
+    justify-content: center;
+    gap: 0.28rem;
+    width: 68px;
+    height: 68px;
+    border-radius: 16px;
     border: none;
     background: var(--gradient-primary, linear-gradient(135deg, #CC6741, #A3522F));
     color: #fff;
-    font-size: 0.88rem;
-    font-weight: 600;
-    font-family: inherit;
-    letter-spacing: 0.01em;
     cursor: pointer;
-    box-shadow: 0 6px 22px rgba(204, 103, 65, 0.45);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    white-space: nowrap;
+    box-shadow: 0 6px 20px rgba(204, 103, 65, 0.42);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
     position: relative;
     overflow: hidden;
+    padding: 0;
 }
 
-/* shimmer sweep on hover */
+/* Shimmer sweep on hover */
 .ai-fab-button::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
-    transform: translateX(-100%);
-    transition: transform 0.55s ease;
+    background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,0.22) 50%, transparent 62%);
+    transform: translateX(-120%);
+    transition: transform 0.6s ease;
+}
+.ai-fab-button:hover::before {
+    transform: translateX(120%);
 }
 
-.ai-fab-button:hover::before {
-    transform: translateX(100%);
+/* Subtle pulse ring */
+.ai-fab-button::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 19px;
+    border: 2px solid rgba(204, 103, 65, 0.45);
+    opacity: 0;
+    animation: fabPulse 2.6s ease-out infinite;
+}
+@keyframes fabPulse {
+    0%   { opacity: 0.7; transform: scale(1); }
+    100% { opacity: 0;   transform: scale(1.18); }
 }
 
 .ai-fab-button i {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    line-height: 1;
     flex-shrink: 0;
 }
 
 .ai-fab-label {
-    line-height: 1;
+    font-size: 0.52rem;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+    padding: 0 4px;
+    opacity: 0.92;
+    white-space: normal;
+    max-width: 58px;
 }
 
 .ai-fab-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(204, 103, 65, 0.55);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(204, 103, 65, 0.55);
 }
 
 .ai-fab-button:focus-visible {
@@ -196,17 +219,10 @@ body.ai-chat-active {
         right: 1rem;
     }
 
-    /* Shrink to icon-only on very small screens */
-    .ai-fab-label {
-        display: none;
-    }
-
-    .ai-fab-button {
-        width: 48px;
-        height: 48px;
-        padding: 0;
-        justify-content: center;
-        border-radius: 50%;
+    /* Square stays square on mobile — just reposition it */
+    .ai-fab {
+        bottom: 1rem;
+        right: 1rem;
     }
 }
 
