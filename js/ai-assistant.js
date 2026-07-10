@@ -58,8 +58,10 @@
         fab.id = 'ai-fab';
         fab.innerHTML =
             '<button class="ai-fab-button" id="ai-fab-btn" aria-label="Open AI chat assistant" aria-expanded="false">' +
-            '<i class="fas fa-robot"></i>' +
-            '<span class="ai-fab-label">Ask my AI anything about me</span>' +
+            '<span class="ai-fab-dot" aria-hidden="true"></span>' +
+            '<span class="ai-fab-icon-wrap"><i class="fas fa-robot"></i></span>' +
+            '<span class="ai-fab-divider" aria-hidden="true"></span>' +
+            '<span class="ai-fab-label">Ask my AI about me</span>' +
             '</button>';
 
         // Full-screen overlay (just iframe + close btn)
