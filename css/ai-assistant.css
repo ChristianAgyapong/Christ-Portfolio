@@ -1,0 +1,179 @@
+/* AI Assistant — floating button + vertical compact chat overlay */
+
+/* ── Floating action button ─────────────────────────────── */
+.ai-fab {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9990;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.ai-fab.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8);
+}
+
+.ai-fab-button {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    background: var(--gradient-primary, linear-gradient(135deg, #CC6741, #A3522F));
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(204, 103, 65, 0.42);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ai-fab-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 28px rgba(204, 103, 65, 0.55);
+}
+
+.ai-fab-button:focus-visible {
+    outline: 2px solid #CC6741;
+    outline-offset: 3px;
+}
+
+/* ── Backdrop overlay ────────────────────────────────────── */
+.ai-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    background: rgba(10, 5, 2, 0.65);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;   /* sits toward the right on desktop */
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease;
+}
+
+.ai-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ── Chat card (wraps close btn + iframe) ────────────────── */
+.ai-chat-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* Vertical, narrow chat shape */
+    width: clamp(320px, 90vw, 400px);
+    height: clamp(480px, 82vh, 680px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.50), 0 0 0 1px rgba(204, 103, 65, 0.18);
+    transform: translateY(24px) scale(0.96);
+    opacity: 0;
+    transition: transform 0.32s cubic-bezier(.22,.68,0,1.2), opacity 0.28s ease;
+}
+
+.ai-overlay.open .ai-chat-card {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* ── Close button ─────────────────────────────────────────── */
+.ai-overlay-close {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.75rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.30);
+    color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.2s ease, transform 0.18s ease;
+    backdrop-filter: blur(4px);
+}
+
+.ai-overlay-close:hover {
+    background: rgba(204, 103, 65, 0.75);
+    transform: scale(1.12);
+}
+
+.ai-overlay-close:focus-visible {
+    outline: 2px solid #CC6741;
+    outline-offset: 2px;
+}
+
+/* ── iframe fills the card ───────────────────────────────── */
+#ai-overlay-iframe {
+    width: 100%;
+    flex: 1;
+    border: none;
+    display: block;
+    background: #FDFAF6;
+}
+
+/* ── Body scroll lock ─────────────────────────────────────── */
+body.ai-chat-active {
+    overflow: hidden;
+}
+
+/* ── Tablet (≤ 768px) — slightly wider ───────────────────── */
+@media (max-width: 768px) {
+    .ai-overlay {
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .ai-chat-card {
+        width: min(380px, calc(100vw - 1.5rem));
+        height: min(600px, calc(100dvh - 5rem));
+    }
+}
+
+/* ── Mobile (≤ 480px) — slides up from bottom ────────────── */
+@media (max-width: 480px) {
+    .ai-overlay {
+        align-items: flex-end;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .ai-chat-card {
+        width: 100%;
+        height: 88dvh;
+        border-radius: 20px 20px 0 0;
+        transform: translateY(40px);
+    }
+
+    .ai-overlay.open .ai-chat-card {
+        transform: translateY(0) scale(1);
+    }
+
+    .ai-fab {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+/* ── Reduced motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .ai-fab,
+    .ai-fab-button,
+    .ai-overlay,
+    .ai-chat-card {
+        transition: none;
+    }
+}
