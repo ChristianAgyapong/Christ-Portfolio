@@ -461,3 +461,39 @@ html {
         font-size: 1.2rem !important;
     }
 }
+
+/* Global Section Padding Reduction for Mobile */
+@media (max-width: 768px) {
+    .section, section, .about {
+        padding: 4rem 0 !important;
+    }
+    .section-title {
+        font-size: 2.2rem !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    /* Optimize internal tabs (Skills, Experience, Projects) */
+    .cyber-tabs-container, .experience-tabs, .project-filters {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        justify-content: flex-start !important;
+        padding-bottom: 10px !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 0.75rem !important;
+    }
+    
+    /* Hide scrollbar but keep functionality */
+    .cyber-tabs-container::-webkit-scrollbar,
+    .experience-tabs::-webkit-scrollbar,
+    .project-filters::-webkit-scrollbar {
+        height: 4px;
+        display: none;
+    }
+    
+    .cyber-tab, .filter-btn {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        padding: 0.6rem 1.2rem !important;
+        font-size: 0.9rem !important;
+    }
+}

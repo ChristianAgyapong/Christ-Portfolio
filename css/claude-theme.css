@@ -138,6 +138,17 @@ textarea:focus-visible {
     border-radius: 999px !important;
     background: transparent !important;
 }
+
+/* Mobile Navigation Overrides */
+@media (max-width: 768px) {
+    .nav-menu {
+        background: rgba(253, 250, 246, 0.98) !important; /* Light cream background */
+        border-top: 1px solid rgba(204, 103, 65, 0.1) !important;
+    }
+    .hamburger .bar {
+        background: var(--primary-color) !important;
+    }
+}
 .nav-link:hover, .nav-link.active {
     color: var(--accent-color) !important;
     background: rgba(204, 103, 65, 0.12) !important;
