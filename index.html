@@ -1,13 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christian Agyapong - Full Stack Developer Portfolio</title>
-    <meta name="description" content="Christian Agyapong — Full Stack Developer, AI/ML Engineer & UI/UX Designer based in Accra, Ghana. Explore projects, skills, and chat with my AI assistant.">
+    <meta name="description"
+        content="Christian Agyapong — Full Stack Developer, AI/ML Engineer & UI/UX Designer based in Accra, Ghana. Explore projects, skills, and chat with my AI assistant.">
     <meta name="author" content="Christian Agyapong">
     <meta property="og:title" content="Christian Agyapong - Full Stack Developer Portfolio">
-    <meta property="og:description" content="Full Stack Developer, AI/ML Engineer & UI/UX Designer. View my work or chat with my AI digital twin.">
+    <meta property="og:description"
+        content="Full Stack Developer, AI/ML Engineer & UI/UX Designer. View my work or chat with my AI digital twin.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/christian-new-profile.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -18,38 +21,60 @@
     <!-- Critical CSS: design tokens available before any stylesheet loads -->
     <style>
         :root {
-            --primary-color:#CC6741;--secondary-color:#A3522F;--accent-color:#C4956A;
-            --text-primary:#2C1810;--text-secondary:#3A241A;--text-light:#8C6B5A;
-            --bg-primary:#FDFAF6;--bg-secondary:#F5EDE0;--bg-card:#FAF3E8;
-            --gradient-primary:linear-gradient(135deg,#CC6741 0%,#A3522F 100%);
-            --font-main:'Plus Jakarta Sans','Inter',sans-serif;
+            --primary-color: #CC6741;
+            --secondary-color: #A3522F;
+            --accent-color: #C4956A;
+            --text-primary: #2C1810;
+            --text-secondary: #3A241A;
+            --text-light: #8C6B5A;
+            --bg-primary: #FDFAF6;
+            --bg-secondary: #F5EDE0;
+            --bg-card: #FAF3E8;
+            --gradient-primary: linear-gradient(135deg, #CC6741 0%, #A3522F 100%);
+            --font-main: 'Plus Jakarta Sans', 'Inter', sans-serif;
         }
-        body { font-family: var(--font-main,-apple-system,BlinkMacSystemFont,sans-serif); background: var(--bg-primary); color: var(--text-primary); }
+
+        body {
+            font-family: var(--font-main, -apple-system, BlinkMacSystemFont, sans-serif);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
     </style>
     <!-- Core blocking stylesheets (minimal set) -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/claude-theme.css">
     <!-- Non-blocking: mobile styles only needed after layout -->
     <link rel="stylesheet" href="css/mobile-optimizations.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="css/mobile-optimizations.css"></noscript>
+    <noscript>
+        <link rel="stylesheet" href="css/mobile-optimizations.css">
+    </noscript>
     <!-- Non-blocking: AI widget CSS loaded by JS when widget initialises -->
     <!-- Non-blocking: Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    </noscript>
     <!-- Non-blocking: Font Awesome icons (deferred — not needed for first paint) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
     <!-- EmailJS SDK — deferred, only needed on form submit -->
     <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!-- Vercel Analytics -->
     <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
+
 <body>
     <!-- Web3 Cursor Effect -->
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-outline" id="cursor-outline"></div>
-    
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -106,7 +131,7 @@
             <div class="floating-sphere sphere-1"></div>
             <div class="floating-sphere sphere-2"></div>
         </div>
-        
+
         <div class="hero-container">
             <div class="hero-content">
                 <div class="status-indicator">
@@ -123,8 +148,10 @@
                     <span class="bracket">/&gt;</span>
                 </p>
                 <p class="hero-description">
-                    Passionate full-stack developer, graphic designer, and AI/ML engineer creating innovative digital solutions. 
-                    Certified Python Developer with expertise in modern web technologies, Machine Learning, Artificial Intelligence, UI/UX design, and 
+                    Passionate full-stack developer, graphic designer, and AI/ML engineer creating innovative digital
+                    solutions.
+                    Certified Python Developer with expertise in modern web technologies, Machine Learning, Artificial
+                    Intelligence, UI/UX design, and
                     delivering exceptional user experiences that solve real-world problems.
                 </p>
                 <div class="hero-buttons">
@@ -145,7 +172,8 @@
                     <a href="https://github.com/ChristianAgyapong" class="social-link" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/christian-agyapong-4a6b7139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="social-link" target="_blank">
+                    <a href="https://www.linkedin.com/in/christian-agyapong-4a6b7139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                        class="social-link" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
                     <a href="https://x.com/ChrixGraphix" class="social-link" target="_blank">
@@ -162,7 +190,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Web3 Scroll Indicator -->
         <div class="scroll-indicator">
             <span>SCROLL</span>
@@ -210,10 +238,14 @@
             <div class="footer-content">
                 <p>&copy; 2026 Christian Agyapong. All rights reserved.</p>
                 <div class="footer-social">
-                    <a href="https://github.com/ChristianAgyapong" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/christian-agyapong-4a6b7139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://x.com/ChrixGraphix" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="mailto:christianagyapong2023@email.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/ChristianAgyapong" class="social-link" target="_blank"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/christian-agyapong-4a6b7139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                        class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/ChrixGraphix" class="social-link" target="_blank"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="mailto:christianagyapong2023@email.com" class="social-link"><i
+                            class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
@@ -234,4 +266,5 @@
     <script src="js/script.js"></script>
     <script src="js/ai-assistant.js"></script>
 </body>
+
 </html>
