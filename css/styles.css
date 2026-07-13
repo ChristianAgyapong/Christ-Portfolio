@@ -3635,7 +3635,7 @@ section::before {
     }
     
     .hamburger {
-        display: block;
+        display: flex;
         cursor: pointer;
         padding: 0.5rem;
         z-index: 1001;

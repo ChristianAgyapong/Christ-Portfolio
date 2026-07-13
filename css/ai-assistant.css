@@ -287,20 +287,30 @@ body.ai-chat-active {
     }
 
     .ai-fab {
-        bottom: 1rem;
-        right: 1rem;
+        bottom: 5rem;
+        right: 1.2rem;
     }
 
     /* Square stays square on mobile — just reposition and scale down */
-    .ai-fab {
-        bottom: 1rem;
-        right: 1rem;
+    .ai-fab-button {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        padding: 0 4px;
     }
     
-    .ai-fab-button {
-        width: 56px;
-        height: 56px;
-        border-radius: 14px;
+    .ai-fab-icon-wrap {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 2px;
+    }
+    
+    .ai-fab-divider {
+        margin-bottom: 2px;
+    }
+    
+    .ai-fab-label {
+        font-size: 0.45rem;
     }
     
     .ai-fab-button i {
