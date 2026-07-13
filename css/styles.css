@@ -3,6 +3,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+    outline: none;
 }
 
 /* Root Variables - Web3 Theme */
@@ -4489,5 +4494,46 @@ section::before {
     
     .trait-card p {
         font-size: 1rem;
+    }
+}
+
+/* Global Icon Sizing Fixes (Scale down massive icons) */
+.stat-icon i,
+.stat-icon,
+.tool-icon i,
+.tool-icon,
+.achievement-icon i,
+.achievement-icon,
+.trait-icon i,
+.trait-icon,
+.cyber-skill-item i,
+.skill-name i,
+.category-icon i,
+.category-icon,
+.cert-badge i,
+.cert-badge,
+.contact-icon i,
+.contact-icon {
+    font-size: 1.5rem !important;
+}
+
+@media (max-width: 768px) {
+    .stat-icon i,
+    .stat-icon,
+    .tool-icon i,
+    .tool-icon,
+    .achievement-icon i,
+    .achievement-icon,
+    .trait-icon i,
+    .trait-icon,
+    .cyber-skill-item i,
+    .skill-name i,
+    .category-icon i,
+    .category-icon,
+    .cert-badge i,
+    .cert-badge,
+    .contact-icon i,
+    .contact-icon {
+        font-size: 1.25rem !important;
     }
 }

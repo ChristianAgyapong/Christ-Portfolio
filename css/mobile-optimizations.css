@@ -426,3 +426,38 @@ html {
     }
     */
 }
+
+/* Custom Fixes for Mobile Layout (Hero & Core Identity) */
+@media (max-width: 768px) {
+    /* Make hero container single column */
+    .hero-container {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    /* Make hero buttons stack nicely */
+    .hero-buttons {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        width: 100%;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Core Identity grid adjust for small phones */
+    .core-identity > .container > div {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem !important;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem !important;
+    }
+}
