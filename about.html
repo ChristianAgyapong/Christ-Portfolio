@@ -2,6 +2,19 @@
 <html lang="en">
 
 <head>
+    <!-- Critical inline CSS: prevents dark-bg flash during page navigation -->
+    <style>
+        body {
+            background: #FDFAF6 !important;
+            color: #2C1810;
+        }
+        .cursor-dot, .cursor-outline {
+            display: none;
+        }
+        .data-matrix, .matrix-line {
+            display: none !important;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Christian Agyapong</title>
