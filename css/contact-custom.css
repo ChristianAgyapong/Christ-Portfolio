@@ -998,6 +998,259 @@
         box-shadow: 0 14px 45px rgba(204, 103, 65, 0.16);
     }
 
+    /* Mobile Contact Sticky Bar */
+    .mobile-contact-sticky {
+        display: flex !important;
+        padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    }
+
+    /* Adjust hero padding for fixed sticky bar */
+    body {
+        padding-bottom: 75px;
+    }
+
+    /* Hero section mobile improvements */
+    .hero {
+        min-height: auto;
+        padding: 80px 1.5rem 3rem;
+    }
+
+    .hero-background {
+        opacity: 0.5;
+    }
+
+    /* Better spacing for mobile hero content */
+    .hero-text {
+        margin-bottom: 2rem;
+    }
+
+    .hero-badge {
+        margin-bottom: 1.5rem;
+        padding: 0.65rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    /* Form improvements for mobile */
+    .cyber-contact-form {
+        border-radius: 12px;
+    }
+
+    .form-header h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .cyber-form-group label {
+        font-size: 0.8rem;
+    }
+
+    .cyber-form-group input,
+    .cyber-form-group textarea,
+    .cyber-form-group select {
+        padding: 0.9rem 1rem;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+    .cyber-form-group textarea {
+        min-height: 120px;
+    }
+
+    .form-submit {
+        margin-top: 1.5rem;
+    }
+
+    .cyber-submit-btn {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 12px;
+    }
+
+    /* Availability section mobile */
+    .availability-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .availability-card {
+        padding: 2rem;
+        border-radius: 12px;
+    }
+
+    .availability-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .availability-card h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Map section mobile */
+    .map-container {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+
+    .map-placeholder {
+        height: 300px;
+        border-radius: 12px;
+    }
+
+    .map-placeholder h3 {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Contact cards mobile improvements */
+    .cyber-contact-card {
+        border-radius: 12px;
+    }
+
+    .contact-link {
+        padding: 1rem;
+    }
+
+    .contact-details h3 {
+        font-size: 1.1rem;
+    }
+
+    .contact-details p {
+        font-size: 0.9rem;
+    }
+
+    /* Ensure smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    section {
+        overflow-x: hidden;
+    }
+
+    /* Better touch targets */
+    a, button, [role="button"] {
+        min-height: 48px;
+        min-width: 48px;
+    }
+
+    /* Reduce section padding on small screens */
+    .contact-section,
+    .availability-section,
+    .map-section,
+    .social-contact {
+        padding: 3rem 1.5rem;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 60px 1.2rem 2.5rem;
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .gradient-text {
+        display: inline;
+    }
+
+    .text-glow {
+        display: inline;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
+    .hero-badge {
+        font-size: 0.75rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .contact-cube {
+        width: 150px;
+        height: 150px;
+    }
+
+    .cube-face {
+        width: 150px;
+        height: 150px;
+    }
+
+    .cube-face.front { transform: translateZ(75px); }
+    .cube-face.back { transform: rotateY(180deg) translateZ(75px); }
+    .cube-face.right { transform: rotateY(90deg) translateZ(75px); }
+    .cube-face.left { transform: rotateY(-90deg) translateZ(75px); }
+    .cube-face.top { transform: rotateX(90deg) translateZ(75px); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+    .cube-face {
+        font-size: 2rem;
+    }
+
+    .cube-face span {
+        font-size: 0.8rem;
+    }
+
+    .cyber-submit-btn {
+        font-size: 0.9rem;
+        padding: 0.9rem 1.2rem;
+    }
+
+    .btn-text {
+        font-size: 0.85rem;
+    }
+
+    .form-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-action {
+        font-size: 0.8rem;
+    }
+
+    body {
+        padding-bottom: 65px;
+    }
+}
+
     /* Prevent hover-reveal shifting on touch */
     .contact-info-section .cyber-contact-card:hover .contact-action {
         opacity: 1;
