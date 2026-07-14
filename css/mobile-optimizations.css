@@ -427,8 +427,9 @@ html {
     */
 }
 
-/* Custom Fixes for Mobile Layout (Hero & Core Identity) */
-@media (max-width: 768px) {
+    /* Custom Fixes for Mobile Layout (Hero & Core Identity) */
+    @media (max-width: 768px) {
+
     /* Make hero container single column */
     .hero-container {
         grid-template-columns: 1fr !important;
@@ -463,6 +464,13 @@ html {
         max-width: 100%;
         justify-content: center;
     }
+
+    /* Center social icons under hero/buttons on mobile */
+    .social-links {
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
 
 
     /* Core Identity grid adjust for small phones */

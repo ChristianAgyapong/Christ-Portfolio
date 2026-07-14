@@ -872,6 +872,38 @@
         gap: 2rem;
     }
 
+    /* Stop spinning/fast motion on mobile to reduce clutter */
+    .cyber-grid {
+        animation: none !important;
+        transform: none !important;
+        opacity: 0.35;
+    }
+
+    .contact-cube {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .cube-face {
+        animation: none !important;
+        transform-style: flat;
+    }
+
+    .floating-particles,
+    .floating-particles::before,
+    .floating-particles::after {
+        display: none !important;
+    }
+
+    .scroll-indicator {
+        display: none !important;
+    }
+
+    .badgePulse {
+        animation: none !important;
+    }
+
+    /* Cube sizing for consistency */
     .contact-cube {
         width: 200px;
         height: 200px;
@@ -894,14 +926,39 @@
         gap: 0;
     }
 
+    /* Reduce density */
     .cyber-contact-form {
         padding: 2rem;
+    }
+
+    .contact-link {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+
+    .contact-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.25rem;
     }
 
     .section-title {
         font-size: 2rem;
     }
+
+    /* Touch: always show the action text (no hover-only reveal) */
+    .contact-action {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* Reduce card hover motion on touch */
+    .cyber-contact-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
 }
+
 
 @media (max-width: 480px) {
     .hero {
@@ -940,6 +997,13 @@
         transform: none;
         box-shadow: 0 14px 45px rgba(204, 103, 65, 0.16);
     }
+
+    /* Prevent hover-reveal shifting on touch */
+    .contact-info-section .cyber-contact-card:hover .contact-action {
+        opacity: 1;
+        transform: none;
+    }
+
 
     .contact-info-section .cyber-contact-card:nth-child(2) .contact-action {
         opacity: 1;

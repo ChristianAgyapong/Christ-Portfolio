@@ -4,13 +4,47 @@
 
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
+    const isSmallMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const coarsePointer = window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+    const reduceMotionForContact = prefersReduced || isSmallMobile || coarsePointer;
+
     // Initialize all features
     initHeroAnimations();
     initFormHandling();
     initFormAnimations();
-    initScrollEffects();
-    initParticles();
+
+    // Heavy motion effects
+    if (!reduceMotionForContact) {
+        initScrollEffects();
+        initParticles();
+    } else {
+        // Still ensure reveal animations don't cause transforms/jank
+        disableParallaxAndParticles();
+    }
 });
+
+function disableParallaxAndParticles() {
+    const cyberGrid = document.querySelector('.cyber-grid');
+    const contactCube = document.querySelector('.contact-cube');
+    const floating = document.querySelector('.floating-particles');
+
+    if (cyberGrid) {
+        cyberGrid.style.animation = 'none';
+        cyberGrid.style.transform = 'none';
+    }
+
+    if (contactCube) {
+        contactCube.style.animation = 'none';
+        contactCube.style.transform = 'none';
+    }
+
+    if (floating) {
+        floating.style.display = 'none';
+    }
+}
+
 
 /* ================
    HERO ANIMATIONS
@@ -375,8 +409,15 @@ document.addEventListener('keydown', function(e) {
 /* ================
    CONTACT LINKS
    ================ */
+const isSmallMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const coarsePointer = window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+const reduceMotionForContact = prefersReduced || isSmallMobile || coarsePointer;
+
 document.querySelectorAll('.contact-link').forEach(link => {
     link.addEventListener('click', function(e) {
+        if (reduceMotionForContact) return;
+
         // Add ripple effect
         const ripple = document.createElement('span');
         ripple.className = 'ripple';
@@ -415,6 +456,7 @@ rippleStyle.textContent = `
     }
 `;
 document.head.appendChild(rippleStyle);
+
 
 /* ================
    CONSOLE EASTER EGG
