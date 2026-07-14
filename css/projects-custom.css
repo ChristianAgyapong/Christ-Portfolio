@@ -156,13 +156,39 @@
     position: relative;
     margin: 0 auto;
     transform-style: preserve-3d;
-    animation: rotateCube 20s infinite linear;
+
+    /* Smooth continuous spinning */
+    animation: rotateCube 18s infinite linear;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    .projects-cube {
+        /* keep cube visible without overflow */
+        animation-duration: 22s;
+    }
 }
 
 @keyframes rotateCube {
     0% { transform: rotateX(0deg) rotateY(0deg); }
     100% { transform: rotateX(360deg) rotateY(360deg); }
 }
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .projects-cube {
+        animation: none !important;
+        transform: rotateX(18deg) rotateY(28deg);
+    }
+}
+
+/* Keep transforms composited */
+.projects-cube,
+.cube-face {
+    transform-style: preserve-3d;
+}
+
 
 .cube-face {
     position: absolute;
@@ -535,6 +561,16 @@
         gap: 2rem;
         text-align: center;
     }
+
+    /* extra protection against overflow on small screens */
+    .hero-visual,
+    .projects-cube,
+    .cube-face {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     
     .hero-title {
         font-size: 2.5rem;
@@ -622,3 +658,4 @@
     transform: translateY(0);
     transition: all 0.3s ease;
 }
+

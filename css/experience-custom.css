@@ -665,6 +665,14 @@
     animation: fabPulse 2s ease-in-out infinite;
 }
 
+/* Mobile: remove extra back-to-home tab/FAB showing at the bottom */
+@media (max-width: 768px) {
+    .portfolio-fab {
+        display: none !important;
+    }
+}
+
+
 .portfolio-fab:hover {
     animation: none;
 }

@@ -199,7 +199,7 @@ html {
 /* Mobile hero section */
 @media (max-width: 768px) {
     .hero {
-        padding: 100px 1.5rem 3rem !important;
+        padding: 100px 1.5rem 2rem !important;
         min-height: auto;
     }
     
@@ -216,6 +216,32 @@ html {
     
     .hero p {
         margin-bottom: 1.5rem;
+    }
+    
+    /* Improved section spacing on mobile */
+    .core-identity,
+    .about,
+    .experience,
+    .skills {
+        padding: 40px 1.5rem !important;
+    }
+    
+    .core-identity h2,
+    .section-title {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 80px 1rem 1.5rem !important;
+    }
+    
+    .core-identity,
+    .about,
+    .experience,
+    .skills {
+        padding: 30px 1rem !important;
     }
 }
 
@@ -511,11 +537,35 @@ html {
     .container {
         padding: 0 1.5rem !important;
     }
-    
+
+    /* Reduce vertical whitespace between sections across all pages */
     section {
-        padding: 2.5rem 0 !important;
+        padding: 2.2rem 0 !important;
+    }
+
+    /* Also tighten generic section wrapper used in some pages */
+    .section {
+        padding: 2.2rem 0 !important;
+    }
+
+    /* Prevent extra header whitespace on mobile */
+    .section-header {
+        margin-bottom: 3rem !important;
+    }
+
+    /* Tighten common headings and paragraphs a bit to feel less spaced */
+    h2,
+    h3 {
+        margin-top: 0 !important;
+        margin-bottom: 0.9rem !important;
+    }
+
+    p {
+        margin-bottom: 0.9rem !important;
     }
 }
+
+
 
 /* Mobile text optimization */
 @media (max-width: 768px) {
