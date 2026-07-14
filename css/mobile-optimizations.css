@@ -447,24 +447,28 @@ html {
         line-height: 1.15;
     }
 
-    
-    /* Make hero buttons stack nicely */
+    /* Put hero CTA buttons in a horizontal row (2 buttons per row feel better on mobile) */
     .hero-buttons {
-        flex-direction: column !important;
-        gap: 1rem !important;
-        width: 100%;
-    }
-    
-    .hero-buttons .btn {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        gap: 0.9rem !important;
         width: 100%;
         justify-content: center;
     }
-    
+
+    .hero-buttons .btn {
+        width: auto;
+        flex: 1 1 220px;
+        justify-content: center;
+        max-width: 100%;
+    }
+
     /* Core Identity grid adjust for small phones */
     .core-identity > .container > div {
         grid-template-columns: 1fr !important;
     }
 }
+
 
 @media (max-width: 480px) {
     .hero-title {

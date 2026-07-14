@@ -31,14 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (activeContent) {
             activeContent.classList.add('active');
             
-            // Trigger animation for timeline items
-            const timelineItems = activeContent.querySelectorAll('.timeline-item');
-            timelineItems.forEach((item, index) => {
-                item.style.animation = 'none';
-                setTimeout(() => {
-                    item.style.animation = `slideInRight 0.6s ease-out ${index * 0.1}s both`;
-                }, 10);
-            });
+            // Removed timeline animation on tab click to prevent heavy load/visual lag
+            // (timeline items are already handled by scroll-based IntersectionObserver)
+
+            
         }
     }
     
