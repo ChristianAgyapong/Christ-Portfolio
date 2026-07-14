@@ -2,6 +2,19 @@
    CONTACT PAGE - WEB3 CUSTOM STYLES
    =================================== */
 
+/* Base text normalization */
+* {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -141,6 +154,10 @@
     color: var(--text-secondary);
     margin-bottom: 3rem;
     max-width: 600px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .hero-stats {
@@ -865,6 +882,8 @@
     .hero-subtitle {
         font-size: 1rem;
         max-width: 100%;
+        white-space: normal;
+        margin-bottom: 2rem;
     }
 
     .hero-stats {
@@ -956,6 +975,14 @@
     .cyber-contact-card:hover {
         transform: none;
         box-shadow: none;
+    }
+
+    /* Better overflow handling on mobile */
+    .contact-section,
+    .availability-section,
+    .map-section,
+    .social-contact {
+        overflow: hidden;
     }
 }
 
