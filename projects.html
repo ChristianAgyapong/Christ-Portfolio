@@ -14,11 +14,14 @@
             display: none !important;
         }
 
-        /* Projects hero: cube should never cause horizontal overflow */
-        .projects-cube,
-        .cube-face {
+/* Projects hero: cube should never cause horizontal overflow */
+        #hero .projects-cube,
+        #hero .cube-face {
             max-width: 100%;
         }
+
+        /* enforce cube animation within hero */
+        #hero .projects-cube { animation: rotateCube 18s infinite linear !important; }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
