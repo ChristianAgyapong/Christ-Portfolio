@@ -25,6 +25,7 @@ p {
     overflow: hidden;
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     padding: 120px 0 60px;
+    scroll-behavior: smooth;
 }
 
 .hero-background {
@@ -316,20 +317,32 @@ p {
     color: #fff;
     border: 1px solid rgba(204, 103, 65, 0.25);
     user-select: none;
+    transition: all 0.3s ease;
+}
+
+.mobile-sticky-btn:active {
+    transform: scale(0.97);
 }
 
 .mobile-sticky-call {
     background: linear-gradient(135deg, var(--accent-color) 0%, var(--warm-brown) 100%);
+    box-shadow: 0 4px 15px rgba(204, 103, 65, 0.15);
+}
+
+.mobile-sticky-call:active {
+    box-shadow: 0 2px 8px rgba(204, 103, 65, 0.25);
 }
 
 .mobile-sticky-email {
     background: rgba(204, 103, 65, 0.12);
     color: var(--text-dark);
     border-color: rgba(204, 103, 65, 0.25);
+    transition: all 0.3s ease;
 }
 
-.mobile-sticky-btn i {
-    font-size: 1.1rem;
+.mobile-sticky-email:active {
+    background: rgba(204, 103, 65, 0.18);
+    transform: scale(0.97);
 }
 
 
@@ -372,6 +385,7 @@ p {
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .cyber-contact-card::before {
@@ -485,6 +499,7 @@ p {
     border-radius: 20px;
     padding: 3rem;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .form-cyber-border {
@@ -634,6 +649,12 @@ p {
     cursor: pointer;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(204, 103, 65, 0.15);
+}
+
+.cyber-submit-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(204, 103, 65, 0.2);
 }
 
 .cyber-submit-btn::before {
@@ -709,6 +730,7 @@ p {
     border-radius: 16px;
     text-align: center;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .availability-card:hover {
@@ -775,6 +797,7 @@ p {
     border: 1px solid rgba(204,103,65,0.18);
     padding: 3rem;
     border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .map-placeholder {
@@ -816,6 +839,7 @@ p {
     transition: all 0.3s ease;
     text-decoration: none;
     color: var(--text-dark);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .social-contact-card:hover {
