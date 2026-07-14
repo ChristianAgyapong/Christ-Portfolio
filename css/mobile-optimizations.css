@@ -458,10 +458,12 @@ html {
 
     .hero-buttons .btn {
         width: auto;
-        flex: 1 1 220px;
-        justify-content: center;
+        /* keep desktop-ish button sizing while still fitting two per row */
+        flex: 0 0 auto;
         max-width: 100%;
+        justify-content: center;
     }
+
 
     /* Core Identity grid adjust for small phones */
     .core-identity > .container > div {
