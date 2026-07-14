@@ -267,6 +267,55 @@
     position: relative;
 }
 
+/* Mobile sticky call bar (default hidden on desktop) */
+.mobile-contact-sticky {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
+    padding: 12px 12px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(253, 250, 246, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    gap: 12px;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.mobile-sticky-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    border-radius: 16px;
+    padding: 14px 14px;
+    font-weight: 800;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.3px;
+    min-height: 48px;
+    color: #fff;
+    border: 1px solid rgba(204, 103, 65, 0.25);
+    user-select: none;
+}
+
+.mobile-sticky-call {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--warm-brown) 100%);
+}
+
+.mobile-sticky-email {
+    background: rgba(204, 103, 65, 0.12);
+    color: var(--text-dark);
+    border-color: rgba(204, 103, 65, 0.25);
+}
+
+.mobile-sticky-btn i {
+    font-size: 1.1rem;
+}
+
+
 .section-header {
     text-align: center;
     margin-bottom: 4rem;
@@ -871,3 +920,47 @@
         width: 100%;
     }
 }
+
+/* ==========================
+   Mobile phone visibility
+   ========================== */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-info-section {
+        order: 1;
+    }
+
+    /* Make the phone card stand out and read clearly */
+    .contact-info-section .cyber-contact-card:nth-child(2) {
+        border-color: rgba(204, 103, 65, 0.55);
+        transform: none;
+        box-shadow: 0 14px 45px rgba(204, 103, 65, 0.16);
+    }
+
+    .contact-info-section .cyber-contact-card:nth-child(2) .contact-action {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Ensure the phone number isn't visually squeezed */
+    .contact-info-section .cyber-contact-card:nth-child(2) .contact-details p {
+        font-size: 1rem;
+        word-break: break-word;
+    }
+
+    /* Sticky call bar for better mobile UX */
+    .mobile-contact-sticky {
+        display: flex;
+    }
+
+    /* Prevent the sticky bar from covering the form submit */
+    .contact-section {
+        padding-bottom: 92px;
+    }
+}
+
+

@@ -28,15 +28,20 @@
         if (isOpen) return;
         isOpen = true;
         if (fab) fab.classList.add('hidden');
-        if (overlay) {
-            overlay.classList.add('open');
-            document.body.classList.add('ai-chat-active');
-            // Set src only once (lazy load)
-            const iframe = document.getElementById('ai-overlay-iframe');
-            if (iframe && !iframe.src) {
-                iframe.src = AI_CHAT_URL;
-            }
+        if (!overlay) return;
+
+        overlay.classList.add('open');
+        document.body.classList.add('ai-chat-active');
+
+        const iframe = document.getElementById('ai-overlay-iframe');
+        const loadingEl = document.getElementById('ai-overlay-loading');
+
+        // Set src only once (lazy load)
+        if (iframe && !iframe.src) {
+            iframe.src = AI_CHAT_URL;
         }
+
+        // loading UI removed: iframe will display when it finishes loading
     }
 
     function closeChat() {
@@ -85,6 +90,13 @@
         document.getElementById('ai-fab-btn').addEventListener('click', openChat);
         document.getElementById('ai-overlay-close').addEventListener('click', closeChat);
 
+        // iframe load handling intentionally not used (no loading UI)
+        var iframeEl = document.getElementById('ai-overlay-iframe');
+        if (iframeEl) {
+            // no-op
+        }
+
+
         // Close on backdrop click (clicking outside iframe)
         overlay.addEventListener('click', function (e) {
             if (e.target === overlay) closeChat();
@@ -105,8 +117,37 @@
     window.openAiChat = openChat;
     window.closeAiChat = closeChat;
 
+    function preloadIframe() {
+        const iframe = document.getElementById('ai-overlay-iframe');
+        if (!iframe) return;
+        if (iframe.src) return;
+
+        // Avoid preloading too early; only do it when the browser is idle
+        if (window.requestIdleCallback) {
+            window.requestIdleCallback(function () {
+                iframe.src = AI_CHAT_URL;
+            }, { timeout: 2500 });
+        } else {
+            setTimeout(function () {
+                iframe.src = AI_CHAT_URL;
+            }, 1200);
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         createWidget();
         bindTriggers();
+
+        // Preload after first paint/idle to reduce perceived latency
+        setTimeout(preloadIframe, 1500);
+
+        // If the user is likely to open chat, preload sooner
+        document.addEventListener('pointerenter', function (e) {
+            var target = e && e.target;
+            if (!target) return;
+            if (target.id === 'ai-fab-btn' || target.closest && target.closest('#ai-fab')) {
+                preloadIframe();
+            }
+        }, { once: true, passive: true });
     });
 })();

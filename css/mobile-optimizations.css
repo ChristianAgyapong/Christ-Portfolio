@@ -434,6 +434,19 @@ html {
         grid-template-columns: 1fr !important;
         gap: 2rem !important;
     }
+
+    /* Improve global tappable/clickable fit */
+    .nav-link {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+
+    /* Make section titles not overflow */
+    .section-title {
+        word-break: break-word;
+        line-height: 1.15;
+    }
+
     
     /* Make hero buttons stack nicely */
     .hero-buttons {

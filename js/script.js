@@ -1,41 +1,51 @@
+// Interface optimization: consolidate motion + event wiring
+const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const motionEnabled = !prefersReducedMotion;
+
 // Mobile Navigation Toggle
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+}
 
-// Web3 Cursor Effect
+
+// Web3 Cursor Effect (performance-first: disabled when reduced motion)
 const cursorDot = document.getElementById('cursor-dot');
 const cursorOutline = document.getElementById('cursor-outline');
 
-document.addEventListener('mousemove', (e) => {
-    const posX = e.clientX;
-    const posY = e.clientY;
-    
-    cursorDot.style.left = `${posX}px`;
-    cursorDot.style.top = `${posY}px`;
-    
-    cursorOutline.style.left = `${posX}px`;
-    cursorOutline.style.top = `${posY}px`;
-});
+if (motionEnabled && cursorDot && cursorOutline) {
+    document.addEventListener('mousemove', (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+        
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+        
+        cursorOutline.style.left = `${posX}px`;
+        cursorOutline.style.top = `${posY}px`;
+    });
 
-// Cursor hover effects
-document.querySelectorAll('a, button, .btn').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursorDot.style.transform = 'scale(2)';
-        cursorOutline.style.transform = 'scale(2)';
-        cursorOutline.style.borderColor = 'var(--neon-pink)';
+    // Cursor hover effects
+    document.querySelectorAll('a, button, .btn').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorDot.style.transform = 'scale(2)';
+            cursorOutline.style.transform = 'scale(2)';
+            cursorOutline.style.borderColor = 'var(--neon-pink)';
+        });
+        
+        el.addEventListener('mouseleave', () => {
+            cursorDot.style.transform = 'scale(1)';
+            cursorOutline.style.transform = 'scale(1)';
+            cursorOutline.style.borderColor = 'var(--primary-color)';
+        });
     });
-    
-    el.addEventListener('mouseleave', () => {
-        cursorDot.style.transform = 'scale(1)';
-        cursorOutline.style.transform = 'scale(1)';
-        cursorOutline.style.borderColor = 'var(--primary-color)';
-    });
-});
+}
+
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
@@ -57,23 +67,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar Web3 effect on scroll - keeps glass morphism
-window.addEventListener('scroll', () => {
+// Navbar Web3 effect on scroll - kept inside the single scroll handler
+function updateNavbarGlass() {
     const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
     if (window.scrollY > 50) {
-        // Enhanced glass effect when scrolled
         navbar.style.background = 'rgba(30, 41, 59, 0.9)';
         navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.37), 0 0 20px rgba(0, 212, 255, 0.2)';
         navbar.style.borderBottom = '1px solid rgba(0, 212, 255, 0.3)';
     } else {
-        // Original glass effect at top
         navbar.style.background = 'rgba(30, 41, 59, 0.7)';
         navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.37)';
         navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
     }
-});
+}
 
-// Typing animation
+
+// Typing animation (performance-first: disabled when reduced motion)
 const typingText = document.querySelector('.typing-text');
 const roles = ['Full Stack Developer', 'ML Engineer', 'AI Specialist', 'UI/UX Designer', 'Problem Solver'];
 let roleIndex = 0;
@@ -81,6 +92,7 @@ let charIndex = 0;
 let isDeleting = false;
 
 function typeRole() {
+    if (!typingText) return;
     const currentRole = roles[roleIndex];
     
     if (isDeleting) {
@@ -106,30 +118,45 @@ function typeRole() {
 }
 
 // Start typing animation
-typeRole();
+if (motionEnabled && typingText) {
+    typeRole();
+} else if (typingText) {
+    // Fallback to first role for reduced-motion users
+    typingText.textContent = roles[0];
+}
 
-// Intersection Observer for animations
+
+// Intersection Observer for animations (performance-first: can be disabled)
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
+if (motionEnabled) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
 
-// Observe elements for animation
-document.querySelectorAll('.timeline-item, .project-card, .skill-category, .contact-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
+    // Observe elements for animation
+    document.querySelectorAll('.timeline-item, .project-card, .skill-category, .contact-item').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+} else {
+    // Reduced motion: ensure everything is visible without initial transforms
+    document.querySelectorAll('.timeline-item, .project-card, .skill-category, .contact-item').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
+}
+
 
 // Web3 About Section Interactions
 document.addEventListener('DOMContentLoaded', function() {
@@ -233,20 +260,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const rate = scrolled * -0.5;
-        hero.style.transform = `translateY(${rate}px)`;
-    }
-});
+// Parallax effect for hero section (performance-first: disabled when reduced motion)
+if (motionEnabled) {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        }
+    }, { passive: true });
+}
 
 // Old form submission handler removed - now using EmailJS below
 
+
 // Smooth reveal animations
 function revealElements() {
+    if (!motionEnabled) return; // performance-first: never hide/reveal when reduced motion
+
     const reveals = document.querySelectorAll('.timeline-content, .about-text, .project-card');
     
     reveals.forEach(element => {
@@ -260,27 +292,19 @@ function revealElements() {
     });
 }
 
-window.addEventListener('scroll', revealElements);
 
-// Add active class styles
-const style = document.createElement('style');
-style.textContent = `
-    .timeline-content,
-    .about-text,
-    .project-card {
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.6s ease;
-    }
-    
-    .timeline-content.active,
-    .about-text.active,
-    .project-card.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
-`;
-document.head.appendChild(style);
+// Single consolidated scroll handler (performance-first)
+window.addEventListener('scroll', () => {
+    updateActiveNav();
+    updateScrollIndicator();
+    if (motionEnabled) updateNavbarGlass();
+    revealElements();
+}, { passive: true });
+
+
+// Add active class styles (removed runtime CSS injection to prevent navigation flash/boxes)
+// Reveal is handled via IntersectionObserver above and by adding the `.active` class only.
+
 
 // Initialize reveal on load
 window.addEventListener('load', revealElements);
@@ -337,7 +361,8 @@ loadingStyle.textContent = `
 document.head.appendChild(loadingStyle);
 
 // Navbar active link highlighting
-window.addEventListener('scroll', () => {
+// Navbar active link highlighting (performance-first: runs inside the single scroll handler below)
+function updateActiveNav() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
     
@@ -356,7 +381,8 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
-});
+}
+
 
 // Add active nav link styles
 const navStyle = document.createElement('style');
@@ -626,29 +652,26 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(formStyles);
 });
 
-// Web3 Scroll Indicator Functionality
+// Web3 Scroll Indicator Functionality (hide indicator inside the single scroll handler)
+let scrollIndicatorEl = null;
+function updateScrollIndicator() {
+    if (!scrollIndicatorEl) return;
+    const scrolled = window.pageYOffset;
+    scrollIndicatorEl.style.opacity = scrolled > 100 ? '0' : '1';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
+    scrollIndicatorEl = document.querySelector('.scroll-indicator');
+    if (scrollIndicatorEl) {
+        scrollIndicatorEl.addEventListener('click', () => {
             document.querySelector('#about')?.scrollIntoView({
                 behavior: 'smooth'
             });
         });
     }
-    
-    // Hide scroll indicator when scrolling
-    window.addEventListener('scroll', () => {
-        if (scrollIndicator) {
-            const scrolled = window.pageYOffset;
-            if (scrolled > 100) {
-                scrollIndicator.style.opacity = '0';
-            } else {
-                scrollIndicator.style.opacity = '1';
-            }
-        }
-    });
+    updateScrollIndicator();
 });
+
 
 // Web3 About Section Interactions
 document.addEventListener('DOMContentLoaded', function() {
