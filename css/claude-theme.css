@@ -949,3 +949,47 @@ section::before {
         padding: 1.1rem 0.5rem 0.9rem;
     }
 }
+
+/* ── MOBILE BUTTON OPTIMIZATIONS ──────────────────────────── */
+@media (max-width: 768px) {
+    .btn,
+    button.btn,
+    a.btn {
+        width: 100%;
+        padding: 14px 24px !important;
+        font-size: 16px !important;
+        border-radius: 24px !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 6px 20px rgba(204, 103, 65, 0.2) !important;
+    }
+    
+    .btn:active {
+        transform: scale(0.96);
+    }
+    
+    .btn-primary {
+        box-shadow: 0 8px 24px rgba(204, 103, 65, 0.25) !important;
+    }
+    
+    .btn-primary:active {
+        box-shadow: 0 4px 12px rgba(204, 103, 65, 0.2) !important;
+    }
+    
+    .btn-secondary {
+        box-shadow: 0 4px 12px rgba(204, 103, 65, 0.1) !important;
+    }
+    
+    /* Hero buttons container */
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px !important;
+        width: 100%;
+    }
+    
+    /* Remove hover transforms on mobile (use active instead) */
+    .btn:hover {
+        transform: none !important;
+        box-shadow: 0 6px 20px rgba(204, 103, 65, 0.2) !important;
+    }
+}

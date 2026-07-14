@@ -199,17 +199,19 @@ html {
 /* Mobile hero section */
 @media (max-width: 768px) {
     .hero {
-        padding: 2rem 0;
+        padding: 100px 1.5rem 3rem !important;
         min-height: auto;
     }
     
     .hero-content {
+        width: 100%;
         text-align: center;
     }
     
     .hero h1 {
-        line-height: 1.2;
+        line-height: 1.3;
         margin-bottom: 1rem;
+        font-size: 2rem;
     }
     
     .hero p {
@@ -297,7 +299,311 @@ html {
     }
 }
 
+/* Enhanced Mobile Button Styling */
+@media (max-width: 768px) {
+    .btn,
+    button.btn,
+    a.btn {
+        width: 100%;
+        max-width: 100%;
+        padding: 14px 24px !important;
+        font-size: 16px !important;
+        border-radius: 24px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    
+    .btn:active {
+        transform: scale(0.98);
+    }
+    
+    .btn-text {
+        white-space: normal;
+        word-break: break-word;
+    }
+    
+    /* Hero button container - stack vertically on mobile */
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px !important;
+        margin-top: 2rem;
+        width: 100%;
+    }
+    
+    .btn-primary {
+        background: var(--gradient-primary) !important;
+        color: white !important;
+        border: none !important;
+        box-shadow: 0 8px 24px rgba(204, 103, 65, 0.25) !important;
+    }
+    
+    .btn-primary:hover,
+    .btn-primary:active {
+        box-shadow: 0 12px 32px rgba(204, 103, 65, 0.35) !important;
+    }
+    
+    .btn-secondary {
+        background: transparent !important;
+        color: var(--primary-color) !important;
+        border: 2px solid var(--primary-color) !important;
+    }
+    
+    .btn-secondary:hover,
+    .btn-secondary:active {
+        background: rgba(204, 103, 65, 0.08) !important;
+    }
+}
+
+/* Enhanced Mobile Hero Section */
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 1.5rem 3rem !important;
+        min-height: auto;
+    }
+    
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    .hero-content {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+    
+    .hero-image {
+        width: 100%;
+        max-width: 300px;
+        margin: 1rem 0;
+    }
+    
+    .hero-title {
+        font-size: 2rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem !important;
+        line-height: 1.7 !important;
+        margin-bottom: 2rem !important;
+        color: var(--text-secondary) !important;
+    }
+}
+
+/* Enhanced Mobile Status Indicator */
+@media (max-width: 768px) {
+    .status-indicator {
+        display: inline-flex;
+        margin: 0 auto 1.5rem;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+}
+
+/* Enhanced Mobile Social Links */
+@media (max-width: 768px) {
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    
+    .social-link {
+        width: 48px !important;
+        height: 48px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(204, 103, 65, 0.1);
+        border: 1px solid rgba(204, 103, 65, 0.2);
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+    }
+    
+    .social-link:active {
+        transform: scale(0.92);
+        background: rgba(204, 103, 65, 0.2);
+    }
+}
+
 /* Mobile landscape mode */
+
+/* Mobile hero avatar optimization */
+@media (max-width: 768px) {
+    .hero-avatar {
+        width: 100%;
+        max-width: 280px;
+        margin: 1.5rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hero-avatar img {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        display: block;
+    }
+}
+
+/* Mobile scroll indicator */
+@media (max-width: 768px) {
+    .scroll-indicator {
+        display: none !important;
+    }
+}
+
+/* Improved mobile form styling */
+@media (max-width: 768px) {
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        min-height: 48px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(204, 103, 65, 0.3);
+        background: var(--bg-card);
+        color: var(--text-primary);
+        width: 100%;
+    }
+    
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(204, 103, 65, 0.1);
+    }
+    
+    textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+}
+
+/* Mobile spacing improvements */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem !important;
+    }
+    
+    section {
+        padding: 2.5rem 0 !important;
+    }
+}
+
+/* Mobile text optimization */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+    
+    p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    small {
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile touch-friendly elements */
+@media (max-width: 768px) {
+    a,
+    button,
+    .clickable {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    button {
+        padding: 12px 24px;
+    }
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 1rem 1.5rem;
+    }
+    
+    .nav-logo a {
+        font-size: 1.2rem;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+}
+
+/* Hide non-essential mobile elements */
+@media (max-width: 480px) {
+    .scroll-indicator,
+    .floating-elements,
+    .cyber-grid,
+    .glitch {
+        display: none !important;
+    }
+}
+
+/* Extra small mobile optimization (phones under 400px width) */
+@media (max-width: 400px) {
+    .hero-title {
+        font-size: 1.6rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem !important;
+    }
+    
+    .btn {
+        font-size: 14px !important;
+        padding: 12px 20px !important;
+    }
+}
 @media (max-width: 896px) and (orientation: landscape) {
     .hero {
         padding: 1.5rem 0;
