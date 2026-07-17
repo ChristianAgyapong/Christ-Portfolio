@@ -1,0 +1,26 @@
+{
+  "name": "Christian Agyapong - Full Stack Developer",
+  "short_name": "Christian Agyapong",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FDFAF6",
+  "theme_color": "#CC6741",
+  "icons": [
+    {
+      "src": "images/favicon-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "images/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "images/apple-touch-icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
+
