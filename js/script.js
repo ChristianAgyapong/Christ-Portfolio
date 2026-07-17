@@ -739,3 +739,79 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2500);
     });
 });
+
+
+// ================================================================
+//   CYBER TAB SQUARE BURST — shared across all pages
+//   Fires on any .cyber-tab click, creates flying squares +
+//   a scan-line + corner brackets, then auto-cleans up.
+// ================================================================
+(function initCyberTabBurst() {
+    // Skip if user prefers reduced motion
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    /**
+     * Spawn burst elements inside the clicked tab.
+     * @param {HTMLElement} tab  — the .cyber-tab button
+     * @param {MouseEvent}  evt  — original click event
+     */
+    function spawnBurst(tab, evt) {
+        // Get click position relative to the tab
+        const rect   = tab.getBoundingClientRect();
+        const cx     = (evt.clientX - rect.left);  // px from left edge
+        const cy     = (evt.clientY - rect.top);   // px from top edge
+        const w      = rect.width;
+        const h      = rect.height;
+
+        // --- 1. Eight squares fired in 8 directions ---
+        const directions = [
+            { tx: -18, ty: -18, rot: -45  },   // NW
+            { tx:   0, ty: -22, rot:   0  },   // N
+            { tx:  18, ty: -18, rot:  45  },   // NE
+            { tx:  22, ty:   0, rot:  90  },   // E
+            { tx:  18, ty:  18, rot: 135  },   // SE
+            { tx:   0, ty:  22, rot: 180  },   // S
+            { tx: -18, ty:  18, rot: 225  },   // SW
+            { tx: -22, ty:   0, rot: 270  },   // W
+        ];
+
+        directions.forEach(({ tx, ty, rot }, i) => {
+            const sq = document.createElement('div');
+            sq.className = 'tab-sq';
+
+            // Position at click point (centred on the square)
+            sq.style.cssText = [
+                `left: ${cx - 5}px`,
+                `top:  ${cy - 5}px`,
+                `--sq-tx: ${tx}px`,
+                `--sq-ty: ${ty}px`,
+                `--sq-rot: ${rot}deg`,
+                `animation-delay: ${i * 18}ms`,
+            ].join('; ');
+
+            tab.appendChild(sq);
+            sq.addEventListener('animationend', () => sq.remove(), { once: true });
+        });
+
+        // --- 2. Scan line sweep ---
+        const scan = document.createElement('div');
+        scan.className = 'tab-scan';
+        tab.appendChild(scan);
+        scan.addEventListener('animationend', () => scan.remove(), { once: true });
+
+        // --- 3. Four L-corner brackets ---
+        ['tl', 'tr', 'bl', 'br'].forEach((pos, i) => {
+            const corner = document.createElement('div');
+            corner.className = `tab-corner ${pos}`;
+            corner.style.animationDelay = `${i * 30}ms`;
+            tab.appendChild(corner);
+            corner.addEventListener('animationend', () => corner.remove(), { once: true });
+        });
+    }
+
+    // Use event delegation — works for tabs rendered after DOMContentLoaded
+    document.addEventListener('click', function (e) {
+        const tab = e.target.closest('.cyber-tab');
+        if (tab) spawnBurst(tab, e);
+    }, { capture: false });
+})();

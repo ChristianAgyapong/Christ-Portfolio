@@ -4385,3 +4385,109 @@ section::before {
         font-size: 1.25rem !important;
     }
 }
+
+
+/* =======================================================
+   CYBER TAB CLICK — SQUARE BURST EFFECT
+   Squares expand from click origin + scan line sweeps.
+   All shapes are absolutely positioned inside the tab
+   (tab uses overflow:hidden already so they clip nicely).
+   ======================================================= */
+
+/* Ensure all .cyber-tab buttons clip their burst children */
+.cyber-tab {
+    overflow: hidden;
+}
+
+/* ── The four corner squares ── */
+.tab-sq {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--primary-color, #00d4ff);
+    background: transparent;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transform: translate(0, 0) scale(1);
+    /* Each square gets its own delay via inline style */
+    animation: tabSqBurst 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Variant colours for visual variety */
+.tab-sq:nth-child(odd)  { border-color: var(--accent-color, #10b981); }
+.tab-sq:nth-child(4n)   { border-color: var(--secondary-color, #8b5cf6); }
+
+@keyframes tabSqBurst {
+    0%   { opacity: 1; transform: translate(var(--sq-tx,0), var(--sq-ty,0)) scale(1); }
+    60%  { opacity: 0.6; }
+    100% { opacity: 0; transform: translate(
+                calc(var(--sq-tx,0) * 3.5),
+                calc(var(--sq-ty,0) * 3.5)
+            ) scale(0.3) rotate(var(--sq-rot, 45deg)); }
+}
+
+/* ── Scan line that sweeps left→right ── */
+.tab-scan {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 212, 255, 0.18) 45%,
+        rgba(0, 212, 255, 0.35) 50%,
+        rgba(0, 212, 255, 0.18) 55%,
+        transparent 100%
+    );
+    animation: tabScanLine 0.45s ease-out forwards;
+}
+
+@keyframes tabScanLine {
+    0%   { left: -100%; opacity: 1; }
+    100% { left: 110%;  opacity: 0; }
+}
+
+/* ── Corner bracket flash (4 L-shaped corners) ── */
+.tab-corner {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    pointer-events: none;
+    z-index: 11;
+    opacity: 0;
+    animation: tabCornerFlash 0.5s ease-out forwards;
+}
+
+/* Top-left corner */
+.tab-corner.tl { top: 4px;  left: 4px;
+    border-top: 2px solid #00d4ff; border-left: 2px solid #00d4ff; }
+/* Top-right corner */
+.tab-corner.tr { top: 4px;  right: 4px;
+    border-top: 2px solid #00d4ff; border-right: 2px solid #00d4ff; }
+/* Bottom-left corner */
+.tab-corner.bl { bottom: 4px; left: 4px;
+    border-bottom: 2px solid #00d4ff; border-left: 2px solid #00d4ff; }
+/* Bottom-right corner */
+.tab-corner.br { bottom: 4px; right: 4px;
+    border-bottom: 2px solid #00d4ff; border-right: 2px solid #00d4ff; }
+
+@keyframes tabCornerFlash {
+    0%   { opacity: 0; transform: scale(0.4); }
+    25%  { opacity: 1; transform: scale(1.4); }
+    60%  { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.6); }
+}
+
+/* Reduce motion: disable burst for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .tab-sq, .tab-scan, .tab-corner {
+        animation: none !important;
+        display: none !important;
+    }
+}
+
