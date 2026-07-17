@@ -21,21 +21,24 @@ function initializeSkillTabs() {
         button.addEventListener('click', () => {
             const targetTab = button.getAttribute('data-tab');
             
-            // Update active button
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            // Update active content
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-                if (content.id === targetTab) {
-                    content.classList.add('active');
-                    
-                    // Reinitialize progress bars for newly visible content
-                    setTimeout(() => {
-                        animateProgressBars(content);
-                    }, 100);
-                }
+            // Batch all DOM writes inside rAF to avoid mid-frame reflow
+            requestAnimationFrame(() => {
+                // Update active button
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Update active content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === targetTab) {
+                        content.classList.add('active');
+                        // Reinitialize progress bars for newly visible content
+                        // Short timeout ensures element is visible before measuring
+                        setTimeout(() => {
+                            animateProgressBars(content);
+                        }, 50);
+                    }
+                });
             });
         });
     });
@@ -105,11 +108,15 @@ function animateCounter(element, target) {
 
 // Progress Bars Animation
 function initializeProgressBars() {
+    // NOTE: We no longer set opacity/transform inline here.
+    // The CSS anim-visible class handles initial hidden state
+    // to avoid Windows GPU stutter from inline style mutations.
     const skillCards = document.querySelectorAll('.cyber-skill-card');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                entry.target.classList.add('card-visible');
                 animateProgressBars(entry.target);
                 observer.unobserve(entry.target);
             }
@@ -128,7 +135,7 @@ function initializeProgressBars() {
     if (activeTab) {
         setTimeout(() => {
             animateProgressBars(activeTab);
-        }, 500);
+        }, 300);
     }
 }
 
@@ -145,35 +152,42 @@ function animateProgressBars(container) {
 
 // Scroll Effects
 function initializeScrollEffects() {
-    // Parallax effect for hero background
-    window.addEventListener('scroll', debounce(() => {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector('.hero-background');
-        
-        if (parallax) {
-            const speed = scrolled * 0.5;
-            parallax.style.transform = `translateY(${speed}px)`;
+    // rAF-throttled scroll \u2014 prevents dozens of repaints per second on Windows
+    let ticking = false;
+    
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.hero-background');
+                
+                if (parallax) {
+                    parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+                
+                const scrollIndicator = document.querySelector('.scroll-indicator');
+                if (scrollIndicator) {
+                    scrollIndicator.style.opacity = Math.max(0, 1 - scrolled / 300);
+                }
+                
+                const navbar = document.querySelector('.navbar');
+                if (navbar) {
+                    if (scrolled > 100) {
+                        navbar.style.background = 'rgba(10, 10, 15, 0.95)';
+                        navbar.style.backdropFilter = 'blur(20px)';
+                    } else {
+                        navbar.style.background = 'rgba(10, 10, 15, 0.8)';
+                        navbar.style.backdropFilter = 'blur(10px)';
+                    }
+                }
+                
+                ticking = false;
+            });
+            ticking = true;
         }
-        
-        // Update scroll indicator opacity
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-        if (scrollIndicator) {
-            const opacity = Math.max(0, 1 - scrolled / 300);
-            scrollIndicator.style.opacity = opacity;
-        }
-        
-        // Update navbar opacity
-        const navbar = document.querySelector('.navbar');
-        if (navbar) {
-            if (scrolled > 100) {
-                navbar.style.background = 'rgba(10, 10, 15, 0.95)';
-                navbar.style.backdropFilter = 'blur(20px)';
-            } else {
-                navbar.style.background = 'rgba(10, 10, 15, 0.8)';
-                navbar.style.backdropFilter = 'blur(10px)';
-            }
-        }
-    }, 10));
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
     
     // Smooth scroll for internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -190,19 +204,21 @@ function initializeScrollEffects() {
     });
 }
 
-// Card Animations
+
+// Card Animations — CSS-class driven to avoid inline style
+// mutations that trigger compositor invalidation on Windows
 function initializeCardAnimations() {
     const cards = document.querySelectorAll('.cyber-skill-card');
     
     cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'all 0.6s ease';
-        
-        setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 150);
+        // Stagger via CSS custom property instead of per-element timeout
+        card.style.setProperty('--card-delay', `${index * 80}ms`);
+        // Single rAF to add the visible class for each card
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                card.classList.add('card-visible');
+            }, index * 80);
+        });
     });
 }
 

@@ -3,18 +3,29 @@
    Web3 Theme Implementation
    ========================================== */
 
-/* Tab Content Visibility */
+/* Tab Content Visibility — use opacity/visibility instead of display:none
+   to avoid layout reflow on every tab switch (fixes Windows jank) */
 .tab-content {
-    display: none;
-    animation: fadeIn 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    /* Keep it in flow for initial render, then position only when inactive */
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    transform: translateY(8px);
+    will-change: opacity, transform;
 }
 
 .tab-content.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    position: static;
+    transform: translateY(0);
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -93,11 +104,14 @@
     position: relative;
     background: var(--bg-glass);
     border: var(--glass-border);
-    backdrop-filter: var(--glass-backdrop);
+    /* Reduced blur on desktop to prevent Windows GPU stutter */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     border-radius: 16px;
     padding: 1.5rem 2rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    /* Use transform-only transitions to stay on GPU compositor thread */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -951,6 +965,47 @@
 .credentials-link:hover i:last-child {
     transform: translateX(4px);
 }
+
+
+/* =====================================================
+   SCROLL ANIMATION CLASSES (CSS-driven, avoids inline
+   style thrash that caused Windows tab-switch flash)
+   ===================================================== */
+.timeline-item,
+.cert-card-cyber {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+    /* Promote to compositor layer so transition doesn't block main thread */
+    will-change: opacity, transform;
+}
+
+.timeline-item.anim-visible,
+.cert-card-cyber.anim-visible {
+    opacity: 1;
+    transform: translateY(0);
+    will-change: auto; /* release after animation */
+}
+
+/* Tab panels container — contain:layout stops inactive tab's reflow
+   from bubbling up and forcing a full-page layout recalc on Windows */
+.cyber-tabs-content,
+.tab-content-wrapper,
+.tab-panels {
+    contain: layout style;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .tab-content,
+    .skill-tab-content,
+    .timeline-item,
+    .cert-card-cyber {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
 
 
 

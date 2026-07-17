@@ -8,35 +8,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const tabs = document.querySelectorAll('.cyber-tab');
     const tabContents = document.querySelectorAll('.tab-content');
     
-    // Function to switch tabs
+    // Function to switch tabs — batched via requestAnimationFrame
+    // to avoid mid-frame layout thrash on Windows
     function switchTab(tabId) {
-        // Remove active class from all tabs
-        tabs.forEach(tab => {
-            tab.classList.remove('active');
-        });
-        
-        // Hide all tab contents
-        tabContents.forEach(content => {
-            content.classList.remove('active');
-        });
-        
-        // Add active class to clicked tab
-        const activeTab = document.querySelector(`[data-tab="${tabId}"]`);
-        if (activeTab) {
-            activeTab.classList.add('active');
-        }
-        
-        // Show corresponding content
-        const activeContent = document.getElementById(tabId);
-        if (activeContent) {
-            activeContent.classList.add('active');
+        requestAnimationFrame(() => {
+            // Remove active class from all tabs
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
             
-            // Removed timeline animation on tab click to prevent heavy load/visual lag
-            // (timeline items are already handled by scroll-based IntersectionObserver)
-
+            // Hide all tab contents
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
             
-        }
+            // Add active class to clicked tab
+            const activeTab = document.querySelector(`[data-tab="${tabId}"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+            
+            // Show corresponding content
+            const activeContent = document.getElementById(tabId);
+            if (activeContent) {
+                activeContent.classList.add('active');
+            }
+        });
     }
+    
+    // Expose globally so onclick="showTab(...)" in experience.html works
+    window.showTab = switchTab;
     
     // Add click event listeners to tabs
     tabs.forEach(tab => {
@@ -184,6 +185,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Intersection Observer for fade-in animations on scroll
+    // NOTE: We do NOT set opacity:0 on elements here — doing so causes tab-switch
+    // flash on Windows because hidden tab content elements are still observed and
+    // get opacity:0 applied even after becoming active.
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -192,17 +196,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('anim-visible');
+                observer.unobserve(entry.target); // only animate once
             }
         });
     }, observerOptions);
     
-    // Observe elements for scroll animations
+    // Observe elements for scroll animations — CSS handles the initial/final state
     document.querySelectorAll('.timeline-item, .cert-card-cyber').forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         observer.observe(element);
     });
     

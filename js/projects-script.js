@@ -19,41 +19,43 @@ function initializeProjectFilters() {
     const projectCards = document.querySelectorAll('.cyber-project-card');
     
     filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
             const filter = button.getAttribute('data-filter');
             
             // Update active button
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
             
-            // Filter projects with animation
-            filterProjects(filter, projectCards);
+            // Filter projects with optimized animation
+            filterProjectsOptimized(filter, projectCards);
         });
     });
 }
 
-function filterProjects(filter, cards) {
-    cards.forEach(card => {
-        const categories = card.getAttribute('data-category').split(' ');
-        const shouldShow = filter === 'all' || categories.includes(filter);
-        
-        if (shouldShow) {
-            card.classList.remove('fade-out');
-            card.classList.add('fade-in');
-            card.style.display = 'block';
-        } else {
-            card.classList.remove('fade-in');
-            card.classList.add('fade-out');
-            setTimeout(() => {
-                if (card.classList.contains('fade-out')) {
-                    card.style.display = 'none';
-                }
-            }, 300);
-        }
+function filterProjectsOptimized(filter, cards) {
+    // Use requestAnimationFrame for smoother animation
+    requestAnimationFrame(() => {
+        cards.forEach(card => {
+            const categories = card.getAttribute('data-category').split(' ');
+            const shouldShow = filter === 'all' || categories.includes(filter);
+            
+            if (shouldShow) {
+                // Show card
+                card.classList.remove('hide');
+                card.classList.add('show');
+                card.style.pointerEvents = 'auto';
+            } else {
+                // Hide card
+                card.classList.remove('show');
+                card.classList.add('hide');
+                card.style.pointerEvents = 'none';
+            }
+        });
     });
 }
 
-// Global filter function (for backwards compatibility)
+// Global filter function (for backwards compatibility with onclick handlers)
 window.filterProjects = function(filter) {
     const buttons = document.querySelectorAll('.cyber-tab');
     const cards = document.querySelectorAll('.cyber-project-card');
@@ -69,7 +71,7 @@ window.filterProjects = function(filter) {
     });
     
     // Filter projects
-    filterProjects(filter, cards);
+    filterProjectsOptimized(filter, cards);
 };
 
 // Animated Stats Counter
@@ -177,23 +179,32 @@ function initializeProjectAnimations() {
 
 // Scroll Effects
 function initializeScrollEffects() {
-    // Parallax effect for hero background
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector('.hero-background');
-        
-        if (parallax) {
-            const speed = scrolled * 0.5;
-            parallax.style.transform = `translateY(${speed}px)`;
+    // rAF-throttled scroll handler — fires at most once per frame
+    // instead of dozens of times per second (prevents Windows jank)
+    let ticking = false;
+    
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.hero-background');
+                
+                if (parallax) {
+                    parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+                
+                const scrollIndicator = document.querySelector('.scroll-indicator');
+                if (scrollIndicator) {
+                    scrollIndicator.style.opacity = Math.max(0, 1 - scrolled / 300);
+                }
+                
+                ticking = false;
+            });
+            ticking = true;
         }
-        
-        // Update scroll indicator opacity
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-        if (scrollIndicator) {
-            const opacity = Math.max(0, 1 - scrolled / 300);
-            scrollIndicator.style.opacity = opacity;
-        }
-    });
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
     
     // Smooth scroll for internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

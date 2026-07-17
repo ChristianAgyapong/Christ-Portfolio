@@ -14,14 +14,6 @@
             display: none !important;
         }
 
-/* Projects hero: cube should never cause horizontal overflow */
-        #hero .projects-cube,
-        #hero .cube-face {
-            max-width: 100%;
-        }
-
-        /* enforce cube animation within hero */
-        #hero .projects-cube { animation: rotateCube 18s infinite linear !important; }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -429,7 +421,7 @@
             
             <!-- Web3 Project Filters -->
             <div class="cyber-tabs">
-                <button class="cyber-tab active" onclick="filterProjects('all')" data-filter="all">
+                <button class="cyber-tab active" data-filter="all">
                     <div class="tab-icon">
                         <i class="fas fa-th"></i>
                     </div>

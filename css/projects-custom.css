@@ -301,13 +301,14 @@
     border-radius: 0;
     clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     font-family: var(--font-orbitron);
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
+    will-change: background, border-color;
 }
 
 .cyber-tab:hover,
@@ -315,7 +316,6 @@
     background: rgba(0, 212, 255, 0.1);
     border-color: var(--accent-cyan);
     color: var(--accent-cyan);
-    transform: translateY(-2px);
 }
 
 .tab-icon {
@@ -330,13 +330,13 @@
     bottom: 0;
     background: linear-gradient(45deg, transparent, var(--accent-cyan), transparent);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease;
     clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
 }
 
 .cyber-tab:hover .tab-glow,
 .cyber-tab.active .tab-glow {
-    opacity: 0.1;
+    opacity: 0.08;
 }
 
 /* Cyber Projects Grid */
@@ -351,16 +351,33 @@
     position: relative;
     background: rgba(253, 250, 246, 0.95);
     border: 1px solid rgba(204,103,65,0.12);
-    backdrop-filter: blur(12px);
-    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
     overflow: hidden;
     clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    will-change: opacity, transform;
+}
+
+/* Show state - visible cards */
+.cyber-project-card.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+/* Hide state - hidden cards */
+.cyber-project-card.hide {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
 }
 
 .cyber-project-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px) scale(1);
     border-color: rgba(204,103,65,0.25);
-    box-shadow: 0 20px 40px rgba(204,103,65,0.15);
+    box-shadow: 0 15px 35px rgba(204,103,65, 0.12);
 }
 
 .card-glow {
@@ -423,11 +440,13 @@
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
 }
 
 .cyber-project-card:hover .project-overlay {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .project-links {
