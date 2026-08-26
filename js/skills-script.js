@@ -141,14 +141,12 @@ function initializeProgressBars() {
 
 function animateProgressBars(container) {
     const progressBars = container.querySelectorAll('.progress-fill');
-    
-    progressBars.forEach((bar, index) => {
-        setTimeout(() => {
-            const width = bar.getAttribute('data-width');
-            bar.style.width = width + '%';
-        }, index * 100);
+    progressBars.forEach(bar => {
+        const width = bar.getAttribute('data-width');
+        bar.style.width = width + '%';
     });
 }
+
 
 // Scroll Effects
 function initializeScrollEffects() {
