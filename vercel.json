@@ -1,0 +1,41 @@
+{
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/experience.html",
+      "destination": "/experience",
+      "permanent": true
+    },
+    {
+      "source": "/projects.html",
+      "destination": "/projects",
+      "permanent": true
+    },
+    {
+      "source": "/skills.html",
+      "destination": "/skills",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/experience", "destination": "/experience.html" },
+    { "source": "/projects", "destination": "/projects.html" },
+    { "source": "/skills", "destination": "/skills.html" }
+  ]
+}

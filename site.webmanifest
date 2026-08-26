@@ -1,7 +1,7 @@
 {
   "name": "Christian Agyapong - Full Stack Developer",
   "short_name": "Christian Agyapong",
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#FDFAF6",
   "theme_color": "#CC6741",

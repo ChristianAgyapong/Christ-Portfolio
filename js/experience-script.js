@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     case 'projects':
                     case 'innovation':
                         // Navigate to main portfolio
-                        window.location.href = 'index.html#projects';
+                        window.location.href = '/#projects';
                         break;
                     case 'education':
                     case 'certificates':
@@ -280,11 +280,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         break;
                     case 'skills':
                         // Navigate to about page
-                        window.location.href = 'about.html';
+                        window.location.href = '/about';
                         break;
                     default:
                         // Default to main portfolio
-                        window.location.href = 'index.html';
+                        window.location.href = '/';
                 }
                 
                 // Add visual feedback
@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Handle clicks
         const handlePortfolioClick = function(e) {
             e.stopPropagation();
-            window.location.href = 'index.html';
+            window.location.href = '/';
         };
         
         card.addEventListener('click', handlePortfolioClick);
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             floatingBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                window.location.href = 'index.html';
+                window.location.href = '/';
             });
         }
     });

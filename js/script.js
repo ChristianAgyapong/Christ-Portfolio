@@ -337,8 +337,8 @@ function updateActiveNav() {
     const navLinks = document.querySelectorAll('.nav-link');
     if (!navLinks.length) return;
 
-    // Detect current filename (default to index.html)
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    // Detect the clean route (default to the homepage)
+    const currentPath = window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
 
     const hashLinks = Array.from(navLinks).filter(link => {
         const href = link.getAttribute('href');
@@ -367,10 +367,8 @@ function updateActiveNav() {
         navLinks.forEach(link => {
             const href = link.getAttribute('href');
             if (!href) return;
-            const linkFile = href.split('#')[0].split('/').pop();
-            const isActive = (linkFile === currentPath) || 
-                             (currentPath === '' && linkFile === 'index.html') ||
-                             (currentPath === '/' && linkFile === 'index.html');
+            const linkPath = href.split('#')[0].replace(/^\/+|\/+$/g, '') || 'home';
+            const isActive = linkPath === currentPath;
             if (isActive) {
                 link.classList.add('active');
             }
@@ -723,4 +721,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
+
