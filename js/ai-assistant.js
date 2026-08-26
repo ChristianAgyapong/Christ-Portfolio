@@ -25,13 +25,21 @@
     let overlay = null;
     let iframe = null;
 
-    function openChat() {
+    function openChat(e) {
+        if (e) {
+            if (e.stopPropagation) e.stopPropagation();
+            if (e.preventDefault) e.preventDefault();
+        }
         if (isOpen) return;
         isOpen = true;
         if (fab) fab.classList.add('hidden');
         if (!overlay) return;
 
+        overlay.style.display = 'flex';
+        // Force reflow for transition
+        void overlay.offsetHeight;
         overlay.classList.add('open');
+        overlay.setAttribute('aria-hidden', 'false');
         document.body.classList.add('ai-chat-active');
 
         // Ensure iframe src is populated
@@ -48,17 +56,28 @@
         }
     }
 
-    function closeChat() {
+    function closeChat(e) {
+        if (e) {
+            if (e.stopPropagation) e.stopPropagation();
+            if (e.preventDefault) e.preventDefault();
+        }
         if (!isOpen) return;
         isOpen = false;
         if (fab) fab.classList.remove('hidden');
         if (overlay) {
             overlay.classList.remove('open');
+            overlay.setAttribute('aria-hidden', 'true');
             document.body.classList.remove('ai-chat-active');
+            setTimeout(function () {
+                if (!isOpen && overlay) {
+                    overlay.style.display = 'none';
+                }
+            }, 300);
         }
     }
 
-    function reloadChat() {
+    function reloadChat(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
         if (iframe) {
             const skeleton = document.getElementById('ai-chat-skeleton');
             if (skeleton) skeleton.classList.remove('loaded');
@@ -85,9 +104,11 @@
         overlay = document.createElement('div');
         overlay.className = 'ai-overlay';
         overlay.id = 'ai-overlay';
+        overlay.style.display = 'none';
         overlay.setAttribute('role', 'dialog');
         overlay.setAttribute('aria-label', 'Chrix AI Chat Assistant');
         overlay.setAttribute('aria-modal', 'true');
+        overlay.setAttribute('aria-hidden', 'true');
         overlay.innerHTML =
             '<div class="ai-chat-card">' +
             '  <div class="ai-sheet-handle" aria-hidden="true"></div>' +
@@ -127,33 +148,52 @@
 
         iframe = document.getElementById('ai-overlay-iframe');
 
-        // Preload immediately on render so it is ready on-click with zero loading wait
+        // Preload silently so it is ready on-click with zero loading wait
         iframe.src = AI_CHAT_URL;
 
-        // When iframe finishes loading, seamlessly hide the skeleton
+        // When iframe finishes loading, hide skeleton
         iframe.addEventListener('load', function () {
             const skeleton = document.getElementById('ai-chat-skeleton');
             if (skeleton) skeleton.classList.add('loaded');
         });
 
-        document.getElementById('ai-fab-btn').addEventListener('click', openChat);
-        document.getElementById('ai-overlay-close').addEventListener('click', closeChat);
-        document.getElementById('ai-overlay-reload').addEventListener('click', reloadChat);
+        const fabBtn = document.getElementById('ai-fab-btn');
+        if (fabBtn) {
+            fabBtn.addEventListener('click', function (e) {
+                openChat(e);
+            });
+        }
+
+        const closeBtn = document.getElementById('ai-overlay-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function (e) {
+                closeChat(e);
+            });
+        }
+
+        const reloadBtn = document.getElementById('ai-overlay-reload');
+        if (reloadBtn) {
+            reloadBtn.addEventListener('click', function (e) {
+                reloadChat(e);
+            });
+        }
 
         // Close on backdrop click (clicking outside the card)
         overlay.addEventListener('click', function (e) {
-            if (e.target === overlay) closeChat();
+            if (e.target === overlay) closeChat(e);
         });
 
         // Close on Escape key
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && isOpen) closeChat();
+            if (e.key === 'Escape' && isOpen) closeChat(e);
         });
     }
 
     function bindTriggers() {
         document.querySelectorAll('#open-ai-chat-btn, [data-open-ai-chat]').forEach(function (btn) {
-            btn.addEventListener('click', openChat);
+            btn.addEventListener('click', function (e) {
+                openChat(e);
+            });
         });
     }
 

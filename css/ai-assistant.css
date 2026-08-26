@@ -179,20 +179,35 @@
     background: rgba(26, 16, 10, 0.6);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: flex-end;
     padding: 1.5rem 2rem;
     box-sizing: border-box;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ai-overlay.open {
+    display: flex;
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
 }
+
+.ai-overlay:not(.open) {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+.ai-overlay:not(.open) * {
+    pointer-events: none !important;
+    visibility: hidden !important;
+}
+
 
 /* ── Chat Modal Card ─────────────────────────────────────── */
 .ai-chat-card {
