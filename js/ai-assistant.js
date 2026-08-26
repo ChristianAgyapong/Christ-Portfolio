@@ -1,6 +1,6 @@
 /**
- * AI Assistant — floating chat button for Christian Agyapong portfolio
- * Click the button → full-screen overlay with the AI chat iframe (no extra UI)
+ * AI Assistant — floating chat button & interactive overlay for Christian Agyapong portfolio
+ * Features instant preloading, zero-delay opening, responsive mobile & desktop layout
  */
 (function () {
     'use strict';
@@ -23,6 +23,7 @@
     let isOpen = false;
     let fab = null;
     let overlay = null;
+    let iframe = null;
 
     function openChat() {
         if (isOpen) return;
@@ -33,15 +34,18 @@
         overlay.classList.add('open');
         document.body.classList.add('ai-chat-active');
 
-        const iframe = document.getElementById('ai-overlay-iframe');
-        const loadingEl = document.getElementById('ai-overlay-loading');
-
-        // Set src only once (lazy load)
+        // Ensure iframe src is populated
         if (iframe && !iframe.src) {
             iframe.src = AI_CHAT_URL;
         }
 
-        // loading UI removed: iframe will display when it finishes loading
+        // Focus close button for accessibility
+        const closeBtn = document.getElementById('ai-overlay-close');
+        if (closeBtn) {
+            setTimeout(function () {
+                closeBtn.focus();
+            }, 150);
+        }
     }
 
     function closeChat() {
@@ -51,6 +55,14 @@
         if (overlay) {
             overlay.classList.remove('open');
             document.body.classList.remove('ai-chat-active');
+        }
+    }
+
+    function reloadChat() {
+        if (iframe) {
+            const skeleton = document.getElementById('ai-chat-skeleton');
+            if (skeleton) skeleton.classList.remove('loaded');
+            iframe.src = AI_CHAT_URL;
         }
     }
 
@@ -66,42 +78,74 @@
             '<span class="ai-fab-dot" aria-hidden="true"></span>' +
             '<span class="ai-fab-icon-wrap"><i class="fas fa-robot"></i></span>' +
             '<span class="ai-fab-divider" aria-hidden="true"></span>' +
-            '<span class="ai-fab-label">Ask my AI about me</span>' +
+            '<span class="ai-fab-label">Ask my AI</span>' +
             '</button>';
 
-        // Full-screen overlay (just iframe + close btn)
+        // Full-screen overlay with sleek header, instant skeleton fallback, and full iframe
         overlay = document.createElement('div');
         overlay.className = 'ai-overlay';
         overlay.id = 'ai-overlay';
         overlay.setAttribute('role', 'dialog');
-        overlay.setAttribute('aria-label', 'AI chat assistant');
+        overlay.setAttribute('aria-label', 'Chrix AI Chat Assistant');
         overlay.setAttribute('aria-modal', 'true');
         overlay.innerHTML =
             '<div class="ai-chat-card">' +
-            '<button class="ai-overlay-close" id="ai-overlay-close" aria-label="Close AI chat">' +
-            '<i class="fas fa-times"></i>' +
-            '</button>' +
-            '<iframe id="ai-overlay-iframe" title="Chrix AI Chat" allowfullscreen></iframe>' +
+            '  <div class="ai-sheet-handle" aria-hidden="true"></div>' +
+            '  <div class="ai-chat-header">' +
+            '    <div class="ai-header-brand">' +
+            '      <div class="ai-avatar">' +
+            '        <i class="fas fa-robot"></i>' +
+            '        <span class="ai-avatar-badge" title="Live"></span>' +
+            '      </div>' +
+            '      <div class="ai-header-info">' +
+            '        <div class="ai-header-title">Christian\'s AI</div>' +
+            '        <div class="ai-header-status"><span class="ai-status-indicator"></span>Ready to chat</div>' +
+            '      </div>' +
+            '    </div>' +
+            '    <div class="ai-header-actions">' +
+            '      <button class="ai-header-btn" id="ai-overlay-reload" title="Restart conversation" aria-label="Restart chat">' +
+            '        <i class="fas fa-redo-alt"></i>' +
+            '      </button>' +
+            '      <button class="ai-header-btn ai-overlay-close" id="ai-overlay-close" title="Close AI chat" aria-label="Close">' +
+            '        <i class="fas fa-times"></i>' +
+            '      </button>' +
+            '    </div>' +
+            '  </div>' +
+            '  <div class="ai-iframe-wrapper">' +
+            '    <div class="ai-chat-skeleton" id="ai-chat-skeleton">' +
+            '      <div class="ai-skeleton-loader">' +
+            '        <div class="ai-skeleton-pulse"></div>' +
+            '        <span>Connecting to Digital Twin...</span>' +
+            '      </div>' +
+            '    </div>' +
+            '    <iframe id="ai-overlay-iframe" title="Chrix AI Chat" allow="clipboard-write; clipboard-read; microphone" allowfullscreen></iframe>' +
+            '  </div>' +
             '</div>';
 
         document.body.appendChild(fab);
         document.body.appendChild(overlay);
 
+        iframe = document.getElementById('ai-overlay-iframe');
+
+        // Preload immediately on render so it is ready on-click with zero loading wait
+        iframe.src = AI_CHAT_URL;
+
+        // When iframe finishes loading, seamlessly hide the skeleton
+        iframe.addEventListener('load', function () {
+            const skeleton = document.getElementById('ai-chat-skeleton');
+            if (skeleton) skeleton.classList.add('loaded');
+        });
+
         document.getElementById('ai-fab-btn').addEventListener('click', openChat);
         document.getElementById('ai-overlay-close').addEventListener('click', closeChat);
+        document.getElementById('ai-overlay-reload').addEventListener('click', reloadChat);
 
-        // iframe load handling intentionally not used (no loading UI)
-        var iframeEl = document.getElementById('ai-overlay-iframe');
-        if (iframeEl) {
-            // no-op
-        }
-
-
-        // Close on backdrop click (clicking outside iframe)
+        // Close on backdrop click (clicking outside the card)
         overlay.addEventListener('click', function (e) {
             if (e.target === overlay) closeChat();
         });
 
+        // Close on Escape key
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && isOpen) closeChat();
         });
@@ -117,37 +161,13 @@
     window.openAiChat = openChat;
     window.closeAiChat = closeChat;
 
-    function preloadIframe() {
-        const iframe = document.getElementById('ai-overlay-iframe');
-        if (!iframe) return;
-        if (iframe.src) return;
-
-        // Avoid preloading too early; only do it when the browser is idle
-        if (window.requestIdleCallback) {
-            window.requestIdleCallback(function () {
-                iframe.src = AI_CHAT_URL;
-            }, { timeout: 2500 });
-        } else {
-            setTimeout(function () {
-                iframe.src = AI_CHAT_URL;
-            }, 1200);
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+            createWidget();
+            bindTriggers();
+        });
+    } else {
         createWidget();
         bindTriggers();
-
-        // Preload after first paint/idle to reduce perceived latency
-        setTimeout(preloadIframe, 1500);
-
-        // If the user is likely to open chat, preload sooner
-        document.addEventListener('pointerenter', function (e) {
-            var target = e && e.target;
-            if (!target) return;
-            if (target.id === 'ai-fab-btn' || target.closest && target.closest('#ai-fab')) {
-                preloadIframe();
-            }
-        }, { once: true, passive: true });
-    });
+    }
 })();

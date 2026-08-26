@@ -341,24 +341,9 @@ document.querySelectorAll('.project-card').forEach(card => {
     });
 });
 
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
+// Instant page display (no artificial opacity delay)
+document.body.classList.add('loaded');
 
-// Add loaded class styles
-const loadingStyle = document.createElement('style');
-loadingStyle.textContent = `
-    body {
-        opacity: 0;
-        transition: opacity 0.5s ease;
-    }
-    
-    body.loaded {
-        opacity: 1;
-    }
-`;
-document.head.appendChild(loadingStyle);
 
 // Navbar active link highlighting
 // Navbar active link highlighting (performance-first: runs inside the single scroll handler below)
