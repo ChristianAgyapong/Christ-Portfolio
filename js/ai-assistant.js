@@ -100,7 +100,7 @@
             '<span class="ai-fab-label">Ask my AI</span>' +
             '</button>';
 
-        // Full-screen overlay with single seamless dark card framing the AI chat app
+        // Full-screen overlay with slim top control bar + full remaining iframe area
         overlay = document.createElement('div');
         overlay.className = 'ai-overlay';
         overlay.id = 'ai-overlay';
@@ -111,14 +111,20 @@
         overlay.setAttribute('aria-hidden', 'true');
         overlay.innerHTML =
             '<div class="ai-chat-card">' +
-            '  <div class="ai-sheet-handle" aria-hidden="true"></div>' +
-            '  <div class="ai-floating-controls">' +
-            '    <button class="ai-overlay-ctrl-btn ai-reload-btn" id="ai-overlay-reload" title="Restart conversation" aria-label="Restart chat">' +
-            '      <i class="fas fa-redo-alt"></i>' +
-            '    </button>' +
-            '    <button class="ai-overlay-ctrl-btn ai-close-btn" id="ai-overlay-close" title="Close AI chat" aria-label="Close">' +
-            '      <i class="fas fa-times"></i>' +
-            '    </button>' +
+            '  <div class="ai-card-topbar">' +
+            '    <div class="ai-card-badge">' +
+            '      <span class="ai-card-dot" aria-hidden="true"></span>' +
+            '      <span class="ai-card-title">Chrix AI</span>' +
+            '    </div>' +
+            '    <div class="ai-sheet-handle" aria-hidden="true"></div>' +
+            '    <div class="ai-card-actions">' +
+            '      <button class="ai-card-btn ai-reload-btn" id="ai-overlay-reload" title="Restart conversation" aria-label="Restart chat">' +
+            '        <i class="fas fa-redo-alt"></i>' +
+            '      </button>' +
+            '      <button class="ai-card-btn ai-close-btn" id="ai-overlay-close" title="Close AI chat" aria-label="Close">' +
+            '        <i class="fas fa-times"></i>' +
+            '      </button>' +
+            '    </div>' +
             '  </div>' +
             '  <div class="ai-iframe-wrapper">' +
             '    <div class="ai-chat-skeleton" id="ai-chat-skeleton">' +

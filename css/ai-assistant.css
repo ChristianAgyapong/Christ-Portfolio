@@ -53,6 +53,7 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     animation: aiFabBreathe 4s ease-in-out infinite;
+    touch-action: manipulation;
 }
 
 @keyframes aiFabBreathe {
@@ -233,58 +234,87 @@
     opacity: 1;
 }
 
-/* Sheet handle for mobile */
-.ai-sheet-handle {
-    display: none;
-    width: 38px;
-    height: 4px;
-    border-radius: 2px;
-    background: rgba(255, 255, 255, 0.3);
-    margin: 8px auto 4px auto;
+/* ── Slim Dedicated Top Control Bar ──────────────────────── */
+.ai-card-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    padding: 0 14px;
+    background: #0B0F17;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
 }
 
-/* ── Floating Controls (Reload & Close in top right corner) ─ */
-.ai-floating-controls {
-    position: absolute;
-    top: 12px;
-    right: 14px;
-    z-index: 30;
+.ai-card-badge {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.ai-overlay-ctrl-btn {
-    width: 32px;
-    height: 32px;
+.ai-card-dot {
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    background: rgba(15, 23, 42, 0.85);
-    color: #E2E8F0;
+    background: #10B981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.65);
+}
+
+.ai-card-title {
     font-size: 0.85rem;
+    font-weight: 700;
+    color: #E2E8F0;
+    letter-spacing: 0.02em;
+}
+
+.ai-sheet-handle {
+    display: none;
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.25);
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    transform: translateX(-50%);
+}
+
+.ai-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-card-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: #94A3B8;
+    font-size: 0.8rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    touch-action: manipulation;
 }
 
-.ai-overlay-ctrl-btn:hover {
+.ai-card-btn:hover {
     background: #CC6741;
     border-color: #CC6741;
     color: #FFFFFF;
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(204, 103, 65, 0.45);
+    transform: scale(1.08);
 }
 
-.ai-overlay-ctrl-btn:active {
+.ai-card-btn:active {
     transform: scale(0.95);
 }
 
-.ai-overlay-ctrl-btn:focus-visible {
+.ai-card-btn:focus-visible {
     outline: 2px solid #CC6741;
     outline-offset: 2px;
 }
@@ -387,6 +417,11 @@ body.ai-chat-active {
 
     .ai-sheet-handle {
         display: block;
+    }
+
+    .ai-card-topbar {
+        padding: 10px 14px 4px 14px;
+        height: 46px;
     }
 
     /* Position FAB safely above mobile navbar */

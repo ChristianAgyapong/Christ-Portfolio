@@ -856,16 +856,19 @@ html {
     }
     
     /* Optimize internal tabs (Skills, Experience, Projects) */
-    .cyber-tabs-container, .experience-tabs, .project-filters {
+    .cyber-tabs, .cyber-tabs-container, .experience-tabs, .project-filters {
+        display: flex !important;
         flex-wrap: nowrap !important;
         overflow-x: auto !important;
         justify-content: flex-start !important;
         padding-bottom: 10px !important;
         -webkit-overflow-scrolling: touch;
         gap: 0.75rem !important;
+        max-width: 100%;
     }
     
     /* Hide scrollbar but keep functionality */
+    .cyber-tabs::-webkit-scrollbar,
     .cyber-tabs-container::-webkit-scrollbar,
     .experience-tabs::-webkit-scrollbar,
     .project-filters::-webkit-scrollbar {
