@@ -100,7 +100,7 @@
             '<span class="ai-fab-label">Ask my AI</span>' +
             '</button>';
 
-        // Full-screen overlay with sleek header, instant skeleton fallback, and full iframe
+        // Full-screen overlay with single seamless dark card framing the AI chat app
         overlay = document.createElement('div');
         overlay.className = 'ai-overlay';
         overlay.id = 'ai-overlay';
@@ -112,31 +112,19 @@
         overlay.innerHTML =
             '<div class="ai-chat-card">' +
             '  <div class="ai-sheet-handle" aria-hidden="true"></div>' +
-            '  <div class="ai-chat-header">' +
-            '    <div class="ai-header-brand">' +
-            '      <div class="ai-avatar">' +
-            '        <i class="fas fa-robot"></i>' +
-            '        <span class="ai-avatar-badge" title="Live"></span>' +
-            '      </div>' +
-            '      <div class="ai-header-info">' +
-            '        <div class="ai-header-title">Christian\'s AI</div>' +
-            '        <div class="ai-header-status"><span class="ai-status-indicator"></span>Ready to chat</div>' +
-            '      </div>' +
-            '    </div>' +
-            '    <div class="ai-header-actions">' +
-            '      <button class="ai-header-btn" id="ai-overlay-reload" title="Restart conversation" aria-label="Restart chat">' +
-            '        <i class="fas fa-redo-alt"></i>' +
-            '      </button>' +
-            '      <button class="ai-header-btn ai-overlay-close" id="ai-overlay-close" title="Close AI chat" aria-label="Close">' +
-            '        <i class="fas fa-times"></i>' +
-            '      </button>' +
-            '    </div>' +
+            '  <div class="ai-floating-controls">' +
+            '    <button class="ai-overlay-ctrl-btn ai-reload-btn" id="ai-overlay-reload" title="Restart conversation" aria-label="Restart chat">' +
+            '      <i class="fas fa-redo-alt"></i>' +
+            '    </button>' +
+            '    <button class="ai-overlay-ctrl-btn ai-close-btn" id="ai-overlay-close" title="Close AI chat" aria-label="Close">' +
+            '      <i class="fas fa-times"></i>' +
+            '    </button>' +
             '  </div>' +
             '  <div class="ai-iframe-wrapper">' +
             '    <div class="ai-chat-skeleton" id="ai-chat-skeleton">' +
             '      <div class="ai-skeleton-loader">' +
             '        <div class="ai-skeleton-pulse"></div>' +
-            '        <span>Connecting to Digital Twin...</span>' +
+            '        <span>Connecting to Chrix Tech...</span>' +
             '      </div>' +
             '    </div>' +
             '    <iframe id="ai-overlay-iframe" title="Chrix AI Chat" allow="clipboard-write; clipboard-read; microphone" allowfullscreen></iframe>' +

@@ -333,41 +333,51 @@ document.body.classList.add('loaded');
 
 
 // Navbar active link highlighting
-// Navbar active link highlighting (performance-first: runs inside the single scroll handler below)
 function updateActiveNav() {
-    const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const sectionHeight = section.clientHeight;
-        if (sectionTop <= 100 && sectionTop + sectionHeight > 100) {
-            current = section.getAttribute('id');
-        }
+    if (!navLinks.length) return;
+
+    // Detect current filename (default to index.html)
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+
+    const hashLinks = Array.from(navLinks).filter(link => {
+        const href = link.getAttribute('href');
+        return href && href.startsWith('#');
     });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
+
+    if (hashLinks.length > 0) {
+        // Single-page hash sections
+        const sections = document.querySelectorAll('section[id]');
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const sectionHeight = section.clientHeight;
+            if (sectionTop <= 150 && sectionTop + sectionHeight > 150) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        if (current) {
+            hashLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+            });
         }
-    });
+    } else {
+        // Multi-page navigation — keep active page link highlighted on scroll
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href) return;
+            const linkFile = href.split('#')[0].split('/').pop();
+            const isActive = (linkFile === currentPath) || 
+                             (currentPath === '' && linkFile === 'index.html') ||
+                             (currentPath === '/' && linkFile === 'index.html');
+            if (isActive) {
+                link.classList.add('active');
+            }
+        });
+    }
 }
 
-
-// Add active nav link styles
-const navStyle = document.createElement('style');
-navStyle.textContent = `
-    .nav-link.active {
-        color: var(--primary-color);
-    }
-    
-    .nav-link.active::after {
-        width: 100%;
-    }
-`;
-document.head.appendChild(navStyle);
 
 // Function to open image preview
 function openImagePreview(imageSrc, title) {

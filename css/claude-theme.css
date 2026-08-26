@@ -149,9 +149,17 @@ textarea:focus-visible {
         background: var(--primary-color) !important;
     }
 }
-.nav-link:hover, .nav-link.active {
-    color: var(--accent-color) !important;
-    background: rgba(204, 103, 65, 0.12) !important;
+.nav-link:hover {
+    color: var(--primary-color) !important;
+    background: rgba(204, 103, 65, 0.08) !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+.nav-link.active {
+    color: var(--primary-color) !important;
+    background: rgba(204, 103, 65, 0.14) !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid var(--primary-color) !important;
     text-shadow: none !important;
     box-shadow: none !important;
 }
