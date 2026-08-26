@@ -18,7 +18,7 @@
         document.head.appendChild(link);
     })();
 
-    const AI_CHAT_URL = 'https://ai-chrix.onrender.com/';
+    const AI_CHAT_URL = 'https://chrix-personal.onrender.com/';
 
     let isOpen = false;
     let fab = null;

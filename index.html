@@ -1,34 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Critical inline CSS: prevents dark-bg flash during page navigation -->
-    <style>
-        body {
-            background: #FDFAF6 !important;
-            color: #2C1810;
-        }
-        .cursor-dot, .cursor-outline {
-            display: none;
-        }
-        .data-matrix, .matrix-line {
-            display: none !important;
-        }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christian Agyapong - Full Stack Developer Portfolio</title>
     <meta name="description"
         content="Christian Agyapong — Full Stack Developer, AI/ML Engineer & UI/UX Designer based in Accra, Ghana. Explore projects, skills, and chat with my AI assistant.">
     <meta name="author" content="Christian Agyapong">
-
-    <!-- Favicons (Windows-friendly) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-180.png">
-    <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#CC6741">
-
     <meta property="og:title" content="Christian Agyapong - Full Stack Developer Portfolio">
     <meta property="og:description"
         content="Full Stack Developer, AI/ML Engineer & UI/UX Designer. View my work or chat with my AI digital twin.">
@@ -110,21 +89,27 @@
             </div>
             <div class="nav-menu" id="nav-menu">
                 <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
                     <span>Home</span>
                 </a>
                 <a href="about.html" class="nav-link">
+                    <i class="fas fa-user"></i>
                     <span>About</span>
                 </a>
                 <a href="experience.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
                     <span>Experience</span>
                 </a>
                 <a href="projects.html" class="nav-link">
+                    <i class="fas fa-code"></i>
                     <span>Projects</span>
                 </a>
                 <a href="skills.html" class="nav-link">
+                    <i class="fas fa-cogs"></i>
                     <span>Skills</span>
                 </a>
                 <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
                     <span>Contact</span>
                 </a>
             </div>
@@ -171,12 +156,15 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="projects.html" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
                         <span class="btn-text">Explore My Universe</span>
                     </a>
                     <a href="contact.html" class="btn btn-secondary">
+                        <i class="fas fa-terminal"></i>
                         <span class="btn-text">Start a Conversation</span>
                     </a>
                     <button type="button" class="btn btn-secondary" id="open-ai-chat-btn">
+                        <i class="fas fa-robot"></i>
                         <span class="btn-text">Chat with my Digital Twin</span>
                     </button>
                 </div>
@@ -211,30 +199,49 @@
     </section>
 
     <!-- ── Core Identity ──────────────────────────────── -->
-    <section class="core-identity" style="padding: 40px 0; background: transparent;">
+    <section class="core-identity" style="padding: 60px 0; background: transparent;">
         <div class="container" style="max-width: 1000px; margin: 0 auto; text-align: center;">
-            <h2 class="section-title glitch" data-text="BEYOND CODE" style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-primary); text-shadow: var(--neon-glow);">BEYOND CODE</h2>
-            <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.8; max-width: 800px; margin-left: auto; margin-right: auto;">
-                Bridging the gap between beautiful aesthetics and robust engineering. As a Full-Stack Developer and AI/ML Engineer, I build intelligent systems wrapped in premium, engaging user interfaces.
+            <h2 class="section-title glitch" data-text="BEYOND CODE"
+                style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-primary); text-shadow: var(--neon-glow);">
+                BEYOND CODE</h2>
+            <p
+                style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.8; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Bridging the gap between beautiful aesthetics and robust engineering. As a Full-Stack Developer and
+                AI/ML Engineer, I build intelligent systems wrapped in premium, engaging user interfaces.
             </p>
-            
+
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                <div style="background: var(--bg-glass); padding: 2.5rem 1.5rem; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); box-shadow: var(--shadow-cyber); transition: var(--transition-glow); backdrop-filter: var(--glass-backdrop);">
-                    <img src="images/ai-art.png" alt="AI Abstract Art" style="width: 100%; height: 100px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 10px 20px rgba(255, 0, 110, 0.2); border: 1px solid rgba(255, 0, 110, 0.3);">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-primary); font-family: 'Orbitron', monospace;">Artificial Intelligence</h3>
-                    <p style="font-size: 0.95rem; color: var(--text-light);">Training models and creating intelligent agents that solve complex real-world problems.</p>
+                <div
+                    style="background: var(--bg-glass); padding: 2.5rem 1.5rem; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); box-shadow: var(--shadow-cyber); transition: var(--transition-glow); backdrop-filter: var(--glass-backdrop);">
+                    <i class="fas fa-brain"
+                        style="font-size: 2.5rem; color: var(--neon-pink); margin-bottom: 1.5rem; text-shadow: 0 0 15px var(--neon-pink);"></i>
+                    <h3
+                        style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-primary); font-family: 'Orbitron', monospace;">
+                        Artificial Intelligence</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-light);">Training models and creating intelligent
+                        agents that solve complex real-world problems.</p>
                 </div>
-                
-                <div style="background: var(--bg-glass); padding: 2.5rem 1.5rem; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); box-shadow: var(--shadow-cyber); transition: var(--transition-glow); backdrop-filter: var(--glass-backdrop);">
-                    <img src="images/fullstack-art.png" alt="Full-Stack Web Development Art" style="width: 100%; height: 100px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 10px 20px rgba(57, 255, 20, 0.2); border: 1px solid rgba(57, 255, 20, 0.3);">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-primary); font-family: 'Orbitron', monospace;">Full-Stack Systems</h3>
-                    <p style="font-size: 0.95rem; color: var(--text-light);">Architecting scalable, secure, and performant web applications from end to end.</p>
+
+                <div
+                    style="background: var(--bg-glass); padding: 2.5rem 1.5rem; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); box-shadow: var(--shadow-cyber); transition: var(--transition-glow); backdrop-filter: var(--glass-backdrop);">
+                    <i class="fas fa-layer-group"
+                        style="font-size: 2.5rem; color: var(--neon-green); margin-bottom: 1.5rem; text-shadow: 0 0 15px var(--neon-green);"></i>
+                    <h3
+                        style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-primary); font-family: 'Orbitron', monospace;">
+                        Full-Stack Systems</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-light);">Architecting scalable, secure, and
+                        performant web applications from end to end.</p>
                 </div>
-                
-                <div style="background: var(--bg-glass); padding: 2.5rem 1.5rem; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); box-shadow: var(--shadow-cyber); transition: var(--transition-glow); backdrop-filter: var(--glass-backdrop);">
-                    <img src="images/uiux-art.png" alt="UI/UX Design Art" style="width: 100%; height: 100px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2); border: 1px solid rgba(0, 212, 255, 0.3);">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-primary); font-family: 'Orbitron', monospace;">Immersive UI/UX</h3>
-                    <p style="font-size: 0.95rem; color: var(--text-light);">Designing experiences that are visually stunning, deeply intuitive, and user-centric.</p>
+
+                <div
+                    style="background: var(--bg-glass); padding: 2.5rem 1.5rem; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); box-shadow: var(--shadow-cyber); transition: var(--transition-glow); backdrop-filter: var(--glass-backdrop);">
+                    <i class="fas fa-paint-brush"
+                        style="font-size: 2.5rem; color: var(--neon-blue); margin-bottom: 1.5rem; text-shadow: 0 0 15px var(--neon-blue);"></i>
+                    <h3
+                        style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-primary); font-family: 'Orbitron', monospace;">
+                        Immersive UI/UX</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-light);">Designing experiences that are visually
+                        stunning, deeply intuitive, and user-centric.</p>
                 </div>
             </div>
         </div>
