@@ -1,6 +1,6 @@
 /**
  * AI Assistant — floating chat button & interactive overlay for Christian Agyapong portfolio
- * Features instant preloading, zero-delay opening, responsive mobile & desktop layout
+ * Features instant preloading, zero-delay opening, mobile virtual keyboard adaptation (visualViewport)
  */
 (function () {
     'use strict';
@@ -25,6 +25,22 @@
     let overlay = null;
     let iframe = null;
 
+    function syncVisualViewport() {
+        if (!overlay || !isOpen) return;
+        if (window.visualViewport && window.innerWidth <= 600) {
+            overlay.style.height = window.visualViewport.height + 'px';
+            overlay.style.top = window.visualViewport.offsetTop + 'px';
+        } else if (overlay) {
+            overlay.style.height = '';
+            overlay.style.top = '';
+        }
+    }
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', syncVisualViewport);
+        window.visualViewport.addEventListener('scroll', syncVisualViewport);
+    }
+
     function openChat(e) {
         if (e) {
             if (e.stopPropagation) e.stopPropagation();
@@ -41,6 +57,9 @@
         overlay.classList.add('open');
         overlay.setAttribute('aria-hidden', 'false');
         document.body.classList.add('ai-chat-active');
+        document.documentElement.classList.add('ai-chat-active');
+
+        syncVisualViewport();
 
         // Ensure iframe src is populated
         if (iframe && !iframe.src) {
@@ -67,7 +86,10 @@
         if (overlay) {
             overlay.classList.remove('open');
             overlay.setAttribute('aria-hidden', 'true');
+            overlay.style.height = '';
+            overlay.style.top = '';
             document.body.classList.remove('ai-chat-active');
+            document.documentElement.classList.remove('ai-chat-active');
             setTimeout(function () {
                 if (!isOpen && overlay) {
                     overlay.style.display = 'none';
