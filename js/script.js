@@ -14,7 +14,7 @@ if (hamburger && navMenu) {
 }
 
 
-// Web3 Cursor Effect (performance-first: disabled when reduced motion)
+// Web3 Cursor Effect (performance-first: disabled when reduced motion)    
 const cursorDot = document.getElementById('cursor-dot');
 const cursorOutline = document.getElementById('cursor-outline');
 
