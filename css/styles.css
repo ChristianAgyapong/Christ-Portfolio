@@ -65,33 +65,11 @@
     font-family: 'Orbitron', monospace;
 }
 
-/* Web3 Cursor */
-.cursor-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-    box-shadow: var(--neon-glow);
-}
-
+/* Web3 Cursor (Disabled to prevent top-left 0,0 dot artifacts) */
+.cursor-dot,
 .cursor-outline {
-    width: 30px;
-    height: 30px;
-    border: 2px solid var(--primary-color);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 9998;
-    transition: all 0.1s ease;
-    opacity: 0.5;
+    display: none !important;
+    pointer-events: none !important;
 }
 
 /* Enhanced Navigation */

@@ -79,7 +79,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="/">
+                <a href="index.html">
                     <span class="logo-bracket">[</span>
                     Christian
                     <span class="logo-dot">.</span>
@@ -88,27 +88,27 @@
                 </a>
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="/" class="nav-link active">
+                <a href="index.html" class="nav-link active">
                     <i class="fas fa-home"></i>
                     <span>Home</span>
                 </a>
-                <a href="/about" class="nav-link">
+                <a href="about.html" class="nav-link">
                     <i class="fas fa-user"></i>
                     <span>About</span>
                 </a>
-                <a href="/experience" class="nav-link">
+                <a href="experience.html" class="nav-link">
                     <i class="fas fa-briefcase"></i>
                     <span>Experience</span>
                 </a>
-                <a href="/projects" class="nav-link">
+                <a href="projects.html" class="nav-link">
                     <i class="fas fa-code"></i>
                     <span>Projects</span>
                 </a>
-                <a href="/skills" class="nav-link">
+                <a href="skills.html" class="nav-link">
                     <i class="fas fa-cogs"></i>
                     <span>Skills</span>
                 </a>
-                <a href="/contact" class="nav-link">
+                <a href="contact.html" class="nav-link">
                     <i class="fas fa-envelope"></i>
                     <span>Contact</span>
                 </a>
@@ -155,17 +155,18 @@
                     delivering exceptional user experiences that solve real-world problems.
                 </p>
                 <div class="hero-buttons">
-                    <a href="/projects" class="btn btn-primary">
+                    <a href="projects.html" class="btn btn-primary">
                         <i class="fas fa-rocket"></i>
                         <span class="btn-text">Explore My Universe</span>
                     </a>
-                    <a href="/contact" class="btn btn-secondary">
+                    <a href="contact.html" class="btn btn-secondary">
                         <i class="fas fa-terminal"></i>
                         <span class="btn-text">Start a Conversation</span>
                     </a>
-                    <button type="button" class="btn btn-secondary" id="open-ai-chat-btn">
-                        <i class="fas fa-robot"></i>
-                        <span class="btn-text">Chat with my Digital Twin</span>
+                    <button type="button" class="btn btn-ai-hero" id="open-ai-chat-btn">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                        <span class="btn-text">Chat with AI Twin</span>
+                        <span class="btn-ai-pill">24/7</span>
                     </button>
                 </div>
                 <div class="social-links">
@@ -199,49 +200,55 @@
     </section>
 
     <!-- ── Core Identity ──────────────────────────────── -->
-    <section class="core-identity" style="padding: 60px 0; background: transparent;">
-        <div class="container" style="max-width: 1000px; margin: 0 auto; text-align: center;">
-            <h2 class="section-title glitch" data-text="BEYOND CODE"
-                style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-primary); text-shadow: var(--neon-glow);">
-                BEYOND CODE</h2>
-            <p
-                style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.8; max-width: 800px; margin-left: auto; margin-right: auto;">
-                Bridging the gap between beautiful aesthetics and robust engineering. As a Full-Stack Developer and
-                AI/ML Engineer, I build intelligent systems wrapped in premium, engaging user interfaces.
-            </p>
+    <section class="core-identity">
+        <div class="container identity-container">
+            <div class="identity-header">
+                <span class="identity-badge">PHILOSOPHY &amp; VISION</span>
+                <h2 class="section-title">Beyond Code</h2>
+                <p class="section-subtitle">
+                    Bridging the gap between beautiful aesthetics and robust engineering. As a Full-Stack Developer and
+                    AI/ML Engineer, I build intelligent systems wrapped in premium, engaging user interfaces.
+                </p>
+            </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                <div
-                    style="background: var(--bg-glass); padding: 2.5rem 1.5rem; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); box-shadow: var(--shadow-cyber); transition: var(--transition-glow); backdrop-filter: var(--glass-backdrop);">
-                    <i class="fas fa-brain"
-                        style="font-size: 2.5rem; color: var(--neon-pink); margin-bottom: 1.5rem; text-shadow: 0 0 15px var(--neon-pink);"></i>
-                    <h3
-                        style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-primary); font-family: 'Orbitron', monospace;">
-                        Artificial Intelligence</h3>
-                    <p style="font-size: 0.95rem; color: var(--text-light);">Training models and creating intelligent
-                        agents that solve complex real-world problems.</p>
+            <div class="identity-grid">
+                <div class="identity-card">
+                    <div class="identity-icon-wrapper ai-accent">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="identity-title">Artificial Intelligence</h3>
+                    <p class="identity-desc">Training models and creating intelligent agents that solve complex real-world problems with precision.</p>
+                    <div class="identity-tags">
+                        <span>Machine Learning</span>
+                        <span>LLM Agents</span>
+                        <span>PyTorch</span>
+                    </div>
                 </div>
 
-                <div
-                    style="background: var(--bg-glass); padding: 2.5rem 1.5rem; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); box-shadow: var(--shadow-cyber); transition: var(--transition-glow); backdrop-filter: var(--glass-backdrop);">
-                    <i class="fas fa-layer-group"
-                        style="font-size: 2.5rem; color: var(--neon-green); margin-bottom: 1.5rem; text-shadow: 0 0 15px var(--neon-green);"></i>
-                    <h3
-                        style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-primary); font-family: 'Orbitron', monospace;">
-                        Full-Stack Systems</h3>
-                    <p style="font-size: 0.95rem; color: var(--text-light);">Architecting scalable, secure, and
-                        performant web applications from end to end.</p>
+                <div class="identity-card">
+                    <div class="identity-icon-wrapper stack-accent">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="identity-title">Full-Stack Systems</h3>
+                    <p class="identity-desc">Architecting scalable, secure, and performant web applications with modern distributed backends.</p>
+                    <div class="identity-tags">
+                        <span>Node.js / Python</span>
+                        <span>APIs &amp; DBs</span>
+                        <span>Cloud Architecture</span>
+                    </div>
                 </div>
 
-                <div
-                    style="background: var(--bg-glass); padding: 2.5rem 1.5rem; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); box-shadow: var(--shadow-cyber); transition: var(--transition-glow); backdrop-filter: var(--glass-backdrop);">
-                    <i class="fas fa-paint-brush"
-                        style="font-size: 2.5rem; color: var(--neon-blue); margin-bottom: 1.5rem; text-shadow: 0 0 15px var(--neon-blue);"></i>
-                    <h3
-                        style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-primary); font-family: 'Orbitron', monospace;">
-                        Immersive UI/UX</h3>
-                    <p style="font-size: 0.95rem; color: var(--text-light);">Designing experiences that are visually
-                        stunning, deeply intuitive, and user-centric.</p>
+                <div class="identity-card">
+                    <div class="identity-icon-wrapper ui-accent">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="identity-title">Immersive UI/UX</h3>
+                    <p class="identity-desc">Designing interfaces that are visually stunning, deeply intuitive, and engineered for delightful user experiences.</p>
+                    <div class="identity-tags">
+                        <span>Design Systems</span>
+                        <span>Micro-Interactions</span>
+                        <span>Responsive UI</span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Critical inline CSS: prevents dark-bg flash during page navigation -->
-    <style>
-        body {
-            background: #FDFAF6 !important;
-            color: #2C1810;
-        }
-        .cursor-dot, .cursor-outline {
-            display: none;
-        }
-        .data-matrix, .matrix-line {
-            display: none !important;
-        }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Christian Agyapong</title>
-    <meta name="description" content="Get in touch with Christian Agyapong — Full Stack Developer & AI/ML Engineer based in Accra, Ghana.">
-    <!-- Preconnect --> <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="description" content="Get in touch with Christian Agyapong — Full Stack Developer & AI/ML Engineer based in Accra, Ghana. Available for remote projects and consulting.">
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <!-- Critical inline CSS tokens -->
+    <!-- Critical tokens -->
     <style>
         :root {
-            --primary-color:#CC6741;--secondary-color:#A3522F;--accent-color:#C4956A;
-            --text-primary:#2C1810;--text-secondary:#3A241A;--text-light:#8C6B5A;
-            --bg-primary:#FDFAF6;--bg-secondary:#F5EDE0;--bg-card:#FAF3E8;
-            --gradient-primary:linear-gradient(135deg,#CC6741 0%,#A3522F 100%);
+            --primary-color: #CC6741;
+            --secondary-color: #A3522F;
+            --accent-color: #C4956A;
+            --text-primary: #2C1810;
+            --text-secondary: #3A241A;
+            --text-light: #8C6B5A;
+            --bg-primary: #FDFAF6;
+            --bg-secondary: #F5EDE0;
+            --bg-card: #FAF3E8;
+            --gradient-primary: linear-gradient(135deg, #CC6741 0%, #A3522F 100%);
         }
-        body { font-family: 'Plus Jakarta Sans','Inter',-apple-system,sans-serif; background: var(--bg-primary); color: var(--text-primary); }
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        .cursor-dot, .cursor-outline {
+            display: none !important;
+        }
     </style>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/contact-custom.css">
@@ -55,7 +54,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="/">
+                <a href="index.html">
                     <span class="logo-bracket">[</span>
                     Christian
                     <span class="logo-dot">.</span>
@@ -64,22 +63,22 @@
                 </a>
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="/" class="nav-link">
+                <a href="index.html" class="nav-link">
                     <span>Home</span>
                 </a>
-                <a href="/about" class="nav-link">
+                <a href="about.html" class="nav-link">
                     <span>About</span>
                 </a>
-                <a href="/experience" class="nav-link">
+                <a href="experience.html" class="nav-link">
                     <span>Experience</span>
                 </a>
-                <a href="/projects" class="nav-link">
+                <a href="projects.html" class="nav-link">
                     <span>Projects</span>
                 </a>
-                <a href="/skills" class="nav-link">
+                <a href="skills.html" class="nav-link">
                     <span>Skills</span>
                 </a>
-                <a href="/contact" class="nav-link active">
+                <a href="contact.html" class="nav-link active">
                     <span>Contact</span>
                 </a>
             </div>
@@ -91,409 +90,331 @@
         </div>
     </nav>
 
-    <!-- Web3 Contact Hero -->
-    <section class="hero" id="hero">
-        <div class="hero-background">
-            <div class="cyber-grid"></div>
-            <div class="floating-particles"></div>
-        </div>
+    <!-- Modernized Contact Hero -->
+    <section class="contact-hero-modern">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-badge">
-                        <i class="fas fa-envelope"></i>
-                        <span>Get Connected</span>
-                    </div>
-                    <h1 class="hero-title">
-                        <span class="gradient-text">Let's Create</span>
-                        <span class="text-glow">Something Amazing</span>
-                    </h1>
-                    <p class="hero-subtitle">
-                        Ready to bring your ideas to life? Whether you have a project in mind, 
-                        need technical expertise, or just want to connect, I'm here to help turn your vision into reality.
-                    </p>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="24">24</div>
-                            <div class="stat-label">Hours Response</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="100">100</div>
-                            <div class="stat-label">% Satisfaction</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="50">50+</div>
-                            <div class="stat-label">Projects Done</div>
-                        </div>
-                    </div>
+            <div class="contact-hero-content">
+                <div class="contact-hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Direct Communication &bull; Open for Collaboration</span>
                 </div>
-                <div class="hero-visual">
-                    <div class="contact-cube">
-                        <div class="cube-face front">
-                            <i class="fas fa-envelope"></i>
-                            <span>Email</span>
-                        </div>
-                        <div class="cube-face back">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
-                        </div>
-                        <div class="cube-face right">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </div>
-                        <div class="cube-face left">
-                            <i class="fas fa-phone"></i>
-                            <span>Phone</span>
-                        </div>
-                        <div class="cube-face top">
-                            <i class="fab fa-twitter"></i>
-                            <span>Twitter</span>
-                        </div>
-                        <div class="cube-face bottom">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Location</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
-
-    <!-- Web3 Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Choose your preferred way to connect</p>
-            </div>
-            
-            <div class="contact-grid">
-                <!-- Contact Information Cards -->
-                <div class="contact-info-section">
-                    <div class="cyber-contact-card">
-                        <div class="card-glow"></div>
-                        <a href="mailto:christianagyapong2023@email.com" class="contact-link">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>Email</h3>
-                                <p>christianagyapong2023@email.com</p>
-                                <span class="contact-action">Send Message <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="cyber-contact-card">
-                        <div class="card-glow"></div>
-                        <a href="tel:+233557618362" class="contact-link">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>Phone</h3>
-                                <p>+233 557618362</p>
-                                <span class="contact-action">Call Now <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="cyber-contact-card">
-                        <div class="card-glow"></div>
-                        <div class="contact-link">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>Location</h3>
-                                <p>Accra-Newtown, Ghana</p>
-                                <span class="contact-action">View Map <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="cyber-contact-card">
-                        <div class="card-glow"></div>
-                        <a href="https://www.linkedin.com/in/christian-agyapong-4a6b7139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="contact-link">
-                            <div class="contact-icon">
-                                <i class="fab fa-linkedin"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>LinkedIn</h3>
-                                <p>linkedin.com/in/christian-agyapong</p>
-                                <span class="contact-action">Connect <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </a>
-                        
-                    </div>
-                    
-                    <div class="cyber-contact-card">
-                        <div class="card-glow"></div>
-                        <a href="https://github.com/ChristianAgyapong" target="_blank" class="contact-link">
-                            <div class="contact-icon">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>GitHub</h3>
-                                <p>github.com/ChristianAgyapong</p>
-                                <span class="contact-action">View Profile <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Cyber Contact Form -->
-                <div class="cyber-contact-form">
-                    <div class="form-cyber-border"></div>
-                    <div class="form-header">
-                        <h3><i class="fas fa-code"></i> Send Encrypted Message</h3>
-                        <p class="cyber-text">Secure communication channel established</p>
-                    </div>
-                    
-                    <form id="contactForm" class="cyber-form">
-                        <div class="form-row">
-                            <div class="cyber-form-group">
-                                <label for="firstName">
-                                    <i class="fas fa-user"></i> First Name *
-                                </label>
-                                <input type="text" id="firstName" name="firstName" required>
-                                <div class="input-line"></div>
-                            </div>
-                            <div class="cyber-form-group">
-                                <label for="lastName">
-                                    <i class="fas fa-user"></i> Last Name *
-                                </label>
-                                <input type="text" id="lastName" name="lastName" required>
-                                <div class="input-line"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="cyber-form-group">
-                                <label for="email">
-                                    <i class="fas fa-envelope"></i> Email Address *
-                                </label>
-                                <input type="email" id="email" name="email" required>
-                                <div class="input-line"></div>
-                            </div>
-                            <div class="cyber-form-group">
-                                <label for="phone">
-                                    <i class="fas fa-phone"></i> Phone Number
-                                </label>
-                                <input type="tel" id="phone" name="phone">
-                                <div class="input-line"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="cyber-form-group">
-                            <label for="company">
-                                <i class="fas fa-building"></i> Company/Organization
-                            </label>
-                            <input type="text" id="company" name="company">
-                            <div class="input-line"></div>
-                        </div>
-                        
-                        <div class="cyber-form-group">
-                            <label for="subject">
-                                <i class="fas fa-folder"></i> Project Type *
-                            </label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a project type</option>
-                                <option value="web-development">🌐 Web Development</option>
-                                <option value="mobile-app">📱 Mobile App Development</option>
-                                <option value="fullstack">⚡ Full Stack Development</option>
-                                <option value="consulting">💼 Technical Consulting</option>
-                                <option value="collaboration">🤝 Collaboration Opportunity</option>
-                                <option value="other">🔧 Other</option>
-                            </select>
-                            <div class="input-line"></div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="cyber-form-group">
-                                <label for="budget">
-                                    <i class="fas fa-dollar-sign"></i> Project Budget Range
-                                </label>
-                                <select id="budget" name="budget">
-                                    <option value="">Select budget range</option>
-                                    <option value="under-5k">💰 Under $5,000</option>
-                                    <option value="5k-10k">💰 $5,000 - $10,000</option>
-                                    <option value="10k-25k">💰💰 $10,000 - $25,000</option>
-                                    <option value="25k-50k">💰💰💰 $25,000 - $50,000</option>
-                                    <option value="over-50k">💰💰💰💰 Over $50,000</option>
-                                </select>
-                                <div class="input-line"></div>
-                            </div>
-                            <div class="cyber-form-group">
-                                <label for="timeline">
-                                    <i class="fas fa-calendar"></i> Project Timeline
-                                </label>
-                                <select id="timeline" name="timeline">
-                                    <option value="">Select timeline</option>
-                                    <option value="asap">🚀 ASAP</option>
-                                    <option value="1-month">⏱️ Within 1 month</option>
-                                    <option value="1-3-months">📅 1-3 months</option>
-                                    <option value="3-6-months">📆 3-6 months</option>
-                                    <option value="6-months-plus">🗓️ 6+ months</option>
-                                </select>
-                                <div class="input-line"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="cyber-form-group">
-                            <label for="message">
-                                <i class="fas fa-message"></i> Project Details *
-                            </label>
-                            <textarea id="message" name="message" 
-                                placeholder="Describe your project vision, technical requirements, and desired outcomes..." 
-                                required></textarea>
-                            <div class="input-line"></div>
-                        </div>
-                        
-                        <div class="form-submit">
-                            <button type="submit" class="cyber-submit-btn">
-                                <span class="btn-text">
-                                    <i class="fas fa-rocket"></i>
-                                    Launch Message
-                                </span>
-                                <div class="btn-glow"></div>
-                            </button>
-                            <div class="form-status" id="formStatus"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mobile sticky call bar -->
-    <div class="mobile-contact-sticky" aria-hidden="true">
-        <a class="mobile-sticky-btn mobile-sticky-call" href="tel:+233557618362">
-            <i class="fas fa-phone" aria-hidden="true"></i>
-            <span>Call</span>
-        </a>
-        <a class="mobile-sticky-btn mobile-sticky-email" href="mailto:christianagyapong2023@email.com">
-            <i class="fas fa-envelope" aria-hidden="true"></i>
-            <span>Email</span>
-        </a>
-    </div>
-
-    <!-- Availability Section -->
-    <section class="availability-section">
-
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Availability & Response Times</h2>
-                <p class="section-subtitle">When you can expect to hear from me</p>
-            </div>
-            
-            <div class="availability-grid">
-                <div class="availability-card">
-                    <div class="availability-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Response Time</h3>
-                    <p>I typically respond to emails and messages within 24 hours during business days.</p>
-                    <span class="status-badge status-available">Active</span>
-                </div>
-                
-                <div class="availability-card">
-                    <div class="availability-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3>Project Availability</h3>
-                    <p>Currently accepting new projects with start dates in Q2 2025.</p>
-                    <span class="status-badge status-available">Available</span>
-                </div>
-                
-                <div class="availability-card">
-                    <div class="availability-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>Video Calls</h3>
-                    <p>Available for video consultations Monday to Friday, 9 AM - 6 PM GMT.</p>
-                    <span class="status-badge status-available">Open</span>
-                </div>
-                
-                <div class="availability-card">
-                    <div class="availability-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <h3>Consulting</h3>
-                    <p>Offering technical consulting and code reviews for existing projects.</p>
-                    <span class="status-badge status-available">Available</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">My Location</h2>
-                <p class="section-subtitle">Based in Accra, Ghana - Available for remote work worldwide</p>
-            </div>
-            
-            <div class="map-container">
-                <div class="map-placeholder">
-                    <div style="text-align: center;">
-                        <i class="fas fa-map-marker-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <h3>Accra, Ghana</h3>
-                        <p style="opacity: 0.8;">Available for remote collaboration globally</p>
-                    </div>
-                </div>
-                <p style="margin-top: 1rem; color: var(--text-secondary);">
-                    While I'm based in Accra, I work with clients from around the world. 
-                    I'm experienced in remote collaboration and can adapt to different time zones for project meetings and communication.
+                <h1 class="contact-hero-title">
+                    Let's Build Something <span class="gradient-text">Extraordinary</span>
+                </h1>
+                <p class="contact-hero-subtitle">
+                    Have a project vision, an AI architecture to design, or a complex full-stack system to build? Reach out directly or send an inquiry below — I respond within 24 hours.
                 </p>
+
+                <div class="contact-meta-pills">
+                    <div class="meta-pill">
+                        <i class="fas fa-bolt"></i>
+                        <span>Response Time: <strong>&lt; 24h</strong></span>
+                    </div>
+                    <div class="meta-pill">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Accra, Ghana &bull; <strong id="accra-clock">GMT</strong></span>
+                    </div>
+                    <div class="meta-pill">
+                        <i class="fas fa-globe"></i>
+                        <span>Remote Ready: <strong>Worldwide</strong></span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Social Contact -->
-    <section class="social-contact">
+    <!-- Main 2-Column Contact & Inquiry Workspace -->
+    <section class="contact-workspace">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Connect With Me</h2>
-                <p class="section-subtitle">Follow my work and stay updated</p>
+            <div class="workspace-grid">
+                
+                <!-- Left: Channels, Location & Work Guarantees -->
+                <div class="workspace-sidebar">
+                    
+                    <!-- Quick Channels Card -->
+                    <div class="glass-hub-card">
+                        <div class="hub-header">
+                            <div class="hub-icon-badge">
+                                <i class="fas fa-address-card"></i>
+                            </div>
+                            <div>
+                                <h3 class="hub-title">Direct Channels</h3>
+                                <p class="hub-desc">Get in touch via your preferred platform</p>
+                            </div>
+                        </div>
+
+                        <div class="direct-channels-list">
+                            <div class="channel-item">
+                                <div class="channel-icon email-accent">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="channel-info">
+                                    <span class="channel-label">Official Email</span>
+                                    <a href="mailto:christianagyapong2023@email.com" class="channel-value">christianagyapong2023@email.com</a>
+                                </div>
+                                <button type="button" class="copy-btn" id="copyEmailBtn" data-email="christianagyapong2023@email.com" title="Copy Email">
+                                    <i class="fas fa-copy"></i>
+                                    <span class="copy-tooltip">Copy</span>
+                                </button>
+                            </div>
+
+                            <div class="channel-item">
+                                <div class="channel-icon phone-accent">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="channel-info">
+                                    <span class="channel-label">Phone &amp; WhatsApp</span>
+                                    <a href="tel:+233557618362" class="channel-value">+233 557618362</a>
+                                </div>
+                                <a href="https://wa.me/233557618362" target="_blank" rel="noopener noreferrer" class="channel-action-btn" title="Open WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+
+                            <div class="channel-item">
+                                <div class="channel-icon linkedin-accent">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </div>
+                                <div class="channel-info">
+                                    <span class="channel-label">LinkedIn</span>
+                                    <a href="https://www.linkedin.com/in/christian-agyapong-4a6b7139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" class="channel-value">Christian Agyapong</a>
+                                </div>
+                                <a href="https://www.linkedin.com/in/christian-agyapong-4a6b7139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" class="channel-action-btn" title="Open LinkedIn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+
+                            <div class="channel-item">
+                                <div class="channel-icon github-accent">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div class="channel-info">
+                                    <span class="channel-label">GitHub</span>
+                                    <a href="https://github.com/ChristianAgyapong" target="_blank" rel="noopener noreferrer" class="channel-value">@ChristianAgyapong</a>
+                                </div>
+                                <a href="https://github.com/ChristianAgyapong" target="_blank" rel="noopener noreferrer" class="channel-action-btn" title="Open GitHub">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+
+                            <div class="channel-item">
+                                <div class="channel-icon twitter-accent">
+                                    <i class="fab fa-x-twitter"></i>
+                                </div>
+                                <div class="channel-info">
+                                    <span class="channel-label">X / Twitter</span>
+                                    <a href="https://x.com/ChrixGraphix" target="_blank" rel="noopener noreferrer" class="channel-value">@ChrixGraphix</a>
+                                </div>
+                                <a href="https://x.com/ChrixGraphix" target="_blank" rel="noopener noreferrer" class="channel-action-btn" title="Open Twitter">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location & Timezone Card -->
+                    <div class="glass-hub-card location-card">
+                        <div class="location-visual">
+                            <div class="radar-pulse"></div>
+                            <i class="fas fa-compass location-visual-icon"></i>
+                        </div>
+                        <div class="location-content">
+                            <div class="location-title-wrap">
+                                <h3>Accra, Ghana</h3>
+                                <span class="timezone-tag">GMT / UTC</span>
+                            </div>
+                            <p class="location-sub">Available worldwide for async and real-time remote collaboration.</p>
+                            <div class="live-clock-badge">
+                                <span class="live-beacon"></span>
+                                <span>Local Time: <strong id="liveTimeDisplay">--:--:-- GMT</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Collaboration Commitments -->
+                    <div class="glass-hub-card commitments-card">
+                        <h4 class="commitments-title"><i class="fas fa-shield-alt"></i> Working with Me</h4>
+                        <ul class="commitments-list">
+                            <li><i class="fas fa-check-circle"></i> <span><strong>Transparent Communication:</strong> Regular progress updates and demos.</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span><strong>Clean Architecture:</strong> Well-documented, tested, and scalable codebases.</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span><strong>Milestone-Driven:</strong> Clear deliverables and agreed timelines.</span></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Right: Interactive Inquiry Form -->
+                <div class="workspace-main">
+                    <div class="glass-form-card">
+                        <div class="form-header-box">
+                            <div class="form-title-wrap">
+                                <h2>Send a Project Inquiry</h2>
+                                <p>Fill in the details and I'll get back to you with insights and next steps.</p>
+                            </div>
+                            <div class="form-badge-status">
+                                <span class="badge-dot-green"></span>
+                                <span>Fast Reply</span>
+                            </div>
+                        </div>
+
+                        <form id="contactForm" class="modern-contact-form">
+                            
+                            <!-- Project Scope Chips -->
+                            <div class="form-section-label">1. What kind of project is this?</div>
+                            <div class="chips-container" id="projectTypeChips">
+                                <button type="button" class="scope-chip active" data-value="fullstack">
+                                    <i class="fas fa-layer-group"></i>
+                                    <span>Full-Stack Web App</span>
+                                </button>
+                                <button type="button" class="scope-chip" data-value="ai-ml">
+                                    <i class="fas fa-brain"></i>
+                                    <span>AI &amp; ML Solution</span>
+                                </button>
+                                <button type="button" class="scope-chip" data-value="mobile">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Mobile App</span>
+                                </button>
+                                <button type="button" class="scope-chip" data-value="ui-ux">
+                                    <i class="fas fa-palette"></i>
+                                    <span>UI/UX &amp; Design Systems</span>
+                                </button>
+                                <button type="button" class="scope-chip" data-value="consulting">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>Technical Consulting</span>
+                                </button>
+                                <button type="button" class="scope-chip" data-value="startup-mvp">
+                                    <i class="fas fa-rocket"></i>
+                                    <span>Startup MVP</span>
+                                </button>
+                                <button type="button" class="scope-chip" data-value="other">
+                                    <i class="fas fa-handshake"></i>
+                                    <span>Other Collaboration</span>
+                                </button>
+                            </div>
+                            <input type="hidden" id="subject" name="subject" value="fullstack">
+
+                            <!-- Form Inputs -->
+                            <div class="form-section-label">2. Your Contact Details</div>
+                            <div class="form-grid-2">
+                                <div class="form-floating-group">
+                                    <label for="firstName">First Name *</label>
+                                    <div class="input-wrap">
+                                        <i class="fas fa-user input-icon"></i>
+                                        <input type="text" id="firstName" name="firstName" placeholder="e.g. Christian" required>
+                                    </div>
+                                </div>
+                                <div class="form-floating-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <div class="input-wrap">
+                                        <i class="fas fa-user input-icon"></i>
+                                        <input type="text" id="lastName" name="lastName" placeholder="e.g. Agyapong" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-grid-2">
+                                <div class="form-floating-group">
+                                    <label for="email">Work Email *</label>
+                                    <div class="input-wrap">
+                                        <i class="fas fa-envelope input-icon"></i>
+                                        <input type="email" id="email" name="email" placeholder="name@company.com" required>
+                                    </div>
+                                </div>
+                                <div class="form-floating-group">
+                                    <label for="phone">Phone / WhatsApp (Optional)</label>
+                                    <div class="input-wrap">
+                                        <i class="fas fa-phone input-icon"></i>
+                                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-grid-2">
+                                <div class="form-floating-group">
+                                    <label for="company">Company or Organization</label>
+                                    <div class="input-wrap">
+                                        <i class="fas fa-building input-icon"></i>
+                                        <input type="text" id="company" name="company" placeholder="e.g. Acme Corp / Startup">
+                                    </div>
+                                </div>
+                                <div class="form-floating-group">
+                                    <label for="timeline">Desired Timeline</label>
+                                    <div class="input-wrap">
+                                        <i class="fas fa-calendar-alt input-icon"></i>
+                                        <select id="timeline" name="timeline">
+                                            <option value="asap">🚀 Immediate / ASAP</option>
+                                            <option value="1-month" selected>⏱️ Within 1 month</option>
+                                            <option value="1-3-months">📅 1 - 3 months</option>
+                                            <option value="3-months-plus">🗓️ 3+ months / Flexible</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating-group">
+                                <div class="label-row">
+                                    <label for="message">Project Vision &amp; Requirements *</label>
+                                    <span class="char-counter" id="charCounter">0 / 1000</span>
+                                </div>
+                                <div class="input-wrap textarea-wrap">
+                                    <textarea id="message" name="message" rows="5" maxlength="1000" placeholder="Tell me about your project goals, target audience, timeline expectations, or any specific technologies you have in mind..." required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-action-row">
+                                <button type="submit" class="btn-submit-modern" id="submitBtn">
+                                    <span class="btn-text">
+                                        <i class="fas fa-paper-plane"></i>
+                                        <span>Send Project Inquiry</span>
+                                    </span>
+                                </button>
+                                <div class="form-status-box" id="formStatus" aria-live="polite"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             </div>
-            
-            <div class="social-grid">
-                <a href="https://github.com/ChristianAgyapong" class="social-contact-card" target="_blank">
-                    <div class="social-contact-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <h3>GitHub</h3>
-                    <p>View my code repositories and open source contributions</p>
-                </a>
-                
-                <a href="https://www.linkedin.com/in/christian-agyapong-4a6b7139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="social-contact-card" target="_blank">
-                    <div class="social-contact-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </div>
-                    <h3>LinkedIn</h3>
-                    <p>Connect professionally and see my latest updates</p>
-                </a>
-                
-                <a href="https://x.com/ChrixGraphix" class="social-contact-card" target="_blank">
-                    <div class="social-contact-icon">
-                        <i class="fab fa-twitter"></i>
-                    </div>
-                    <h3>Twitter</h3>
-                    <p>Follow my thoughts on tech and industry insights</p>
-                </a>
-                
-                <a href="mailto:christianagyapong2023@email.com" class="social-contact-card">
-                    <div class="social-contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <p>Send me a direct email message</p>
-                </a>
+        </div>
+    </section>
+
+    <!-- 4-Step Working Process -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header-centered">
+                <span class="section-pill-tag">HOW WE WORK</span>
+                <h2 class="section-title">The Collaboration Process</h2>
+                <p class="section-subtitle">A transparent, structured approach turning ideas into production-ready software.</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-step-num">01</div>
+                    <div class="process-icon-wrap"><i class="fas fa-comments"></i></div>
+                    <h3>Discovery &amp; Scope</h3>
+                    <p>We analyze your business goals, target audience, technical architecture, and define clear milestone deliverables.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-step-num">02</div>
+                    <div class="process-icon-wrap"><i class="fas fa-drafting-compass"></i></div>
+                    <h3>Design &amp; Architecture</h3>
+                    <p>Interactive wireframes, UI prototypes, API contracts, and ML pipeline blueprints engineered for high performance.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-step-num">03</div>
+                    <div class="process-icon-wrap"><i class="fas fa-code"></i></div>
+                    <h3>Agile Development</h3>
+                    <p>Sprints with regular demo deployments, test-driven code, and continuous communication to keep you in the loop.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-step-num">04</div>
+                    <div class="process-icon-wrap"><i class="fas fa-rocket"></i></div>
+                    <h3>Deployment &amp; Growth</h3>
+                    <p>Production cloud rollout with CI/CD, performance optimizations, monitoring, and ongoing support.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -502,7 +423,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Christian Agyapong. All rights reserved.</p>
+                <p>&copy; 2026 Christian Agyapong. All rights reserved.</p>
                 <div class="footer-social">
                     <a href="https://github.com/ChristianAgyapong" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/christian-agyapong-4a6b7139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -518,4 +439,3 @@
     <script src="js/ai-assistant.js"></script>
 </body>
 </html>
-

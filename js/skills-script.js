@@ -170,12 +170,10 @@ function initializeScrollEffects() {
                 
                 const navbar = document.querySelector('.navbar');
                 if (navbar) {
-                    if (scrolled > 100) {
-                        navbar.style.background = 'rgba(10, 10, 15, 0.95)';
-                        navbar.style.backdropFilter = 'blur(20px)';
+                    if (scrolled > 40) {
+                        navbar.classList.add('scrolled');
                     } else {
-                        navbar.style.background = 'rgba(10, 10, 15, 0.8)';
-                        navbar.style.backdropFilter = 'blur(10px)';
+                        navbar.classList.remove('scrolled');
                     }
                 }
                 

@@ -67,19 +67,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar Web3 effect on scroll - kept inside the single scroll handler
+// Navbar effect on scroll
 function updateNavbarGlass() {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
 
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(30, 41, 59, 0.9)';
-        navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.37), 0 0 20px rgba(0, 212, 255, 0.2)';
-        navbar.style.borderBottom = '1px solid rgba(0, 212, 255, 0.3)';
+    if (window.scrollY > 40) {
+        navbar.classList.add('scrolled');
     } else {
-        navbar.style.background = 'rgba(30, 41, 59, 0.7)';
-        navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.37)';
-        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+        navbar.classList.remove('scrolled');
     }
 }
 

@@ -110,52 +110,56 @@
     function createWidget() {
         if (document.getElementById('ai-fab')) return;
 
-        // Floating action button
+        // Floating action button with modern luxury pill/orb design
         fab = document.createElement('div');
         fab.className = 'ai-fab';
         fab.id = 'ai-fab';
         fab.innerHTML =
-            '<button class="ai-fab-button" id="ai-fab-btn" aria-label="Open AI chat assistant" aria-expanded="false">' +
-            '<span class="ai-fab-dot" aria-hidden="true"></span>' +
-            '<span class="ai-fab-icon-wrap"><i class="fas fa-robot"></i></span>' +
-            '<span class="ai-fab-divider" aria-hidden="true"></span>' +
-            '<span class="ai-fab-label">Ask my AI</span>' +
+            '<button class="ai-fab-button" id="ai-fab-btn" aria-label="Chat with Christian\'s AI Digital Twin" aria-expanded="false">' +
+            '  <div class="ai-fab-ambient-glow" aria-hidden="true"></div>' +
+            '  <div class="ai-fab-icon-box">' +
+            '    <div class="ai-fab-pulse-ring" aria-hidden="true"></div>' +
+            '    <i class="fas fa-wand-magic-sparkles ai-fab-main-icon"></i>' +
+            '    <span class="ai-fab-status-dot" aria-hidden="true" title="Online"></span>' +
+            '  </div>' +
+            '  <div class="ai-fab-text-wrap">' +
+            '    <div class="ai-fab-top-tag">' +
+            '      <span class="ai-fab-mini-dot"></span>' +
+            '      <span>AI TWIN</span>' +
+            '    </div>' +
+            '    <span class="ai-fab-title">Ask Christian</span>' +
+            '  </div>' +
+            '  <div class="ai-fab-sparkle-fx" aria-hidden="true">✦</div>' +
             '</button>';
 
-        // Full-screen overlay with slim top control bar + full remaining iframe area
+        // Full-screen overlay with sleek modal and zero duplicate header
         overlay = document.createElement('div');
         overlay.className = 'ai-overlay';
         overlay.id = 'ai-overlay';
         overlay.style.display = 'none';
         overlay.setAttribute('role', 'dialog');
-        overlay.setAttribute('aria-label', 'Chrix AI Chat Assistant');
+        overlay.setAttribute('aria-label', 'Christian\'s AI Chat Assistant');
         overlay.setAttribute('aria-modal', 'true');
         overlay.setAttribute('aria-hidden', 'true');
         overlay.innerHTML =
             '<div class="ai-chat-card">' +
-            '  <div class="ai-card-topbar">' +
-            '    <div class="ai-card-badge">' +
-            '      <span class="ai-card-dot" aria-hidden="true"></span>' +
-            '      <span class="ai-card-title">Chrix AI</span>' +
-            '    </div>' +
-            '    <div class="ai-sheet-handle" aria-hidden="true"></div>' +
-            '    <div class="ai-card-actions">' +
-            '      <button class="ai-card-btn ai-reload-btn" id="ai-overlay-reload" title="Restart conversation" aria-label="Restart chat">' +
-            '        <i class="fas fa-redo-alt"></i>' +
-            '      </button>' +
-            '      <button class="ai-card-btn ai-close-btn" id="ai-overlay-close" title="Close AI chat" aria-label="Close">' +
-            '        <i class="fas fa-times"></i>' +
-            '      </button>' +
-            '    </div>' +
+            '  <div class="ai-floating-actions">' +
+            '    <button class="ai-action-btn ai-reload-action" id="ai-overlay-reload" title="Restart conversation" aria-label="Restart chat">' +
+            '      <i class="fas fa-redo-alt"></i>' +
+            '    </button>' +
+            '    <button class="ai-action-btn ai-close-action" id="ai-overlay-close" title="Close AI chat" aria-label="Close">' +
+            '      <i class="fas fa-times"></i>' +
+            '      <span>Close</span>' +
+            '    </button>' +
             '  </div>' +
             '  <div class="ai-iframe-wrapper">' +
             '    <div class="ai-chat-skeleton" id="ai-chat-skeleton">' +
             '      <div class="ai-skeleton-loader">' +
             '        <div class="ai-skeleton-pulse"></div>' +
-            '        <span>Connecting to Chrix Tech...</span>' +
+            '        <span>Connecting to Christian\'s Digital Twin...</span>' +
             '      </div>' +
             '    </div>' +
-            '    <iframe id="ai-overlay-iframe" title="Chrix AI Chat" allow="clipboard-write; clipboard-read; microphone" allowfullscreen></iframe>' +
+            '    <iframe id="ai-overlay-iframe" title="Christian\'s AI Chat" allow="clipboard-write; clipboard-read; microphone" allowfullscreen></iframe>' +
             '  </div>' +
             '</div>';
 
